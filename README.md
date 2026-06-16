@@ -2,7 +2,7 @@
 
 모바일 웹앱 기준의 정적 퍼블리싱 프로토타입입니다. HTML/CSS/Vanilla JS만 사용하며, 서버/API 연동 없이 화면 이동과 기본 UI 상태를 확인할 수 있습니다.
 
-최종 Figma 캡처는 참고 이미지로만 사용하고, 실제 화면은 HTML/CSS/Vanilla JS 컴포넌트와 Figma에서 직접 추출한 개별 에셋으로 구성합니다.
+최종 Figma 시안은 참고 이미지로만 사용하고, 실제 화면은 HTML/CSS/Vanilla JS 컴포넌트와 Figma에서 직접 추출한 개별 에셋으로 구성합니다.
 
 ## 로컬 확인
 
@@ -78,10 +78,6 @@ npm test
 - `docs/SCREEN_MAP.md`: 화면 목록, route, 주요 클릭 흐름
 - `docs/QA_CHECKLIST.md`: 최종 검수 체크리스트
 - `assets/README.md`: Figma 에셋 export 및 폴더 정리 규칙
-
-## 임시 검수 URL 배포
-
-Vercel 또는 Netlify 같은 정적 호스팅에 올려 검수용 링크를 만들 수 있습니다. 자세한 절차는 `DEPLOYMENT.md`를 참고하세요.
 
 ## 작업 범위
 
