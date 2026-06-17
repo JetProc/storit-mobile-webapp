@@ -538,7 +538,7 @@
               <h2>모은 쿠키로<br />원하는 기프티콘으로!</h2>
               <p>열심히 모은 쿠키로 다양한 상품권을 교환해 보세요!</p>
             </div>
-            <div class="rs-shop-hero__art">${namedAsset("shop-hero-character-figma.svg", "상점 캐릭터")}</div>
+            <div class="rs-shop-hero__art">${namedAsset("shop-hero-cookie-vector.svg", "상점 캐릭터")}</div>
           </div>
         </section>
 
