@@ -163,12 +163,60 @@
   };
 
   const cookieRows = [
-    { dateLabel: '2024.05.17', title: '오늘의 미션 완료', subtitle: '쿠키 1개 적립', amount: '+1', time: '14:32', kind: 'earn' },
-    { dateLabel: '2024.05.17', title: '친구 초대 보상', subtitle: '친구 가입 완료 보상', amount: '+2', time: '14:32', kind: 'earn' },
-    { dateLabel: '2024.05.17', title: '랭킹 1위 보상', subtitle: '쿠키 50개 적립', amount: '+50', time: '14:32', kind: 'earn' },
-    { dateLabel: '2024.05.16', title: '행운의 등수 달성', subtitle: '쿠키 20개 적립', amount: '+20', time: '14:32', kind: 'earn' },
-    { dateLabel: '2024.05.16', title: '상품권 교환', subtitle: '쿠키 30개 사용', amount: '-30', time: '14:32', kind: 'use' },
-    { dateLabel: '2024.05.16', title: '랭킹 Top 30 보상', subtitle: '쿠키 1개 적립', amount: '+1', time: '14:32', kind: 'earn' },
+    {
+      dateLabel: '2024.05.17',
+      title: '오늘의 미션 완료',
+      subtitle: '쿠키 1개 적립',
+      amount: '+1',
+      time: '14:32',
+      kind: 'earn',
+      icon: 'cookie-history-mission-complete.svg',
+    },
+    {
+      dateLabel: '2024.05.17',
+      title: '친구 초대 보상',
+      subtitle: '친구 가입 완료 보상',
+      amount: '+2',
+      time: '14:32',
+      kind: 'earn',
+      icon: 'cookie-history-friend-reward.svg',
+    },
+    {
+      dateLabel: '2024.05.17',
+      title: '랭킹 1위 보상',
+      subtitle: '쿠키 50개 적립',
+      amount: '+50',
+      time: '14:32',
+      kind: 'earn',
+      icon: 'cookie-history-ranking-first.svg',
+    },
+    {
+      dateLabel: '2024.05.16',
+      title: '행운의 등수 달성',
+      subtitle: '쿠키 20개 적립',
+      amount: '+20',
+      time: '14:32',
+      kind: 'earn',
+      icon: 'cookie-history-lucky-rank.svg',
+    },
+    {
+      dateLabel: '2024.05.16',
+      title: '상품권 교환',
+      subtitle: '쿠키 30개 사용',
+      amount: '-30',
+      time: '14:32',
+      kind: 'use',
+      icon: 'cookie-history-voucher-exchange.svg',
+    },
+    {
+      dateLabel: '2024.05.16',
+      title: '랭킹 Top 30 보상',
+      subtitle: '쿠키 1개 적립',
+      amount: '+1',
+      time: '14:32',
+      kind: 'earn',
+      icon: 'cookie-history-ranking-top30.svg',
+    },
   ];
 
   function sectionTitle(title, desc = '') {
@@ -616,7 +664,7 @@
   function cookieTabBar(type) {
     const tabs = [
       { id: 'all', label: '전체', route: 'cookieHistory' },
-      { id: 'earn', label: '획득', route: 'cookieHistoryEarn' },
+      { id: 'earn', label: '적립', route: 'cookieHistoryEarn' },
       { id: 'use', label: '사용', route: 'cookieHistoryUse' },
     ];
 
@@ -639,14 +687,15 @@
     return `
       <section class="account-cookie-ledger">
         <div class="account-cookie-ledger__balance">
-          <article>
+          <article class="account-cookie-ledger__metric">
             <span>보유 쿠키</span>
-            <strong>${C.escape(D.user.cookie)} 개</strong>
+            <strong class="account-cookie-ledger__owned"><b>${C.escape(D.user.cookie)}</b><em>개</em></strong>
           </article>
-          <article>
+          <article class="account-cookie-ledger__metric">
             <span>교환 가능 금액</span>
-            <strong>8,000 원</strong>
+            <strong class="account-cookie-ledger__money"><b>8,000</b><em>원</em></strong>
           </article>
+          <img class="account-cookie-ledger__hero" src="${assetBase}cookie-history-top-cookie.svg" alt="" loading="lazy" />
         </div>
         <div class="account-cookie-ledger__stats">
           <article>
@@ -665,7 +714,7 @@
   function cookieHistoryRow(row) {
     return `
       <article class="account-cookie-row is-${C.escape(row.kind)}">
-        <span class="account-cookie-row__icon" aria-hidden="true"><img src="${assetBase}shop-price-cookie.svg" alt="" loading="lazy" /></span>
+        <span class="account-cookie-row__icon" aria-hidden="true"><img src="${assetBase}${C.escape(row.icon)}" alt="" loading="lazy" /></span>
         <div>
           <strong>${C.escape(row.title)}</strong>
           <p>${C.escape(row.subtitle)}</p>

@@ -21,16 +21,8 @@
   background: var(--color-bg);
 }
 
-.phone-frame.has-scallop-frame:has(.product-detail-screen)::after,
-.phone-frame.has-scallop-frame:has(.exchange-screen)::after,
 .phone-frame.has-scallop-frame:has(.exchange-done-screen)::after,
-.phone-frame.has-scallop-frame:has(.vault-screen)::after,
-.phone-frame.has-scallop-frame:has(.reward-detail-screen)::after,
-.product-detail-screen.has-scallop::after,
-.exchange-screen.has-scallop::after,
-.exchange-done-screen.has-scallop::after,
-.vault-screen.has-scallop::after,
-.reward-detail-screen.has-scallop::after {
+.exchange-done-screen.has-scallop::after {
   display: none;
 }
 
@@ -595,7 +587,8 @@
     linear-gradient(90deg, rgba(255, 244, 210, 0.76), rgba(255, 244, 210, 0.58)),
     url("../assets/figma-exported/named/shop-hero-bg-figma.png") center / cover no-repeat;
   border-color: #f3dcae;
-  border-radius: 10px;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
   box-shadow: none;
 }
 
@@ -606,7 +599,7 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  padding: 13px 11px 8px 23px;
+  padding: 14px 11px 8px 46px;
 }
 
 .rs-shop-hero__main > div:first-child {
@@ -615,7 +608,7 @@
   display: grid;
   gap: 2px;
   align-content: start;
-  max-width: 205px;
+  max-width: 230px;
   min-width: 0;
 }
 
@@ -625,8 +618,8 @@
   padding: 0 10px;
   border: 0;
   border-radius: 10px;
-  background: #ffd95e;
-  color: #3d2000;
+  background: #3d2000;
+  color: #fef4d2;
   font-size: 10px;
   font-weight: 700;
   line-height: 20px;
@@ -634,11 +627,11 @@
 
 .shop-screen .rs-shop-hero h2 {
   color: var(--rs-ink);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 22px;
   letter-spacing: -0.01em;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .shop-screen .rs-shop-hero p {
@@ -652,11 +645,11 @@
 
 .rs-shop-hero__art {
   position: absolute;
-  right: -6px;
-  bottom: -13px;
+  right: 14px;
+  bottom: 1px;
   z-index: 1;
-  width: 142px;
-  height: 118px;
+  width: 122px;
+  height: 105px;
   display: grid;
   place-items: center;
 }
@@ -671,13 +664,14 @@
 
 .rs-shop-balance-row {
   height: 39px;
-  margin-top: -1px;
+  margin-top: 0;
   display: grid;
-  grid-template-columns: 1fr 78px 132px;
+  grid-template-columns: 140px 32px 60px 98px;
   align-items: stretch;
   overflow: hidden;
-  border: 1px solid #e6d5b8;
-  border-radius: 0 0 10px 10px;
+  border: 1px solid #f3dcae;
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
   background: #fff;
   box-shadow: none;
 }
@@ -688,29 +682,48 @@
   justify-content: center;
   background: transparent;
   color: var(--rs-ink);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .rs-shop-balance-row > * + * {
-  border-left: 1px solid #eadbc6;
+  border-left: 0;
 }
 
 .rs-shop-balance-row strong {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 5px;
   color: #3d2000;
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
-.rs-shop-balance-row .icon-symbol {
-  width: 16px;
-  height: 16px;
+.rs-shop-balance-row button:last-child {
+  border-left: 1px solid #eadbc6;
+  background: #f7ecdc;
+}
+
+.rs-shop-balance-row__arrow {
+  display: grid;
+  place-items: center;
+}
+
+.rs-shop-balance-row__arrow-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.rs-shop-balance-row__cookie {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
 }
 
 .rs-wallet-card {
@@ -4477,19 +4490,24 @@
   object-fit: contain;
 }
 
-.exchange-screen .rs-exchange-guide__card strong {
+.exchange-screen .rs-exchange-guide-title {
+  display: block;
   color: #3d2000;
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
+  letter-spacing: 0;
+  vertical-align: middle;
 }
 
-.exchange-screen .rs-exchange-guide__card small {
+.exchange-screen .rs-exchange-guide-desc {
+  display: block;
   margin-top: 3px;
   color: #3d2000;
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
+  letter-spacing: 0;
 }
 
 .exchange-screen .rs-exchange-warning {
@@ -4527,9 +4545,14 @@
   display: flex;
   gap: 8px;
   color: #3d2000;
+}
+
+.exchange-screen .rs-exchange-warning-text {
+  color: #3d2000;
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
+  letter-spacing: 0;
 }
 
 .exchange-screen .rs-exchange-warning li::before {
@@ -4562,6 +4585,14 @@
   line-height: 14px;
 }
 
+.exchange-screen .rs-check-row {
+  position: fixed;
+  left: max(26px, calc((100vw - 375px) / 2 + 26px));
+  right: max(26px, calc((100vw - 375px) / 2 + 26px));
+  bottom: 126px;
+  z-index: calc(var(--z-scallop) + 4);
+}
+
 .exchange-screen .rs-check-row__mark {
   width: 16px;
   height: 16px;
@@ -4570,7 +4601,18 @@
 }
 
 .exchange-screen .rs-sticky-action {
-  bottom: 59px;
+  bottom: 64px;
+}
+
+.exchange-screen .fixed-bottom-action.rs-sticky-action {
+  position: fixed;
+  left: max(26px, calc((100vw - 375px) / 2 + 26px));
+  right: max(26px, calc((100vw - 375px) / 2 + 26px));
+  bottom: 64px;
+  z-index: calc(var(--z-scallop) + 4);
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .exchange-screen .rs-sticky-action .btn {
@@ -4804,7 +4846,14 @@
   min-height: 110px;
   margin: 0 3px;
   border-color: #faefdf;
-  border-radius: 10px;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}
+
+.shop-screen .rs-shop-balance-row {
+  width: 330px;
+  margin: 0 3px;
+  border-color: #faefdf;
 }
 
 .shop-screen .rs-category-tabs {
@@ -4907,13 +4956,15 @@
   line-height: 14px;
 }
 
-.shop-screen .rs-shop-recommend-strip {
+.shop-screen .rs-shop-recommend-strip,
+.product-detail-screen .rs-shop-recommend-strip {
   width: 335px;
   grid-template-columns: repeat(3, 100px);
   gap: 5.666px;
 }
 
-.shop-screen .rs-shop-recommend-card {
+.shop-screen .rs-shop-recommend-card,
+.product-detail-screen .rs-shop-recommend-card {
   width: 100px;
   height: 130px;
   min-height: 130px;
@@ -4923,22 +4974,26 @@
   box-shadow: none;
 }
 
-.shop-screen .rs-shop-recommend-card.is-google-play {
+.shop-screen .rs-shop-recommend-card.is-google-play,
+.product-detail-screen .rs-shop-recommend-card.is-google-play {
   padding: 15px 6px 8px;
 }
 
-.shop-screen .rs-shop-recommend-card__image {
+.shop-screen .rs-shop-recommend-card__image,
+.product-detail-screen .rs-shop-recommend-card__image {
   width: 46px;
   height: 47px;
   margin: 0 auto 3px;
   object-fit: contain;
 }
 
-.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__image {
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__image,
+.product-detail-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__image {
   margin-bottom: 4px;
 }
 
-.shop-screen .rs-shop-recommend-card small {
+.shop-screen .rs-shop-recommend-card small,
+.product-detail-screen .rs-shop-recommend-card small {
   color: #1c1c1c;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 8px;
@@ -4946,7 +5001,8 @@
   line-height: 10px;
 }
 
-.shop-screen .rs-shop-recommend-card strong {
+.shop-screen .rs-shop-recommend-card strong,
+.product-detail-screen .rs-shop-recommend-card strong {
   min-height: 28px;
   color: #1c1c1c;
   font-family: "Noto Sans KR", sans-serif;
@@ -4956,7 +5012,8 @@
   text-align: center;
 }
 
-.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__title {
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__title,
+.product-detail-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__title {
   min-height: 20px;
   display: block;
   color: #1c1c1c;
@@ -4968,20 +5025,22 @@
   text-align: center;
 }
 
-.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__value {
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__value,
+.product-detail-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__value {
   display: block;
   margin-top: 1px;
   color: #1c1c1c;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 19px;
-  letter-spacing: -0.15px;
+  line-height: 14px;
+  letter-spacing: 0;
   text-align: center;
 }
 
 .shop-screen .rs-shop-recommend-card > span,
-.shop-screen .rs-shop-grid-card > span {
+.shop-screen .rs-shop-grid-card > span,
+.product-detail-screen .rs-shop-recommend-card > span {
   width: 49px;
   min-width: 49px;
   height: 19px;
@@ -4996,7 +5055,8 @@
   line-height: 14px;
 }
 
-.shop-screen .rs-shop-recommend-card.is-google-play > span {
+.shop-screen .rs-shop-recommend-card.is-google-play > span,
+.product-detail-screen .rs-shop-recommend-card.is-google-play > span {
   margin-top: 2px;
 }
 
@@ -5159,7 +5219,7 @@
 /* Figma MCP sync: vault flow (1473:61155). */
 .vault-screen .screen-content {
   gap: 0;
-  padding: 0 18px 48px;
+  padding: 0 18px 92px;
 }
 
 .vault-screen .rs-tabs {
@@ -5276,4 +5336,8 @@
   border: 1px solid #faefdf;
   border-radius: 10px;
   background: #faefdf;
+}
+
+.vault-screen .rs-vault-empty {
+  padding-bottom: 50px;
 }

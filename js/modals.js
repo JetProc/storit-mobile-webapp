@@ -114,6 +114,16 @@
     "SF",
   ];
 
+  const accountLifeEditIcon = `
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="60" height="60" rx="30" fill="#FEF4D2"/>
+      <path d="M46.0732 46.0714L42.5018 35.3571L22.859 15.7143C21.0732 13.9286 17.5018 13.9286 15.7161 15.7143C13.9304 17.5 13.9304 21.0714 15.7161 22.8571L35.359 42.5L46.0732 46.0714Z" stroke="#EF9F27" stroke-width="3.57143" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M24.6445 17.5L17.5017 24.6429" stroke="#EF9F27" stroke-width="3.57143" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M40.7148 35.3572L35.3577 40.7143" stroke="#EF9F27" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21.07 15.7144H15.7129V21.0715L35.3557 40.7144L40.7129 35.3572L21.07 15.7144Z" fill="#F9C356"/>
+    </svg>
+  `;
+
   function renderAccountSheet(className, label, content) {
     return `
       <div class="modal-layer account-sheet-layer" role="presentation">
@@ -197,7 +207,7 @@
       "account-life-edit-sheet",
       "나의 인생 웹툰",
       `
-        <div class="account-life-edit-icon"><img src="${assetBase}icon-user-profile-edit.svg" alt="" loading="lazy" /></div>
+        <div class="account-life-edit-icon">${accountLifeEditIcon}</div>
         <h2>나의 인생 웹툰</h2>
         <input class="account-life-edit-input" type="text" value="${C.escape(current)}" aria-label="나의 인생 웹툰" data-account-life-input />
         <div class="account-sheet-actions">

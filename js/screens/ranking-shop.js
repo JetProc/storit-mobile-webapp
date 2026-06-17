@@ -173,14 +173,15 @@
     `;
   }
 
-  function shopRecommendCard(product, index) {
+  function shopRecommendCard(product, index, options = {}) {
+    const showArrow = options.showArrow !== false;
     const isGooglePlay = product.image === "googlePlay";
     const priceIcon =
       isGooglePlay
         ? namedAsset("shop-price-cookie.svg", "쿠키", "rs-shop-recommend-card__cookie")
         : C.icon("cookie");
     const arrowButton =
-      index === 2
+      showArrow && index === 2
         ? `<button class="rs-shop-next-button" type="button" aria-label="다음 추천상품">${namedAsset("shop-recommend-arrow.svg", "", "rs-shop-next-button__icon")}</button>`
         : "";
 
@@ -271,8 +272,8 @@
                 <article>
                   ${namedAsset(icon, "", "rs-exchange-guide__icon")}
                   <div>
-                    <strong>${escape(title)}</strong>
-                    <small>${escape(desc)}</small>
+                    <strong class="rs-exchange-guide-title">${escape(title)}</strong>
+                    <small class="rs-exchange-guide-desc">${escape(desc)}</small>
                   </div>
                 </article>
               `,
@@ -537,7 +538,7 @@
               <h2>모은 쿠키로<br />원하는 기프티콘으로!</h2>
               <p>열심히 모은 쿠키로 다양한 상품권을 교환해 보세요!</p>
             </div>
-            <div class="rs-shop-hero__art">${namedAsset("character-shop-transparent.png", "상점 캐릭터")}</div>
+            <div class="rs-shop-hero__art">${namedAsset("shop-hero-character-figma.svg", "상점 캐릭터")}</div>
           </div>
         </section>
 
@@ -545,7 +546,8 @@
           <button type="button">
             <span>지금까지 모은 내 쿠키</span>
           </button>
-          <strong>${C.icon("cookie")} ${escape(D.user.cookie)}개</strong>
+          <span class="rs-shop-balance-row__arrow" aria-hidden="true">${namedAsset("cookie-balance-arrow.svg", "", "rs-shop-balance-row__arrow-icon")}</span>
+          <strong>${namedAsset("shop-price-cookie.svg", "쿠키", "rs-shop-balance-row__cookie")} ${escape(D.user.cookie)}개</strong>
           <button type="button" data-route="vault">보관함</button>
         </div>
 
@@ -658,7 +660,7 @@
             <h3>${namedAsset("icon-detail-recommend.svg", "추천")} 추천 상품</h3>
           </div>
           <div class="rs-shop-recommend-strip">
-            ${recommendations.map((product, index) => shopRecommendCard(product, index)).join("")}
+            ${recommendations.map((product, index) => shopRecommendCard(product, index, { showArrow: false })).join("")}
           </div>
         </section>
 
@@ -681,9 +683,9 @@
           <div>
             <strong>${namedAsset("exchange-icon-shield.svg", "확인")} 꼭 확인해주세요!</strong>
             <ul>
-              <li>교환 신청 후 취소 및 환불이 불가능해요.</li>
-              <li>부정 사용시 서비스 이용이 제한될 수 있습니다.</li>
-              <li>유효기간이 만료되면 사용이 불가능합니다.</li>
+              <li><span class="rs-exchange-warning-text">교환 신청 후 취소 및 환불이 불가능해요.</span></li>
+              <li><span class="rs-exchange-warning-text">부정 사용시 서비스 이용이 제한될 수 있습니다.</span></li>
+              <li><span class="rs-exchange-warning-text">유효기간이 만료되면 사용이 불가능합니다.</span></li>
             </ul>
           </div>
           ${namedAsset("exchange-warning-character.svg", "확인 캐릭터", "rs-exchange-warning__character")}
