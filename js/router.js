@@ -26,7 +26,11 @@
       renderedScreen?.classList.contains("ranking-daily-screen") ||
       renderedScreen?.classList.contains("ranking-season-screen") ||
       renderedScreen?.classList.contains("rs-yesterday-screen") ||
-      renderedScreen?.classList.contains("quiz-result-screen");
+      renderedScreen?.classList.contains("quiz-result-screen") ||
+      renderedScreen?.classList.contains("my-quiz-screen") ||
+      renderedScreen?.classList.contains("quiz-create-screen") ||
+      renderedScreen?.classList.contains("quiz-status-screen") ||
+      renderedScreen?.classList.contains("quiz-submit-screen");
     app.classList.toggle(
       "has-scallop-frame",
       renderedScreen?.classList.contains("has-scallop") === true && !suppressFrameScallop,

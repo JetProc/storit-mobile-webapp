@@ -1914,9 +1914,355 @@
   font-size: 10px;
 }
 
+.account-my-page--classic .screen-content {
+  gap: 8px;
+  padding: 0 20px 104px;
+}
+
+.account-classic-profile {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 78px;
+  margin-top: 8px;
+}
+
+.account-classic-profile__avatar {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  background: #fff2bd;
+  box-shadow: 0 2px 6px rgba(61, 32, 0, 0.08);
+}
+
+.account-classic-profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.account-classic-profile__body {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.account-classic-profile__name,
+.account-classic-profile__level {
+  display: flex;
+  align-items: center;
+}
+
+.account-classic-profile__name {
+  gap: 4px;
+}
+
+.account-classic-profile__name h2 {
+  margin: 0;
+  color: #3d2000;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.account-classic-profile__name img {
+  width: 14px;
+  height: 14px;
+}
+
+.account-classic-profile__level {
+  gap: 7px;
+}
+
+.account-classic-profile__level strong {
+  color: #3d2000;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.account-classic-profile__level > div {
+  position: relative;
+  flex: 1;
+  height: 15px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #ffd95e;
+}
+
+.account-classic-profile__level span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #3d2000;
+}
+
+.account-classic-profile__level em {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  color: #ffd95e;
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.account-classic-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(61, 32, 0, 0.04);
+}
+
+.account-classic-card h3 {
+  margin: 0;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.account-classic-mission {
+  padding: 12px 12px 11px;
+}
+
+.account-classic-mission header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.account-classic-mission header button {
+  min-height: 25px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: #ffd95e;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.account-classic-mission .ingredient-track {
+  padding: 0;
+  gap: 5px;
+  background: transparent;
+}
+
+.account-classic-mission .ingredient {
+  gap: 4px;
+  min-width: 43px;
+  color: #3d2000;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.account-classic-mission .ingredient::after {
+  top: 22px;
+  left: calc(100% - 3px);
+  width: 11px;
+  border-top-color: #f4cc56;
+}
+
+.account-classic-mission .ingredient .asset {
+  width: 40px;
+  height: 40px;
+  border-color: #f0c954;
+  background: #fff7d9;
+}
+
+.account-classic-mission .ingredient.is-done .ingredient-check {
+  width: 13px;
+  height: 13px;
+  right: 3px;
+  top: -3px;
+  background: #43bb65;
+  color: #fff;
+  font-size: 9px;
+}
+
+.account-classic-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(61, 32, 0, 0.04);
+}
+
+.account-classic-stats article {
+  min-height: 38px;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  border-right: 1px solid #efe2cf;
+  color: #3d2000;
+}
+
+.account-classic-stats article:last-child {
+  border-right: 0;
+}
+
+.account-classic-stats span {
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.account-classic-stats strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #ef9f27;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.account-classic-stats .icon-symbol {
+  width: 14px;
+  height: 14px;
+}
+
+.account-classic-tags {
+  display: grid;
+  gap: 11px;
+  padding: 12px 14px;
+}
+
+.account-classic-tags > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.account-classic-tags .pill {
+  min-height: 27px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #fff4cf;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.account-classic-tags button {
+  width: 38px;
+  height: 28px;
+  border-radius: 999px;
+  background: #ffd95e;
+  color: #3d2000;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.account-classic-pref-grid,
+.account-classic-shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.account-classic-pref-grid section,
+.account-classic-shortcut-grid section {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(61, 32, 0, 0.04);
+}
+
+.account-classic-pref-grid section {
+  min-height: 105px;
+  align-content: center;
+  gap: 8px;
+  background: #fff;
+}
+
+.account-classic-pref-grid section:first-child {
+  background: #fff4ce;
+}
+
+.account-classic-pref-grid span {
+  color: #928b80;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.account-classic-pref-grid strong {
+  color: #27303a;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.account-classic-pref-grid button {
+  min-width: 62px;
+  min-height: 28px;
+  border-radius: 999px;
+  background: #ffd95e;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.account-classic-shortcut-grid section {
+  min-height: 141px;
+  align-content: start;
+  gap: 16px;
+  padding: 15px 12px 14px;
+}
+
+.account-classic-shortcut-grid span {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #3d2000;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.account-classic-shortcut-grid .icon-symbol {
+  width: 19px;
+  height: 19px;
+  color: #ef9f27;
+}
+
+.account-classic-shortcut-grid strong {
+  color: #5d3300;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.account-classic-shortcut-grid button {
+  align-self: end;
+  width: 100%;
+  min-height: 36px;
+  border-radius: 8px;
+  background: #fff4ce;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
 .account-notification-screen .screen-content {
   gap: 0;
   padding: 17px 18px 80px;
+}
+
+.account-notification-screen,
+.account-notice-detail-screen {
+  background: linear-gradient(#ffd95e 0 16px, #fefaf4 16px 100%);
 }
 
 .account-notification-screen .app-header,
@@ -2069,7 +2415,7 @@
 
 .account-notification-screen {
   padding-bottom: 0;
-  background: #fefaf4;
+  background: linear-gradient(#ffd95e 0 16px, #fefaf4 16px 100%);
 }
 
 .account-notification-screen,
@@ -2121,7 +2467,7 @@
 }
 
 .account-notice-detail-screen {
-  background: #ffd95e;
+  background: linear-gradient(#ffd95e 0 16px, #fefaf4 16px 100%);
 }
 
 .account-notice-detail-screen,

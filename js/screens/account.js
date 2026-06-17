@@ -266,88 +266,72 @@
       title: '마이페이지',
       back: 'home',
       activeNav: 'myPage',
-      className: 'account-screen account-my-page',
+      className: 'account-screen account-my-page account-my-page--classic',
       right: `<button class="icon-button account-header-action account-header-gear" data-route="settings" aria-label="설정"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 3.4 9.2 5.6a7.3 7.3 0 0 0-1.4.8L5.7 5.8 3.4 8.1l.7 2.1a7.6 7.6 0 0 0-.6 1.5l-2.1.6v3.3l2.1.6c.2.5.4 1 .7 1.5l-.8 2 2.3 2.4 2.1-.7c.4.3.9.6 1.4.8l.5 2.1h3.4l.5-2.1c.5-.2 1-.4 1.4-.8l2.1.7 2.3-2.4-.8-2c.3-.5.5-1 .7-1.5l2.1-.6v-3.3l-2.1-.6c-.1-.5-.4-1-.6-1.5l.7-2.1-2.3-2.3-2.1.6c-.4-.3-.9-.6-1.4-.8l-.5-2.2H9.7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="11.4" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>`,
       content: `
-        <section class="account-final-profile" aria-label="프로필">
-          <div class="account-final-profile__avatar">
-            <img class="account-final-profile__avatar-image" src="${assetBase}user-profile-cookie.svg" alt="" loading="lazy" />
+        <section class="account-classic-profile" aria-label="프로필">
+          <div class="account-classic-profile__avatar">
+            <img src="${assetBase}user-profile-cookie.svg" alt="" loading="lazy" />
           </div>
-          <div class="account-final-profile__body">
-            <div class="account-final-profile__name">
+          <div class="account-classic-profile__body">
+            <div class="account-classic-profile__name">
               <h2>${C.escape(D.user.name)}</h2>
-              <button data-modal="editLife">프로필 수정 ›</button>
+              <img src="${assetBase}icon-user-profile-edit.svg" alt="" loading="lazy" />
             </div>
-            <div class="account-final-profile__level">
+            <div class="account-classic-profile__level">
               <strong>LV. ${C.escape(D.user.level)}</strong>
-              <div class="account-final-profile__bar"><span style="width:${C.escape(D.user.progress)}%"></span><em>${C.escape(D.user.progress)}%</em></div>
+              <div><span style="width:67%"></span><em>67%</em></div>
             </div>
-            <p>다음 레벨 까지 <strong>120 EXP</strong> ›</p>
           </div>
         </section>
 
-        <section class="account-final-card account-final-achievements">
-          <h3>나의 업적</h3>
-          <div class="account-final-achievements__grid">
-            <article><i class="account-achievement-visual is-crown"></i><strong>최고 랭킹</strong><span>10위</span></article>
-            <article><i class="account-achievement-visual is-clover"></i><strong>행운 횟수</strong><span>7회</span></article>
-            <article><i class="account-achievement-visual is-score"></i><strong>최고 점수</strong><span>98.8점</span></article>
-            <article><i class="account-achievement-visual is-calendar"></i><strong>연속 출석</strong><span>15일</span></article>
+        <section class="account-classic-card account-classic-mission">
+          <header>
+            <h3>오늘의 쿠키 제작 진행상태</h3>
+            <button type="button" data-route="mission">미션 보러가기</button>
+          </header>
+          ${C.ingredientTrack(D.ingredients)}
+        </section>
+
+        <section class="account-classic-stats" aria-label="내 활동 요약">
+          <article><span>내 쿠키</span><strong>${C.icon('cookie')} ${C.escape(D.user.cookie)}개</strong></article>
+          <article><span>내 순위</span><strong>33위</strong></article>
+          <article><span>내 점수</span><strong>822점</strong></article>
+        </section>
+
+        <section class="account-classic-card account-classic-tags">
+          <h3>나를 설명하는 태그</h3>
+          <div>
+            ${['#기자매', '#판타지 덕후', '#행운의 여신'].map((tag) => C.pill(tag, 'soft')).join('')}
+            <button type="button" data-modal="editLife" aria-label="태그 추가">+</button>
           </div>
         </section>
 
-        <button class="account-final-card account-final-cookie" data-route="cookieHistory">
-          ${C.asset('character', 'newspaper', 'account-final-cookie__asset')}
-          <span class="account-final-cookie__title">쿠키 내역 관리</span>
-          <span class="account-final-cookie__stats">
-            <span>보유 쿠키<strong>80</strong></span>
-            <span>누적 획득<strong>1,240</strong></span>
-            <span>누적 사용<strong>1,160</strong></span>
-          </span>
-          <i aria-hidden="true">›</i>
-        </button>
-
-        <div class="account-final-pref-grid">
+        <div class="account-classic-pref-grid">
           <section>
             <span>인생 웹툰</span>
             <strong>기자매</strong>
-            <button data-modal="editLife">수정하기</button>
+            <button type="button" data-modal="editLife">수정하기</button>
           </section>
           <section>
             <span>좋아하는 장르</span>
             <strong>공포, 스릴러</strong>
-            <button data-modal="editGenre">수정하기</button>
+            <button type="button" data-modal="editGenre">수정하기</button>
           </section>
         </div>
 
-        <div class="account-final-shortcut-grid">
+        <div class="account-classic-shortcut-grid">
           <section>
             <span>${C.icon('gift')} 내 보관함</span>
             <strong>사용 가능한<br />상품권 2개</strong>
-            <button data-route="vault">보관함 가기 ›</button>
+            <button type="button" data-route="vault">보관함 가기 ›</button>
           </section>
           <section>
             <span>${C.icon('myQuiz')} 내 퀴즈</span>
             <strong>퀴즈 심사 결과<br />확인 1건</strong>
-            <button data-route="myQuiz">내 퀴즈 가기 ›</button>
+            <button type="button" data-route="myQuiz">내 퀴즈 가기 ›</button>
           </section>
         </div>
-
-        <section class="account-final-card account-final-mission">
-          <div>
-            <h3>오늘의 미션 진행</h3>
-            <p>재료 3개 완료, 2개 남았어요.</p>
-          </div>
-          <button data-route="mission">미션 보러가기 ›</button>
-          ${C.ingredientTrack(D.ingredients)}
-        </section>
-
-        <section class="account-final-card account-final-tags">
-          <h3>나를 설명하는 태그</h3>
-          <div>
-            ${['#기자매', '#판타지 덕후', '#행운의 여신', '#퀴즈 장인'].map((tag) => C.pill(tag, 'soft')).join('')}
-          </div>
-        </section>
       `,
     });
   }

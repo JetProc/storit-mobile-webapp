@@ -566,8 +566,8 @@
   overflow: hidden;
   padding: 0;
   background:
-    linear-gradient(90deg, rgba(255, 246, 211, 0.95), rgba(255, 239, 180, 0.58)),
-    url("../assets/figma-exported/named/bg-home-banner.png") center / cover no-repeat;
+    linear-gradient(90deg, rgba(255, 246, 211, 0.9), rgba(255, 239, 180, 0.46)),
+    url("../assets/figma-exported/named/bg-shop.png") center / cover no-repeat;
   border-color: rgba(244, 184, 64, 0.5);
   border-radius: 8px;
   box-shadow: none;
@@ -736,8 +736,8 @@
 .rs-shop-recommend-strip {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .rs-shop-recommend-card,
@@ -751,17 +751,18 @@
 
 .rs-shop-recommend-card {
   display: grid;
-  justify-items: center;
-  min-height: 130px;
-  padding: 14px 7px 9px;
+  justify-items: start;
+  min-height: 128px;
+  padding: 10px 12px 9px;
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
 }
 
 .rs-shop-recommend-card__image {
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: 66px;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .rs-shop-recommend-card small,
@@ -792,6 +793,16 @@
   color: var(--rs-ink);
   font-size: 10px;
   font-weight: 400;
+}
+
+.rs-shop-more-button {
+  min-height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #ffd95e;
+  color: var(--rs-ink);
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .rs-shop-recommend-card > span .icon-symbol,
@@ -843,12 +854,23 @@
   gap: 12px 14px;
 }
 
+.rs-shop-popular-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
 .rs-shop-grid-card {
   display: grid;
   align-content: start;
   min-height: 126px;
   padding: 10px 14px 11px;
   border-radius: 8px;
+}
+
+.rs-shop-popular-grid .rs-shop-grid-card {
+  min-height: 118px;
+  padding: 9px 6px 8px;
 }
 
 .rs-shop-grid-card__image {
@@ -858,6 +880,10 @@
   border-radius: 8px;
 }
 
+.rs-shop-popular-grid .rs-shop-grid-card__image {
+  height: 42px;
+}
+
 .rs-shop-grid-card > span {
   position: absolute;
   right: 14px;
@@ -865,9 +891,64 @@
   margin-top: 0;
 }
 
+.rs-shop-popular-grid .rs-shop-grid-card > span {
+  right: 7px;
+  bottom: 7px;
+}
+
 .rs-shop-grid-card strong,
 .rs-shop-grid-card small {
   width: calc(100% - 58px);
+}
+
+.rs-shop-popular-grid .rs-shop-grid-card strong,
+.rs-shop-popular-grid .rs-shop-grid-card small {
+  width: 100%;
+  text-align: center;
+}
+
+.rs-shop-invite-card {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid #f1aa18;
+  border-radius: 10px;
+  background: #fff1bd;
+}
+
+.rs-shop-invite-card__character {
+  width: 52px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.rs-shop-invite-card strong {
+  display: block;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rs-shop-invite-card p {
+  margin-top: 3px;
+  color: #8d7c64;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.rs-shop-invite-card button {
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #ffd95e;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .rs-section {

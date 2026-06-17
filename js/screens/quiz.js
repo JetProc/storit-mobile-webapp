@@ -1,7 +1,7 @@
 (function () {
   const D = window.StoritData;
   const C = window.StoritComponents;
-  const quizCssHref = "./css/quiz.css?v=goal-fidelity-20260617a";
+  const quizCssHref = "./css/quiz.css?v=quiz-result-polish-20260617k";
   const namedAssetBase = "./assets/figma-exported/named/";
 
   const quizQuestion = {
@@ -216,21 +216,20 @@
 
   function resultMetrics(good) {
     const metrics = [
-      ["resultCorrect", "맞춘 문제", good ? "5개" : "3개", "전체 5문항"],
-      ["resultTime", "걸린 시간", "18.58초", "빠른 풀이"],
-      ["resultScore", "경험치", good ? "60 EXP" : "35 EXP", "획득 완료"],
+      ["icon-quiz-result-correct-user.svg", "맞춘 문제", good ? "5개" : "3개"],
+      ["icon-quiz-result-time.svg", "걸린 시간", "18.58초"],
+      ["icon-quiz-result-score.svg", "경험치", good ? "60 EXP" : "35 EXP"],
     ];
 
     return `
       <div class="quiz-result-metrics">
         ${metrics
           .map(
-            ([icon, label, value, caption]) => `
+            ([icon, label, value]) => `
               <div class="quiz-result-metric">
-                ${C.asset("icon", icon)}
+                <img class="quiz-result-metric__icon" src="${namedAssetBase}${C.escape(icon)}" alt="" loading="lazy" />
                 <span>${C.escape(label)}</span>
                 <strong>${C.escape(value)}</strong>
-                <small>${C.escape(caption)}</small>
               </div>
             `,
           )
@@ -269,7 +268,10 @@
           <strong>${good ? "시험을 본 다른 사용자에게 응원의 말을 남겨주세요!" : "시험을 본 다른 학생들에게 응원의 말을 남겨주세요!"}</strong>
         </div>
         <div class="quiz-cheer-card__body">
-          <button class="quiz-write-prompt" type="button">${good ? "응원의 한마디를 입력해주세요..." : "오늘도 시험 보느라 수고했습니다!_무게대왕"}</button>
+          <label class="quiz-write-field">
+            <input type="text" placeholder="${good ? "응원의 한마디를 입력해주세요..." : "오늘도 시험 보느라 수고했습니다!_무게대왕"}" aria-label="응원의 한마디" />
+            ${good ? `<button type="button">입력</button>` : ""}
+          </label>
           ${namedAsset("quiz-result-cookie-large.svg", "quiz-cheer-card__asset", "응원 캐릭터")}
         </div>
       </section>
@@ -279,11 +281,18 @@
         <p>Q. ${C.escape(quizQuestion.title)}</p>
         <div class="quiz-rating-row">
           ${[
-            ["좋아요", "is-like"],
-            ["쉬워요", "is-selected"],
-            ["어려워요", ""],
+            ["좋아요", "icon-rating-good.svg", "is-like"],
+            ["쉬워요", "icon-rating-easy.svg", "is-selected"],
+            ["어려워요", "icon-rating-hard.svg", ""],
           ]
-            .map(([label, state]) => `<button class="${state}" type="button"><span></span>${C.escape(label)}</button>`)
+            .map(
+              ([label, icon, state]) => `
+                <button class="${state}" type="button">
+                  <img src="${namedAssetBase}${C.escape(icon)}" alt="" loading="lazy" />
+                  ${C.escape(label)}
+                </button>
+              `,
+            )
             .join("")}
         </div>
       </section>
@@ -295,7 +304,9 @@
           <button class="quiz-mission-card__button" type="button" data-route="mission">미션 확인하기</button>
         </div>
         <div class="quiz-mission-card__ingredients">
-          ${["flour", "milk", "butter", "sugar", "chocolate"].map((icon) => C.icon(icon)).join("")}
+          ${["ingredient-flour.svg", "ingredient-milk.svg", "ingredient-butter.svg", "ingredient-sugar.svg", "ingredient-chocolate.svg"]
+            .map((icon) => `<img src="${namedAssetBase}${C.escape(icon)}" alt="" loading="lazy" />`)
+            .join("")}
         </div>
       </section>
     `;
@@ -315,8 +326,15 @@
           <div class="quiz-score-stage">
             <img class="quiz-score-ring-image" src="${namedAssetBase}${good ? "quiz-result-good-hero.svg" : "quiz-result-low-hero.svg"}" alt="${score}점" loading="lazy" />
             <div class="quiz-speech-bubble">
-              <strong>${good ? "정말 잘했어요!" : "아쉬워요!"}</strong>
-              <span>${good ? "맛있는 점수가 완성됐어요!" : "다른 웹툰도 풀어볼까요."}</span>
+              <img class="quiz-speech-bubble__shape" src="${namedAssetBase}speech-onboarding-cookie.svg" alt="" loading="lazy" />
+              <p>
+                <strong>${good ? "정말 잘했어요!" : "아쉬워요!"}</strong>
+                ${
+                  good
+                    ? `<span><em>맛있는 점수</em>가<br />완성됐어요!</span>`
+                    : `<span>다른 웹툰도<br />풀어볼까요.</span>`
+                }
+              </p>
             </div>
             <div class="quiz-result-character">
               ${

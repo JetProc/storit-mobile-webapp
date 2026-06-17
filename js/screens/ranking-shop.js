@@ -482,20 +482,19 @@
   }
 
   function shop() {
-    const catalog = shopCatalog();
-    const recommended = [D.products[1], D.products[1], D.products[1]].map((product) => ({
-      ...product,
-      name: "구글 플레이 기프트 카드 5000원",
-      meta: "Google Play",
-      price: 50,
-      image: "googlePlay",
-    }));
-    const allProducts = Array.from({ length: 6 }, () => ({
+    const recommended = Array.from({ length: 2 }, () => ({
       ...D.products[0],
       name: "네이버페이 포인트 5,000원",
       meta: "네이버페이 포인트",
       price: 50,
       image: "npay",
+    }));
+    const popularProducts = Array.from({ length: 4 }, () => ({
+      ...D.products[1],
+      name: "구글 플레이 기프트 카드 5000원",
+      meta: "Google Play",
+      price: 50,
+      image: "googlePlay",
     }));
     const categories = [
       ["전체", "shopCategoryAll"],
@@ -546,9 +545,8 @@
 
         <section class="rs-section">
           <div class="rs-section__header">
-            <div>
-              <h3>추천상품</h3>
-            </div>
+            <h3>추천상품</h3>
+            <button class="rs-shop-more-button" type="button">더보기 ›</button>
           </div>
           <div class="rs-shop-recommend-strip">
             ${recommended.map((product, index) => shopRecommendCard(product, index)).join("")}
@@ -558,16 +556,24 @@
         <section class="rs-section">
           <div class="rs-filter-bar">
             <div>
-              <h3>전체상품</h3>
-              <p>상품 1354687개</p>
+              <h3>인기상품</h3>
             </div>
             <div class="rs-sort-tabs" aria-label="상품 정렬">
               <button class="is-active">인기순</button>
             </div>
           </div>
-          <div class="rs-shop-product-grid">
-            ${allProducts.map((product) => shopGridCard(product)).join("")}
+          <div class="rs-shop-popular-grid">
+            ${popularProducts.map((product) => shopGridCard(product)).join("")}
           </div>
+        </section>
+
+        <section class="rs-shop-invite-card" data-modal="invite">
+          ${namedAsset("character-shop-clean.png", "친구 초대 캐릭터", "rs-shop-invite-card__character")}
+          <div>
+            <strong>친구 초대하고 쿠키 더 받아요</strong>
+            <p>초대한 친구가 가입하면 10쿠키를 드려요!</p>
+          </div>
+          <button type="button">초대하기 ›</button>
         </section>
 
         <section class="rs-event-card">
