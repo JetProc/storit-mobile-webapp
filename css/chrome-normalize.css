@@ -1,10 +1,11 @@
 /* Shared app chrome normalization for Figma-framed Storit pages. */
 :root {
   --storit-frame-top-band: 16px;
+  --storit-frame-top-curve-height: 34px;
   --storit-frame-radius: 18px;
   --storit-frame-header-height: 60px;
-  --storit-frame-title-size: 17px;
-  --storit-frame-title-weight: 800;
+  --storit-frame-title-size: 16px;
+  --storit-frame-title-weight: 700;
   --storit-frame-title-color: #191f28;
   --storit-frame-bg: #fefaf4;
   --storit-scallop-height: 52px;
@@ -32,9 +33,35 @@
   .account-screen
 ) {
   box-sizing: border-box;
+  position: relative;
   padding-top: var(--storit-frame-top-band);
-  background:
-    linear-gradient(var(--color-primary) 0 var(--storit-frame-top-band), var(--storit-frame-bg) var(--storit-frame-top-band) 100%);
+  background: var(--storit-frame-bg) !important;
+}
+
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+)::before {
+  content: "";
+  width: 100%;
+  height: var(--storit-frame-top-curve-height);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-bottom-left-radius: var(--storit-frame-radius);
+  border-bottom-right-radius: var(--storit-frame-radius);
+  background: var(--color-primary);
 }
 
 :is(
@@ -51,6 +78,8 @@
   .account-screen
 ) > .app-header {
   height: var(--storit-frame-header-height);
+  position: sticky;
+  z-index: var(--z-header);
   padding: 0 14px;
   border-top-left-radius: var(--storit-frame-radius);
   border-top-right-radius: var(--storit-frame-radius);
@@ -70,13 +99,27 @@
   .ranking-shop-screen,
   .account-screen
 ) .app-title,
-.auth-term-detail-title {
+.auth-term-detail-title,
+.hm-oven-screen .app-title {
   color: var(--storit-frame-title-color);
   font-family: var(--font-main);
+  font-style: normal;
   font-size: var(--storit-frame-title-size);
   font-weight: var(--storit-frame-title-weight);
-  line-height: 1.2;
-  letter-spacing: 0;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.app-header .app-title,
+.auth-term-detail-title {
+  font-family: "Noto Sans KR", var(--font-main);
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
 .auth-userinfo-panel::after {

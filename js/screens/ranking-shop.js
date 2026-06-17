@@ -12,7 +12,7 @@
 
     const link = doc.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./css/ranking-shop.css?v=ranking-precision-20260617p";
+    link.href = "./css/ranking-shop.css?v=shop-vault-mcp-20260617b";
     if (link.setAttribute) {
       link.setAttribute("data-storit-css", "ranking-shop");
     }
@@ -131,11 +131,13 @@
 
   function productImage(product, className = "rs-product-card__image") {
     const imageKey = product.image || product.brand;
+    const isShopGrid = className === "rs-shop-grid-card__image";
+    const npayFile = isShopGrid ? "shop-grid-npay-card.png" : "product-npay.png";
     const fileByKey = {
-      npay: "product-npay.png",
-      "N pay": "product-npay.png",
-      googlePlay: "product-google-play.png",
-      "Google Play": "product-google-play.png",
+      npay: npayFile,
+      "N pay": npayFile,
+      googlePlay: className === "rs-shop-recommend-card__image" ? "icon-google-play-store.svg" : "product-google-play.png",
+      "Google Play": className === "rs-shop-recommend-card__image" ? "icon-google-play-store.svg" : "product-google-play.png",
       ipad: "product-ipad.png",
     };
     return namedAsset(fileByKey[imageKey] || "product-npay.png", product.name, className);
@@ -172,12 +174,17 @@
   }
 
   function shopRecommendCard(product, index) {
+    const priceIcon =
+      product.image === "googlePlay"
+        ? namedAsset("shop-price-cookie.svg", "쿠키", "rs-shop-recommend-card__cookie")
+        : C.icon("cookie");
+
     return `
       <article class="rs-shop-recommend-card" data-route="productDetail">
         ${productImage(product, "rs-shop-recommend-card__image")}
         <small>${escape(product.meta || product.brand)}</small>
         <strong>${escape(product.name)}</strong>
-        <span>${C.icon("cookie")} ${escape(product.price)}개</span>
+        <span>${priceIcon} ${escape(product.price)}</span>
         ${index === 2 ? `<button class="rs-shop-next-button" type="button" aria-label="다음 추천상품">›</button>` : ""}
       </article>
     `;
@@ -188,12 +195,13 @@
     const shortName = normalizedName.includes("포인트")
       ? normalizedName.replace("네이버페이 포인트 ", "")
       : normalizedName;
+    const isNpay = (product.image || product.brand) === "npay" || product.brand === "N pay";
     return `
       <article class="rs-shop-grid-card" data-route="productDetail">
         ${productImage(product, "rs-shop-grid-card__image")}
-        <small>${escape(product.meta || product.brand)}</small>
-        <strong>${escape(shortName)}</strong>
-        <span>${C.icon("cookie")} ${escape(product.price)}</span>
+        <small>${escape(isNpay ? "네이버페이 포인트" : product.meta || product.brand)}</small>
+        <strong>${escape(isNpay ? "5,000원" : shortName)}</strong>
+        <span>${namedAsset("shop-price-cookie.svg", "쿠키", "rs-shop-grid-card__cookie")} ${escape(product.price)}</span>
       </article>
     `;
   }
@@ -209,27 +217,29 @@
   }
 
   function exchangeSummary() {
+    const cookieIcon = namedAsset("shop-price-cookie.svg", "쿠키", "rs-exchange-cookie-icon");
     return `
       <article class="rs-exchange-summary">
-        <div class="rs-exchange-summary__image">${namedAsset("product-npay.png", "네이버페이 포인트 5,000P")}</div>
+        <div class="rs-exchange-summary__image">${namedAsset("exchange-npay-square.svg", "네이버페이")}</div>
         <div>
-          <h2>네이버페이 포인트 5000P</h2>
-          <strong>${C.icon("cookie")} 50 <span>쿠키</span></strong>
+          <h2>네이버페이 포인트 5,000P</h2>
+          <strong>${cookieIcon} 50 <span>쿠키</span></strong>
         </div>
       </article>
     `;
   }
 
   function exchangeCookieBalance() {
+    const cookieIcon = namedAsset("shop-price-cookie.svg", "쿠키", "rs-exchange-cookie-icon");
     return `
       <section class="rs-exchange-balance" aria-label="교환 쿠키 정보">
         <div>
           <span>내 보유 쿠키</span>
-          <strong>${C.icon("cookie")} ${D.user.cookie}<small>개</small></strong>
+          <strong>${cookieIcon} ${D.user.cookie} <small>개</small></strong>
         </div>
         <div>
           <span>교환 후 잔여 쿠키</span>
-          <strong>${C.icon("cookie")} ${D.user.cookie - 50}<small>개</small></strong>
+          <strong>${cookieIcon} ${D.user.cookie - 50} <small>개</small></strong>
         </div>
       </section>
     `;
@@ -237,9 +247,9 @@
 
   function exchangeGuide() {
     const items = [
-      ["clock", "교환 신청 후 평균 1~3일 내 지급됩니다.", "평균 소요 기간이며, 상황에 따라 변동될 수 있어요."],
-      ["question", "지급 완료시 앱 알림을 보내드려요.", "보상함에서 상품을 확인할 수 있어요."],
-      ["gift", "마이페이지 > 보관함", "교환 상황은 보관함에서 확인 가능해요."],
+      ["exchange-icon-clock.svg", "교환 신청 후 평균 1~3분 이내 지급됩니다.", "평균 소요 기간이며, 상황에 따라 변동될 수 있어요."],
+      ["exchange-icon-clock.svg", "지급 완료시 앱 알림을 보내드려요.", "보상함에서 상품을 확인할 수 있어요."],
+      ["exchange-icon-gift.svg", "마이페이지 > 보관함", "교환 상황은 보관함에서 확인 가능해요."],
     ];
     return `
       <section class="rs-exchange-guide">
@@ -249,7 +259,7 @@
             .map(
               ([icon, title, desc]) => `
                 <article>
-                  <span>${C.icon(icon)}</span>
+                  ${namedAsset(icon, "", "rs-exchange-guide__icon")}
                   <div>
                     <strong>${escape(title)}</strong>
                     <small>${escape(desc)}</small>
@@ -266,14 +276,14 @@
   function rewardCard(reward, used = false, index = 0) {
     return `
       <article class="rs-reward-card ${used ? "is-used" : ""}">
-        <div class="rs-reward-card__media">${namedAsset("product-npay.png", reward.name)}</div>
+        <div class="rs-reward-card__media">${namedAsset("exchange-npay-square.svg", reward.name)}</div>
         <div class="rs-reward-card__body">
           <div>
             ${used ? "" : `<span class="rs-chip is-green">${escape(reward.dday)}</span>`}
           </div>
           <strong>${escape(reward.name)}</strong>
-          <small>${C.icon("cookie")} 50 쿠키 교환</small>
-          <small>${C.icon("gift")} ${escape(reward.date)}</small>
+          <small>${namedAsset("shop-price-cookie.svg", "쿠키", "rs-reward-card__inline-icon")} 50 쿠키 교환</small>
+          <small>${namedAsset("icon-detail-calendar.svg", "날짜", "rs-reward-card__inline-icon")} ${escape(reward.date)}</small>
         </div>
         <button class="rs-reward-card__button" data-route="${used ? "rewardUsed" : "rewardDetail"}">${used ? "사용완료" : "사용하기"}</button>
       </article>
@@ -291,11 +301,10 @@
           <span class="rs-chip ${copied ? "is-green" : "is-soft"}">${copied ? "복사 완료" : "사용 가능"}</span>
         </div>
         <div class="rs-barcode" aria-label="1234 5678 9101 1112"></div>
-        ${
-          copied
-            ? `<button class="rs-copy-button is-copied" disabled>번호가 복사되었습니다</button>`
-            : `<button class="rs-copy-button" data-route="rewardCopied">바코드 번호 복사</button>`
-        }
+        <button class="rs-copy-button" data-route="rewardCopied">
+          ${namedAsset("invite-copy-icon.svg", "복사")}
+          바코드 번호 복사
+        </button>
       </section>
     `;
   }
@@ -482,19 +491,19 @@
   }
 
   function shop() {
-    const recommended = Array.from({ length: 2 }, () => ({
-      ...D.products[0],
-      name: "네이버페이 포인트 5,000원",
-      meta: "네이버페이 포인트",
-      price: 50,
-      image: "npay",
-    }));
-    const popularProducts = Array.from({ length: 4 }, () => ({
+    const recommended = Array.from({ length: 3 }, () => ({
       ...D.products[1],
       name: "구글 플레이 기프트 카드 5000원",
       meta: "Google Play",
       price: 50,
       image: "googlePlay",
+    }));
+    const allProducts = Array.from({ length: 6 }, () => ({
+      ...D.products[0],
+      name: "네이버페이 포인트 5,000원",
+      meta: "네이버페이 포인트",
+      price: 50,
+      image: "npay",
     }));
     const categories = [
       ["전체", "shopCategoryAll"],
@@ -518,17 +527,17 @@
               <h2>모은 쿠키로<br />원하는 기프티콘으로!</h2>
               <p>열심히 모은 쿠키로 다양한 상품권을 교환해 보세요!</p>
             </div>
-            <div class="rs-shop-hero__art">${namedAsset("character-shop-clean.png", "상점 캐릭터")}</div>
-          </div>
-          <div class="rs-shop-balance-row">
-            <button type="button">
-              <span>지금까지 모은 내 쿠키</span>
-              <i aria-hidden="true">›</i>
-              <strong>${C.icon("cookie")} ${escape(D.user.cookie)}개</strong>
-            </button>
-            <button type="button" data-route="vault">보관함</button>
+            <div class="rs-shop-hero__art">${namedAsset("shop-hero-character-figma.svg", "상점 캐릭터")}</div>
           </div>
         </section>
+
+        <div class="rs-shop-balance-row">
+          <button type="button">
+            <span>지금까지 모은 내 쿠키</span>
+          </button>
+          <strong>${C.icon("cookie")} ${escape(D.user.cookie)}개</strong>
+          <button type="button" data-route="vault">보관함</button>
+        </div>
 
         <div class="rs-category-tabs" aria-label="상점 카테고리">
           ${categories
@@ -543,54 +552,59 @@
             .join("")}
         </div>
 
-        <section class="rs-section">
+        <section class="rs-section rs-shop-recommend-section">
           <div class="rs-section__header">
             <h3>추천상품</h3>
-            <button class="rs-shop-more-button" type="button">더보기 ›</button>
           </div>
           <div class="rs-shop-recommend-strip">
             ${recommended.map((product, index) => shopRecommendCard(product, index)).join("")}
           </div>
         </section>
 
-        <section class="rs-section">
+        <section class="rs-section rs-shop-all-section">
           <div class="rs-filter-bar">
             <div>
-              <h3>인기상품</h3>
+              <h3>전체상품</h3>
+              <p>상품 1354687개</p>
             </div>
-            <div class="rs-sort-tabs" aria-label="상품 정렬">
-              <button class="is-active">인기순</button>
+            <div class="rs-sort-tabs">
+              <select class="rs-sort-tabs__select" aria-label="상품 정렬">
+                <option>인기순</option>
+                <option>보유 가격 순</option>
+                <option>높은 가격 순</option>
+                <option>최신순</option>
+              </select>
             </div>
           </div>
           <div class="rs-shop-popular-grid">
-            ${popularProducts.map((product) => shopGridCard(product)).join("")}
+            ${allProducts.map((product) => shopGridCard(product)).join("")}
           </div>
-        </section>
-
-        <section class="rs-shop-invite-card" data-modal="invite">
-          ${namedAsset("character-shop-clean.png", "친구 초대 캐릭터", "rs-shop-invite-card__character")}
-          <div>
-            <strong>친구 초대하고 쿠키 더 받아요</strong>
-            <p>초대한 친구가 가입하면 10쿠키를 드려요!</p>
-          </div>
-          <button type="button">초대하기 ›</button>
         </section>
 
         <section class="rs-event-card">
-          <div>
-            <span class="rs-chip is-soft">스페셜 이벤트</span>
-            <strong>웹툰만 보면<br />아이패드 응모권이 열려요</strong>
-            <p>매주 추첨을 통해 아이패드를 드려요.</p>
-            <button class="rs-primary-button" data-route="mission">이벤트 참여</button>
+          <div class="rs-event-card__copy">
+            <span>웹툰만 보면</span>
+            <strong>아이패드가 공짜!</strong>
+            <p>매주 추첨을 통해 아이패드를 드려요!</p>
           </div>
-          ${namedAsset("product-ipad.png", "아이패드", "rs-event-card__image")}
+          ${namedAsset("shop-event-ipad-figma.png", "아이패드", "rs-event-card__image")}
+          <button class="rs-event-card__button" data-route="mission">
+            <span>이벤트 참여하러가기</span>
+            ${namedAsset("shop-event-next.svg", "", "rs-event-card__arrow")}
+          </button>
         </section>
       `,
     });
   }
 
   function productDetail() {
-    const recommendations = shopCatalog().slice(1, 4);
+    const recommendations = Array.from({ length: 3 }, () => ({
+      ...D.products[1],
+      name: "구글 플레이 기프트 카드 5000원",
+      meta: "Google Play",
+      price: 50,
+      image: "googlePlay",
+    }));
 
     return C.shell({
       title: "상품 정보",
@@ -598,27 +612,43 @@
       className: "ranking-shop-screen product-detail-screen",
       content: `
         <section class="rs-detail-hero">
-          <div class="rs-detail-hero__image">${namedAsset("product-npay.png", "네이버페이 포인트 5,000P")}</div>
+          <div class="rs-detail-hero__image">${namedAsset("product-npay-detail-figma.png", "네이버페이 포인트 5,000P")}</div>
           <h2>네이버페이 포인트 5,000P</h2>
-          <strong class="rs-price">${C.icon("cookie")} 50</strong>
+          <strong class="rs-detail-price-pill">${namedAsset("shop-price-cookie.svg", "쿠키", "rs-detail-price-pill__cookie")} 50</strong>
         </section>
 
         <section class="rs-panel rs-product-info-panel">
-          ${detailInfoCards()}
+          <div class="rs-detail-metrics" aria-label="상품 정보 요약">
+            <article>
+              ${namedAsset("icon-detail-store.svg", "사용처")}
+              <strong>사용처</strong>
+              <small>네이버페이 가맹점</small>
+            </article>
+            <article>
+              ${namedAsset("icon-detail-time.svg", "지급시간")}
+              <strong>지급시간</strong>
+              <small>평균 지급 (1~3분)</small>
+            </article>
+            <article>
+              ${namedAsset("icon-detail-calendar.svg", "유효기간")}
+              <strong>유효기간</strong>
+              <small>평균 30일</small>
+            </article>
+          </div>
           <h3>상품설명</h3>
-          <ul class="rs-copy-list">
-            <li>네이버페이 포인트 5,000원권입니다.</li>
-            <li>네이버페이 가맹점에서 사용할 수 있습니다.</li>
-            <li>교환 완료 시 알림으로 안내드려요.</li>
+          <ul class="rs-detail-copy-list">
+            <li>${namedAsset("icon-detail-check.svg", "확인")} <span>네이버페이 포인트 5,000원권입니다.</span></li>
+            <li>${namedAsset("icon-detail-check.svg", "확인")} <span>네이버페이 가맹점에서 사용할 수 있습니다.</span></li>
+            <li>${namedAsset("icon-detail-check.svg", "확인")} <span>교환 완료 시 알림으로 안내드려요.</span></li>
           </ul>
         </section>
 
-        <section class="rs-section">
+        <section class="rs-section rs-detail-recommend-section">
           <div class="rs-section__header">
-            <h3>추천 상품</h3>
+            <h3>${namedAsset("icon-detail-recommend.svg", "추천")} 추천 상품</h3>
           </div>
-          <div class="rs-product-strip">
-            ${recommendations.map((product) => productCard(product, true)).join("")}
+          <div class="rs-shop-recommend-strip">
+            ${recommendations.map((product, index) => shopRecommendCard(product, index)).join("")}
           </div>
         </section>
 
@@ -639,14 +669,14 @@
 
         <section class="rs-exchange-warning">
           <div>
-            <strong>꼭 확인해주세요!</strong>
+            <strong>${namedAsset("exchange-icon-shield.svg", "확인")} 꼭 확인해주세요!</strong>
             <ul>
               <li>교환 신청 후 취소 및 환불이 불가능해요.</li>
               <li>부정 사용시 서비스 이용이 제한될 수 있습니다.</li>
               <li>유효기간이 만료되면 사용이 불가능합니다.</li>
             </ul>
           </div>
-          ${namedAsset("character-shop-clean.png", "확인 캐릭터", "rs-exchange-warning__character")}
+          ${namedAsset("exchange-warning-character.svg", "확인 캐릭터", "rs-exchange-warning__character")}
         </section>
 
         <button class="rs-check-row ${checked ? "is-checked" : ""}" data-action="check">
@@ -665,26 +695,32 @@
       back: "shop",
       className: "ranking-shop-screen exchange-done-screen",
       content: `
-        <section class="rs-complete-hero">
-          ${namedAsset("character-shop-clean.png", "교환 완료 캐릭터", "rs-complete-hero__character")}
-          <h2>교환 신청이 완료되었어요!</h2>
-          <p>신청한 상품은 아래 내용으로 지급될 예정이에요.</p>
-        </section>
-
-        <section class="rs-panel rs-exchange-receipt">
-          <div class="rs-info-list">
-            <div><span>상품명</span><strong>네이버페이 포인트 5,000원</strong></div>
-            <div><span>사용쿠키</span><strong>50개</strong></div>
-            <div><span>교환일시</span><strong>2026.05.21 14:30</strong></div>
+        <section class="rs-exchange-done-hero">
+          ${namedAsset("exchange-done-confetti.svg", "축하 색종이", "rs-exchange-done-hero__confetti")}
+          ${namedAsset("exchange-done-character.svg", "교환 완료 캐릭터", "rs-exchange-done-hero__character")}
+          <div class="rs-exchange-done-hero__copy">
+            <h2>교환 신청이 완료되었어요!</h2>
+            <p>신청한 상품은 아래 내용으로 지급될 예정이에요.</p>
           </div>
         </section>
 
-        <section class="rs-wallet-card is-compact rs-exchange-balance-card">
-          <div>
+        <section class="rs-exchange-done-receipt" aria-label="교환 신청 내역">
+          <dl>
+            <div><dt>상품명</dt><dd>네이버페이 포인트 5,000원</dd></div>
+            <div><dt>사용쿠키</dt><dd>50 개</dd></div>
+            <div><dt>교환일시</dt><dd>2026.05.21 14:30</dd></div>
+          </dl>
+        </section>
+
+        <section class="rs-exchange-done-balance">
+          <div class="rs-exchange-done-balance__cookie">
             <span>현재 보유 쿠키</span>
-            <strong>${C.icon("cookie")} 30 <small>개</small></strong>
+            <strong>${namedAsset("exchange-done-cookie.svg", "쿠키")} 30 <small>개</small></strong>
           </div>
-          <button class="rs-text-button" data-route="cookieHistory">쿠키 내역 보러가기 ›</button>
+          <button class="rs-exchange-done-balance__link" type="button" data-route="cookieHistory">
+            쿠키 내역 보러가기
+            ${namedAsset("exchange-done-next.svg", "이동")}
+          </button>
         </section>
 
         <div class="fixed-bottom-action rs-sticky-action stack-sm">
@@ -751,7 +787,13 @@
           </div>
         </section>
 
-        ${copied ? `<div class="rs-copy-toast">바코드 번호가 복사되었습니다.</div>` : ""}
+        ${copied ? `
+          <div class="rs-reward-copy-dim" data-route="rewardDetail"></div>
+          <aside class="rs-reward-copy-toast" role="status">
+            ${namedAsset("invite-copy-toast-icon.svg", "복사 완료")}
+            <strong>복사 되었습니다!</strong>
+          </aside>
+        ` : ""}
         <div class="fixed-bottom-action rs-sticky-action">${C.button("완료", { route: "vault" })}</div>
       `,
     });

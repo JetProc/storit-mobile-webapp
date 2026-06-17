@@ -2014,47 +2014,6 @@
   font-weight: 900;
 }
 
-.account-my-page--final .account-final-mission {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 13px;
-  align-items: center;
-  min-height: 118px;
-  margin-top: -40px;
-  padding: 16px 16px 14px;
-}
-
-.account-my-page--final .account-final-mission button {
-  min-height: 30px;
-  padding: 0 13px;
-  border-radius: 999px;
-  background: #fff2bd;
-  color: #ef9f27;
-  font-size: 11px;
-  font-weight: 900;
-}
-
-.account-my-page--final .account-final-mission .ingredient-track {
-  grid-column: 1 / -1;
-  padding: 0;
-  gap: 5px;
-  background: transparent;
-}
-
-.account-my-page--final .account-final-mission .ingredient {
-  gap: 4px;
-  min-width: 43px;
-  font-size: 8px;
-  font-weight: 700;
-}
-
-.account-my-page--final .account-final-mission .ingredient .asset {
-  width: 39px;
-  height: 39px;
-  border-color: #f0c954;
-  background: #fff7d9;
-}
-
 .account-my-page--classic .screen-content {
   gap: 8px;
   padding: 0 20px 104px;
@@ -3005,4 +2964,532 @@ body:has(.account-settings-screen) .modal p {
   color: #2f1a05;
   font-size: 11px;
   font-weight: 400;
+}
+
+/* Figma MCP sync: account/settings/cookie history (1466:27787). */
+.account-my-page--final .app-title,
+.account-settings-screen .app-title,
+.account-cookie-history-screen .app-title,
+.account-notification-screen .app-title,
+.account-notice-detail-screen .app-title {
+  color: #191f28;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+.account-my-page--final .account-final-profile {
+  grid-template-columns: 66px minmax(0, 1fr);
+  min-height: 78px;
+  margin-top: 8px;
+}
+
+.account-my-page--final .account-final-profile__avatar {
+  width: 68px;
+  height: 68px;
+}
+
+.account-my-page--final .account-final-profile__avatar img {
+  width: 64px;
+  height: 64px;
+}
+
+.account-my-page--final .account-final-profile__name h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.account-my-page--final .account-final-profile__name button {
+  min-width: 72px;
+  min-height: 22px;
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.account-my-page--final .account-final-profile__level strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.account-my-page--final .account-final-profile__bar {
+  height: 14px;
+  background: #ffd95e;
+}
+
+.account-my-page--final .account-final-profile__bar span {
+  background: #3d2000;
+}
+
+.account-my-page--final .account-final-profile__bar em {
+  display: block;
+  position: absolute;
+  left: 67%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffd95e;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 10px;
+}
+
+.account-my-page--final .account-final-card h3,
+.account-my-page--final .account-final-cookie__title,
+.account-my-page--final .account-final-shortcut-grid span {
+  font-weight: 700;
+}
+
+.account-my-page--final .account-final-pref-grid span,
+.account-my-page--final .account-final-shortcut-grid strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-settings-screen .screen-content {
+  gap: 0;
+  padding: 31px 20px 120px;
+}
+
+.account-settings-screen .account-settings-card {
+  padding: 0 11px 25px;
+}
+
+.account-settings-screen .account-settings-card + .account-settings-card {
+  padding-top: 26px;
+}
+
+.account-settings-screen .account-section-title h2 {
+  color: #3d2000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-settings-screen .account-settings-row {
+  min-height: 40px;
+}
+
+.account-settings-screen .account-settings-row strong {
+  color: #3d2000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-settings-screen .account-settings-row .toggle {
+  width: 42px;
+  height: 24px;
+}
+
+.account-cookie-history-screen {
+  padding-top: 0;
+  background: linear-gradient(#ffd95e 0 16px, #fefaf4 16px 100%);
+}
+
+.account-cookie-history-screen .app-header {
+  height: 76px;
+  padding: 16px 14px 10px;
+}
+
+.account-cookie-history-screen .screen-content {
+  gap: 0;
+  padding: 33px 36px 90px;
+}
+
+.account-cookie-ledger {
+  display: grid;
+  gap: 34px;
+  margin-bottom: 18px;
+}
+
+.account-cookie-ledger__balance,
+.account-cookie-ledger__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.account-cookie-ledger__balance article {
+  display: grid;
+  gap: 10px;
+}
+
+.account-cookie-ledger__balance span {
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-cookie-ledger__balance strong {
+  color: #3d2000;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-cookie-ledger__stats {
+  min-height: 52px;
+  align-items: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(61, 32, 0, 0.04);
+}
+
+.account-cookie-ledger__stats article {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  border-right: 1px solid #efe2cf;
+}
+
+.account-cookie-ledger__stats article:last-child {
+  border-right: 0;
+}
+
+.account-cookie-ledger__stats span {
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.account-cookie-ledger__stats strong {
+  color: #ef9f27;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-cookie-history-screen .account-cookie-tabs {
+  height: 38px;
+  margin: 0 -8px 22px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.account-cookie-history-screen .account-cookie-tabs .tab {
+  height: 38px;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-cookie-history-screen .account-cookie-tabs .tab.is-active {
+  background: #ffd95e;
+  color: #3d2000;
+}
+
+.account-cookie-list {
+  display: grid;
+  gap: 18px;
+}
+
+.account-cookie-date-group {
+  display: grid;
+  gap: 10px;
+}
+
+.account-cookie-date-group h2 {
+  margin: 0 0 2px 4px;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-cookie-row {
+  grid-template-columns: 48px minmax(0, 1fr) 38px;
+  gap: 12px;
+  min-height: 55px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.account-cookie-row__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #fff4cf;
+}
+
+.account-cookie-row__icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.account-cookie-row div {
+  gap: 3px;
+}
+
+.account-cookie-row div strong {
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-cookie-row div p {
+  margin: 0;
+  color: #8b7757;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.account-cookie-row__right {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+}
+
+.account-cookie-row__right strong {
+  color: #43bb65;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-cookie-row.is-use .account-cookie-row__right strong {
+  color: #e33232;
+}
+
+.account-cookie-row__right time {
+  color: #8b7757;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+/* My page Figma-sync overrides */
+.account-my-page--final .screen-content {
+  gap: 13px;
+  padding: 0 20px 96px;
+}
+
+.account-my-page--final .account-final-profile {
+  grid-template-columns: 74px minmax(0, 1fr);
+  min-height: 86px;
+}
+
+.account-my-page--final .account-final-profile__name h2 {
+  color: #3d2000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-my-page--final .account-final-profile__level strong {
+  color: #3d2000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-my-page--final .account-final-profile__bar {
+  height: 15px;
+}
+
+.account-my-page--final .account-final-profile__body p {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.account-my-page--final .account-final-card {
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.account-my-page--final .account-final-achievements {
+  min-height: 145px;
+  gap: 16px;
+  padding: 17px;
+}
+
+.account-my-page--final .account-final-achievements h3 {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-my-page--final .account-final-achievements__grid {
+  gap: 8px;
+  padding-bottom: 16px;
+}
+
+.account-my-page--final .account-final-achievements__grid article {
+  min-height: 69.5px;
+  gap: 4px;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.account-my-page--final .account-final-achievements__grid .account-achievement-visual {
+  width: 35px;
+  height: 35px;
+}
+
+.account-my-page--final .account-final-achievements__grid strong {
+  margin: 0;
+  color: #1c1000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-my-page--final .account-final-achievements__grid em {
+  color: rgba(136, 136, 128, 0.8);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-my-page--final .account-final-cookie {
+  min-height: 91px;
+  grid-template-columns: 48px minmax(0, 1fr) 12px;
+  grid-template-rows: 20px 30px;
+  gap: 5px 16px;
+  padding: 16px 20px;
+  border-radius: 8px;
+}
+
+.account-my-page--final .account-final-cookie__asset {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 48px;
+  height: 59px;
+  object-fit: contain;
+}
+
+.account-my-page--final .account-final-cookie__title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-my-page--final .account-final-cookie__caption {
+  display: none;
+}
+
+.account-my-page--final .account-final-cookie__stats {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  text-align: left;
+}
+
+.account-my-page--final .account-final-cookie__stats > span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  border: 0;
+}
+
+.account-my-page--final .account-final-cookie__stats small {
+  display: block;
+  color: #9ca3af;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.account-my-page--final .account-final-cookie__stats strong {
+  color: #ef9f27;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-my-page--final .account-final-cookie i {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  color: #3d2000;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.account-my-page--final .account-final-shortcut-grid {
+  gap: 11px;
+}
+
+.account-my-page--final .account-final-shortcut-grid section {
+  min-height: 166px;
+  justify-items: start;
+  align-content: stretch;
+  gap: 0;
+  padding: 15px 12px 13px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.account-my-page--final .account-final-shortcut-grid span {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1c1000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-my-page--final .account-final-shortcut-grid span img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.account-my-page--final .account-final-shortcut-grid strong {
+  justify-self: center;
+  align-self: center;
+  margin: 26px 0 0;
+  color: rgba(93, 51, 0, 0.8);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+.account-my-page--final .account-final-shortcut-grid button {
+  align-self: end;
+  justify-self: center;
+  width: 135px;
+  min-height: 35px;
+  margin-top: 18px;
+  border-radius: 10px;
+  background: #fef4d2;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
 }

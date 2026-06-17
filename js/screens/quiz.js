@@ -1,7 +1,7 @@
 (function () {
   const D = window.StoritData;
   const C = window.StoritComponents;
-  const quizCssHref = "./css/quiz.css?v=quiz-result-polish-20260617i";
+  const quizCssHref = "./css/quiz.css?v=quiz-create-search-20260617a";
   const namedAssetBase = "./assets/figma-exported/named/";
 
   const quizQuestion = {
@@ -131,6 +131,18 @@
 
   function statusPill(label, tone) {
     return `<span class="quiz-status-pill is-${tone}">${C.escape(label)}</span>`;
+  }
+
+  function statCaption(caption) {
+    if (!caption) return "";
+    const normalized = String(caption);
+    if (normalized.includes("▲")) {
+      return C.escape(normalized).replace(
+        "▲",
+        `<img class="quiz-stat-card__triangle" src="${namedAssetBase}icon-myquiz-up-triangle.svg" alt="" loading="lazy" />`,
+      );
+    }
+    return C.escape(normalized);
   }
 
   function progressBar(value) {
@@ -319,7 +331,7 @@
 
     return C.shell({
       title: "연애리뷰",
-      back: "quiz",
+      back: "home",
       className: `quiz-screen quiz-result-screen ${good ? "is-good" : "is-low"}`,
       content: `
         <section class="quiz-result-hero">
@@ -368,7 +380,7 @@
                 ${icon ? C.icon(icon) : ""}
                 <span>${C.escape(label)}</span>
                 <strong>${C.escape(value)}</strong>
-                ${caption ? `<small>${C.escape(caption)}</small>` : ""}
+                ${caption ? `<small>${statCaption(caption)}</small>` : ""}
               </div>
             `,
           )
@@ -417,9 +429,9 @@
           <div>
             <h2>나만의 웹툰 퀴즈를 만들어봐요!</h2>
             <p>유저 참여 현황과 심사 결과를 확인할 수 있어요.</p>
-            <button type="button">퀴즈 만들러 가기 ></button>
+            <button type="button">퀴즈 만들러 가기 〉</button>
           </div>
-          ${namedAsset("character-chef-no-oven.png", "my-quiz-hero__chef")}
+          ${namedAsset("character-myquiz-hero-cookie.svg", "my-quiz-hero__chef")}
         </section>
 
         <section class="quiz-section">
@@ -436,7 +448,7 @@
           ${bestQuizCard()}
         </section>
 
-        <section class="quiz-section">
+        <section class="quiz-section quiz-list-section">
           <div class="quiz-section__head">
             <h2>내 퀴즈 목록</h2>
             <div class="quiz-filter-row">
@@ -457,6 +469,7 @@
 
   function webtoonSelector() {
     const selected = arguments[0] === true;
+    const actionIcon = selected ? "icon-quiz-create-search.svg" : "icon-quiz-create-add.svg";
     return `
       <div class="quiz-webtoon-strip">
         ${webtoonChoices
@@ -469,7 +482,9 @@
             `,
           )
           .join("")}
-        <button class="quiz-webtoon-add ${selected ? "is-next" : ""}" type="button" data-route="${selected ? "quizCreateSearchSelected" : "quizCreateSearch"}" aria-label="웹툰 검색">${selected ? "›" : "+"}</button>
+        <button class="quiz-webtoon-add ${selected ? "is-next" : ""}" type="button" data-route="${selected ? "quizCreateSearchSelected" : "quizCreateSearch"}" aria-label="웹툰 검색">
+          <img src="${namedAssetBase}${actionIcon}" alt="" loading="lazy" />
+        </button>
       </div>
     `;
   }
@@ -498,7 +513,9 @@
           .map(
             ([type, value], index) => `
               <label class="quiz-answer-field ${index === 0 ? "is-correct" : ""}">
-                <span class="quiz-answer-marker">${index === 0 ? "○" : "×"}</span>
+                <span class="quiz-answer-marker" aria-hidden="true">
+                  <img src="${namedAssetBase}${index === 0 ? "icon-quiz-answer-o.svg" : "icon-quiz-answer-x.svg"}" alt="" loading="lazy" />
+                </span>
                 <input value="${blank ? "" : C.escape(value)}" placeholder="${blank ? C.escape(value) : ""}" />
               </label>
             `,
@@ -510,13 +527,15 @@
 
   function quizSearchSheet(active = false) {
     return `
-      <div class="quiz-search-overlay" aria-hidden="true"></div>
+      <div class="quiz-search-overlay" aria-hidden="true" data-route="quizCreate"></div>
       <section class="quiz-search-sheet" role="dialog" aria-modal="true" aria-label="웹툰 검색">
         <span class="quiz-search-sheet__handle"></span>
         <h2>웹툰을 검색해보세요</h2>
         <label class="quiz-search-field">
           <input value="연애리뷰" aria-label="웹툰 검색어" />
-          <button type="button" aria-label="검색"><span class="quiz-search-icon" aria-hidden="true"></span></button>
+          <button type="button" aria-label="검색">
+            <img class="quiz-search-icon" src="${namedAssetBase}icon-quiz-create-magnifier.svg" alt="" loading="lazy" />
+          </button>
         </label>
         <button class="quiz-search-result ${active ? "is-selected" : ""}" type="button" data-route="quizCreateSearchSelected">
           ${C.asset("poster", "retireLife", "quiz-search-result__thumb")}
@@ -573,7 +592,7 @@
         </section>
 
         <section class="quiz-review-note">
-          ${C.asset("icon", "quizGuideChef")}
+          <img class="asset icon quiz-create-bottom-cookie" src="${namedAssetBase}character-quiz-create-bottom-cookie.svg" alt="" loading="lazy" />
           <p>부적절한 내용은 검수 후 등록이 거부될 수 있습니다!<br />등록된 퀴즈는 24시간 내 심사 후 공개돼요!<br />등록하신 웹툰 퀴즈에 대한 저작권은 프레시밀크에 귀속 됩니다.</p>
         </section>
 

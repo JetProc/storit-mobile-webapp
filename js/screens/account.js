@@ -91,7 +91,7 @@
       title: '알림 설정',
       desc: '필요한 소식만 받을 수 있어요.',
       rows: [
-        { label: '퀴즈 알림', desc: '새 퀴즈와 심사 결과', action: 'toggle', on: false },
+        { label: '퀴즈 알림', desc: '새 퀴즈와 심사 결과', action: 'toggle', on: true },
         { label: '랭킹 알림', desc: '순위 변동과 TOP30 근접 알림', action: 'toggle', on: true },
         { label: '이벤트 알림', desc: '쿠키 보너스와 기간 한정 혜택', action: 'toggle', on: true },
       ],
@@ -116,10 +116,12 @@
   ];
 
   const cookieRows = [
-    { title: '오늘의 미션 완료', amount: '+1', date: '2026.05.21 14:30', kind: 'earn', source: '미션' },
-    { title: '퀴즈 결과 보상', amount: '+3', date: '2026.05.21 13:10', kind: 'earn', source: '퀴즈' },
-    { title: '네이버페이 교환', amount: '-50', date: '2026.05.20 18:22', kind: 'use', source: '상점' },
-    { title: '출석체크 보상', amount: '+1', date: '2026.05.20 09:12', kind: 'earn', source: '출석' },
+    { dateLabel: '2024.05.17', title: '오늘의 미션 완료', subtitle: '쿠키 1개 적립', amount: '+1', time: '14:32', kind: 'earn' },
+    { dateLabel: '2024.05.17', title: '친구 초대 보상', subtitle: '친구 가입 완료 보상', amount: '+2', time: '14:32', kind: 'earn' },
+    { dateLabel: '2024.05.17', title: '랭킹 1위 보상', subtitle: '쿠키 50개 적립', amount: '+50', time: '14:32', kind: 'earn' },
+    { dateLabel: '2024.05.16', title: '행운의 등수 달성', subtitle: '쿠키 20개 적립', amount: '+20', time: '14:32', kind: 'earn' },
+    { dateLabel: '2024.05.16', title: '상품권 교환', subtitle: '쿠키 30개 사용', amount: '-30', time: '14:32', kind: 'use' },
+    { dateLabel: '2024.05.16', title: '랭킹 Top 30 보상', subtitle: '쿠키 1개 적립', amount: '+1', time: '14:32', kind: 'earn' },
   ];
 
   function sectionTitle(title, desc = '') {
@@ -262,7 +264,6 @@
   }
 
   function myPage() {
-    const completedIngredients = D.ingredients.map((item) => ({ ...item, done: true }));
     return C.shell({
       title: '마이페이지',
       back: 'home',
@@ -281,7 +282,7 @@
             </div>
             <div class="account-final-profile__level">
               <strong>LV. ${C.escape(D.user.level)}</strong>
-              <div class="account-final-profile__bar"><span></span></div>
+              <div class="account-final-profile__bar"><span></span><em>67%</em></div>
             </div>
             <p>다음 레벨까지 <strong>120 EXP ›</strong></p>
           </div>
@@ -314,7 +315,7 @@
         </section>
 
         <section class="account-final-card account-final-cookie" data-route="cookieHistory">
-          <img class="account-final-cookie__asset" src="${assetBase}icon-quiz-writing-cookie.png" alt="" loading="lazy" />
+          <img class="account-final-cookie__asset" src="${assetBase}icon-mypage-cookie-history.svg" alt="" loading="lazy" />
           <strong class="account-final-cookie__title">쿠키 내역 관리</strong>
           <span class="account-final-cookie__caption">보유 쿠키</span>
           <div class="account-final-cookie__stats">
@@ -340,24 +341,16 @@
 
         <div class="account-final-shortcut-grid">
           <section>
-            <span><img src="${assetBase}icon-shop-category-gift.svg" alt="" loading="lazy" /> 내 보관함</span>
+            <span><img src="${assetBase}icon-mypage-vault-present.svg" alt="" loading="lazy" /> 내 보관함</span>
             <strong>사용 가능한<br />상품권 2개</strong>
             <button type="button" data-route="vault">보관함 가기 ›</button>
           </section>
           <section>
-            <span><img src="${assetBase}icon-home-myquiz.svg" alt="" loading="lazy" /> 내 퀴즈</span>
+            <span><img src="${assetBase}icon-mypage-myquiz-memo.svg" alt="" loading="lazy" /> 내 퀴즈</span>
             <strong>퀴즈 심사 결과<br />확인 1건</strong>
             <button type="button" data-route="myQuiz">내 퀴즈 가기 ›</button>
           </section>
         </div>
-
-        <section class="account-final-card account-final-mission">
-          <div>
-            <h3>오늘의 쿠키 제작 진행상태</h3>
-          </div>
-          <button type="button" data-route="mission">미션 보러가기</button>
-          ${C.ingredientTrack(completedIngredients)}
-        </section>
       `,
     });
   }
@@ -572,24 +565,26 @@
 
   function cookieSummary() {
     return `
-      <section class="account-card account-cookie-summary">
-        ${C.asset('character', 'newspaper', 'account-cookie-summary__asset')}
-        <div class="account-cookie-summary__body">
-          <span class="account-eyebrow">쿠키 잔액</span>
-          <strong>${C.escape(D.user.cookie)}개</strong>
-          <p>상품 교환까지 20개 남았어요.</p>
+      <section class="account-cookie-ledger">
+        <div class="account-cookie-ledger__balance">
+          <article>
+            <span>보유 쿠키</span>
+            <strong>${C.escape(D.user.cookie)} 개</strong>
+          </article>
+          <article>
+            <span>교환 가능 금액</span>
+            <strong>8,000 원</strong>
+          </article>
         </div>
-        <div class="account-cookie-summary__metrics">
-          ${cookieStats
-            .map(
-              (stat) => `
-                <span>
-                  <small>${C.escape(stat.label)}</small>
-                  <strong>${C.escape(stat.value)}${C.escape(stat.suffix)}</strong>
-                </span>
-              `
-            )
-            .join('')}
+        <div class="account-cookie-ledger__stats">
+          <article>
+            <span>누적 획득</span>
+            <strong>1,240</strong>
+          </article>
+          <article>
+            <span>누적 사용</span>
+            <strong>1,160</strong>
+          </article>
         </div>
       </section>
     `;
@@ -598,33 +593,45 @@
   function cookieHistoryRow(row) {
     return `
       <article class="account-cookie-row is-${C.escape(row.kind)}">
-        <span class="account-cookie-row__icon" aria-hidden="true">${C.icon('cookie')}</span>
+        <span class="account-cookie-row__icon" aria-hidden="true"><img src="${assetBase}shop-price-cookie.svg" alt="" loading="lazy" /></span>
         <div>
-          <span>${C.escape(row.source)}</span>
           <strong>${C.escape(row.title)}</strong>
-          <time>${C.escape(row.date)}</time>
+          <p>${C.escape(row.subtitle)}</p>
         </div>
-        <strong>${C.escape(row.amount)}개</strong>
+        <span class="account-cookie-row__right">
+          <strong>${C.escape(row.amount)}</strong>
+          <time>${C.escape(row.time)}</time>
+        </span>
       </article>
     `;
   }
 
   function cookieHistory(type = 'all') {
     const rows = cookieRows.filter((row) => type === 'all' || row.kind === type);
+    const grouped = rows.reduce((acc, row) => {
+      if (!acc[row.dateLabel]) acc[row.dateLabel] = [];
+      acc[row.dateLabel].push(row);
+      return acc;
+    }, {});
 
     return C.shell({
-      title: '쿠키 내역',
+      title: '쿠키 내역 관리',
       back: 'myPage',
       className: 'account-screen account-cookie-history-screen',
       content: `
-        ${cookieTabBar(type)}
         ${cookieSummary()}
-        <div class="account-list-heading">
-          <strong>${type === 'all' ? '전체 내역' : type === 'earn' ? '획득 내역' : '사용 내역'}</strong>
-          <span>${rows.length}건</span>
-        </div>
+        ${cookieTabBar(type)}
         <div class="account-cookie-list">
-          ${rows.map(cookieHistoryRow).join('')}
+          ${Object.entries(grouped)
+            .map(
+              ([date, items]) => `
+                <section class="account-cookie-date-group">
+                  <h2>${C.escape(date)}</h2>
+                  ${items.map(cookieHistoryRow).join('')}
+                </section>
+              `
+            )
+            .join('')}
         </div>
       `,
     });

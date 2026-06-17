@@ -4461,3 +4461,636 @@
   background: #ffd95e;
   color: #322814;
 }
+
+/* Figma MCP sync: my quiz flow (1473:56176). */
+.my-quiz-screen .screen-content {
+  gap: 14px;
+  min-height: calc(100dvh - 76px);
+  padding: 0 17px 28px;
+}
+
+.my-quiz-screen .my-quiz-hero {
+  width: 340px;
+  min-height: 129px;
+  margin: 0 -1px;
+  padding: 25px 24px 15px 30px;
+  grid-template-columns: minmax(0, 206px) 1fr;
+  border-radius: 8px;
+}
+
+.my-quiz-screen .my-quiz-hero h2 {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 20px;
+}
+
+.my-quiz-screen .my-quiz-hero p {
+  margin-top: 5px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.my-quiz-screen .my-quiz-hero button {
+  width: 135px;
+  min-width: 135px;
+  height: 38px;
+  min-height: 38px;
+  margin-top: 12px;
+  border-radius: 19px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.my-quiz-screen .my-quiz-hero__chef {
+  width: 92px;
+  height: 118px;
+  transform: translate(13px, 10px);
+}
+
+.my-quiz-screen .quiz-section {
+  width: 338px;
+  gap: 10px;
+  margin: 0;
+}
+
+.my-quiz-screen .quiz-section__head {
+  min-height: 20px;
+}
+
+.my-quiz-screen .quiz-section__head h2 {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 20px;
+}
+
+.my-quiz-screen .quiz-stat-grid {
+  width: 338px;
+  grid-template-columns: repeat(4, 77px);
+  gap: 10px;
+}
+
+.my-quiz-screen .quiz-stat-card {
+  width: 77px;
+  height: 98px;
+  padding: 10px 5px;
+}
+
+.my-quiz-screen .quiz-best-card {
+  width: 338px;
+  height: 64px;
+  min-height: 64px;
+  grid-template-columns: 65px 1fr;
+  gap: 11px;
+  padding: 12px 13px;
+  border-radius: 10px;
+}
+
+.my-quiz-screen .quiz-best-card .asset.poster,
+.my-quiz-screen .quiz-best-card .asset.poster img {
+  width: 65px;
+  height: 40px;
+}
+
+.my-quiz-screen .quiz-list-section {
+  width: 321px;
+  margin: 0 auto;
+}
+
+.my-quiz-screen .quiz-list-section .quiz-section__head {
+  width: 321px;
+}
+
+.my-quiz-screen .quiz-filter-row {
+  gap: 3px;
+}
+
+.my-quiz-screen .quiz-filter-row button {
+  height: 20px;
+  min-width: 40px;
+  padding: 0 8px;
+  border-radius: 7px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.my-quiz-screen .quiz-list {
+  width: 321px;
+  gap: 8px;
+}
+
+.my-quiz-screen .quiz-list-item {
+  width: 321px;
+  height: 80px;
+  grid-template-columns: 58px minmax(0, 1fr) 60px;
+  gap: 8px;
+  padding: 10px 9px;
+}
+
+.my-quiz-screen .quiz-list-item .asset.poster,
+.my-quiz-screen .quiz-list-item .asset.poster img {
+  width: 54px;
+  height: 54px;
+}
+
+.my-quiz-screen .quiz-list-item__side button {
+  width: 60px;
+  height: 56px;
+  min-height: 56px;
+}
+
+.my-quiz-screen .quiz-floating-add {
+  right: 34px;
+  bottom: 73px;
+  width: 40px;
+  height: 40px;
+  font-size: 31px;
+}
+
+/* Figma MCP sync: quiz create form (1473:56468). */
+.quiz-create-screen .screen-content {
+  gap: 14px;
+  padding: 0 20px 28px;
+}
+
+.quiz-create-screen .quiz-form-step {
+  width: 330px;
+  padding: 14px 18px;
+}
+
+.quiz-create-screen .quiz-form-step:nth-of-type(1) {
+  height: 139px;
+  min-height: 139px;
+}
+
+.quiz-create-screen .quiz-form-step:nth-of-type(2) {
+  height: 81px;
+  min-height: 81px;
+}
+
+.quiz-create-screen .quiz-form-step:nth-of-type(3) {
+  height: 290px;
+  min-height: 290px;
+  padding: 15px 15px;
+}
+
+.quiz-create-screen .quiz-form-step__head {
+  height: 18px;
+  gap: 7px;
+}
+
+.quiz-create-screen .quiz-form-step__head span {
+  width: 18px;
+  height: 18px;
+  font-size: 9px;
+}
+
+.quiz-create-screen .quiz-form-step__head strong {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+}
+
+.quiz-create-screen .quiz-webtoon-strip {
+  grid-auto-columns: 64px;
+  gap: 9px;
+  height: 80px;
+  margin-top: 3px;
+}
+
+.quiz-create-screen .quiz-webtoon-choice {
+  width: 64px;
+  height: 80px;
+  min-height: 80px;
+}
+
+.quiz-create-screen .quiz-webtoon-choice .asset.poster,
+.quiz-create-screen .quiz-webtoon-choice .asset.poster img {
+  width: 62px;
+  height: 56px;
+}
+
+.quiz-create-screen .quiz-webtoon-choice span {
+  height: 22px;
+}
+
+.quiz-create-screen .quiz-webtoon-add {
+  right: 2px;
+  top: 43px;
+  width: 18px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.quiz-create-screen .quiz-episode-field input,
+.quiz-create-screen .quiz-question-field textarea,
+.quiz-create-screen .quiz-answer-field {
+  width: 300px;
+}
+
+.quiz-create-screen .quiz-question-field textarea,
+.quiz-create-screen .quiz-answer-field {
+  height: 30px;
+  min-height: 30px;
+}
+
+.quiz-create-screen .quiz-answer-fields {
+  gap: 10px;
+}
+
+.quiz-create-screen .quiz-review-note {
+  width: 330px;
+  height: 80px;
+  margin-top: -6px;
+}
+
+/* Figma MCP sync: my quiz/status typography and density (1473:56176). */
+.my-quiz-screen .app-title,
+.quiz-create-screen .app-title,
+.quiz-status-screen .app-title {
+  color: #191f28;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+.my-quiz-screen .my-quiz-hero h2 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.my-quiz-screen .my-quiz-hero p {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.my-quiz-screen .my-quiz-hero button {
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.my-quiz-screen .quiz-section__head h2 {
+  color: #191f28;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.my-quiz-screen .quiz-stat-card span {
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.my-quiz-screen .quiz-stat-card strong {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.my-quiz-screen .quiz-stat-card small {
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 10px;
+}
+
+.my-quiz-screen .quiz-best-card strong,
+.my-quiz-screen .quiz-list-item__body h3 {
+  color: #191f28;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.my-quiz-screen .quiz-best-card p,
+.my-quiz-screen .quiz-list-item__body p {
+  color: #8b7757;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 10px;
+}
+
+.my-quiz-screen .quiz-status-pill {
+  min-height: 18px;
+  padding: 0 11px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.my-quiz-screen .quiz-list-item__side button {
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+/* My quiz final asset/layout sync */
+.my-quiz-screen .my-quiz-hero {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 340px;
+  height: 129px;
+  min-height: 129px;
+  padding: 25px 24px 15px 30px;
+  border: 0;
+  border-radius: 8px;
+  background: url("../assets/figma-exported/named/bg-myquiz-hero-final.svg") center / 100% 100% no-repeat;
+  color: #fff;
+}
+
+.my-quiz-screen .my-quiz-hero > div {
+  position: relative;
+  z-index: 2;
+  width: 206px;
+}
+
+.my-quiz-screen .my-quiz-hero h2 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.my-quiz-screen .my-quiz-hero p {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.my-quiz-screen .my-quiz-hero button {
+  position: relative;
+  z-index: 3;
+  width: 135px;
+  min-width: 135px;
+  height: 38px;
+  min-height: 38px;
+  margin-top: 12px;
+  padding: 0;
+  border-radius: 19px;
+  background: #fffaf0;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.my-quiz-screen .my-quiz-hero__chef {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  z-index: 1;
+  width: 67px;
+  height: 90px;
+  object-fit: contain;
+  transform: none;
+}
+
+.my-quiz-screen .quiz-stat-card small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.my-quiz-screen .quiz-stat-card__triangle {
+  width: 5px;
+  height: 5px;
+  object-fit: contain;
+}
+
+.my-quiz-screen .quiz-floating-add {
+  position: fixed;
+  right: calc(50% - 166px);
+  bottom: 72px;
+  z-index: 90;
+  width: 40px;
+  height: 40px;
+}
+
+.quiz-status-screen .fixed-bottom-action {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 90;
+  width: min(320px, calc(100vw - 48px));
+  transform: translateX(-50%);
+}
+
+.quiz-status-screen .screen-content {
+  padding-bottom: 128px;
+}
+
+@media (max-width: 480px) {
+  .my-quiz-screen .quiz-floating-add {
+    right: 20px;
+  }
+}
+
+.quiz-create-screen .quiz-form-step__head strong,
+.quiz-create-screen .quiz-question-field span,
+.quiz-create-screen .quiz-input-caption {
+  color: #191f28;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.quiz-create-screen .quiz-webtoon-choice span,
+.quiz-create-screen .quiz-episode-field input,
+.quiz-create-screen .quiz-question-field textarea,
+.quiz-create-screen .quiz-answer-field input {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.quiz-create-screen .quiz-review-note p {
+  color: #3d2000;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.quiz-status-screen .screen-content {
+  padding-top: 0;
+}
+
+.quiz-status-summary h3 {
+  color: #191f28;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.quiz-status-summary p {
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.quiz-status-summary .quiz-status-pill {
+  min-height: 28px;
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.quiz-status-panel .quiz-section__head h2,
+.quiz-status-ratings h2,
+.quiz-question-preview h3 {
+  color: #191f28;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.quiz-status-screen .quiz-stat-card span {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.quiz-status-screen .quiz-stat-card strong {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.quiz-status-screen .quiz-stat-card small {
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.quiz-rating-pill strong,
+.quiz-status-ratings em,
+.quiz-question-preview > strong,
+.quiz-question-preview p,
+.quiz-reject-reason strong,
+.quiz-reject-reason p {
+  font-weight: 700;
+}
+
+/* Quiz create exported asset sync */
+.quiz-create-screen .quiz-webtoon-add {
+  width: 20px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.quiz-create-screen .quiz-webtoon-add img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.quiz-create-screen .quiz-answer-marker {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+}
+
+.quiz-create-screen .quiz-answer-marker::before,
+.quiz-create-screen .quiz-answer-marker::after {
+  display: none;
+  content: none;
+}
+
+.quiz-create-screen .quiz-answer-marker img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
+}
+
+.quiz-create-screen .quiz-review-note {
+  grid-template-columns: 58px minmax(0, 1fr);
+}
+
+.quiz-create-screen .quiz-review-note .quiz-create-bottom-cookie,
+.quiz-create-screen .quiz-review-note .quiz-create-bottom-cookie.asset.icon {
+  width: 52px;
+  height: 55px;
+  display: block;
+  object-fit: contain;
+  transform: none;
+}
+
+.quiz-create-screen .quiz-review-note .quiz-create-bottom-cookie img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Quiz create search sheet interactions/assets */
+.quiz-create-screen .quiz-search-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.quiz-create-screen .quiz-search-icon::after {
+  display: none;
+  content: none;
+}
+
+.quiz-create-screen .quiz-search-result {
+  background: transparent;
+}
+
+.quiz-create-screen .quiz-search-result.is-selected {
+  background: #fff4cf;
+}
+
+/* My quiz hero SVG already contains title/cookie artwork; keep only click hit area. */
+.my-quiz-screen .my-quiz-hero > div {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.my-quiz-screen .my-quiz-hero h2,
+.my-quiz-screen .my-quiz-hero p,
+.my-quiz-screen .my-quiz-hero__chef {
+  display: none;
+}
+
+.my-quiz-screen .my-quiz-hero button {
+  position: absolute;
+  left: 24px;
+  bottom: 15px;
+  width: 135px;
+  height: 38px;
+  min-width: 135px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
