@@ -194,6 +194,39 @@
     `;
   }
 
+  function renderRankingSeasonRewardModal() {
+    const rows = [
+      ["1등", "쿠키 50개"],
+      ["2등", "쿠키 30개"],
+      ["3등", "쿠키 20개"],
+      ["상위 5%", "쿠키 5개"],
+      ["상위 10%", "쿠키 3개"],
+      ["상위 20%", "쿠키 2개"],
+    ];
+    return `
+      <div class="modal-layer ranking-season-reward-layer" role="presentation">
+        <section class="modal ranking-season-reward-modal" role="dialog" aria-modal="true" aria-label="상위 20% 보상 세부안">
+          <button class="modal-close ranking-season-reward-modal__close" data-close-modal aria-label="닫기">×</button>
+          <h2>상위 20% 보상 세부안</h2>
+          <div class="ranking-season-reward-modal__table">
+            <div class="ranking-season-reward-modal__row is-head"><strong>구간</strong><strong>보상</strong></div>
+            ${rows
+              .map(
+                ([range, reward]) => `
+                  <div class="ranking-season-reward-modal__row">
+                    <span>${C.escape(range)}</span>
+                    <span>${C.escape(reward)}</span>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+          <p>최대 300명 지급</p>
+        </section>
+      </div>
+    `;
+  }
+
   function restoreInviteAfterCopyToast() {
     window.clearTimeout(copyToastTimer);
     copyToastTimer = window.setTimeout(() => {
@@ -218,6 +251,12 @@
     if (name === "quitSolvingQuiz") {
       window.clearTimeout(copyToastTimer);
       document.getElementById("modal-root").innerHTML = renderQuitSolvingQuizModal();
+      return;
+    }
+
+    if (name === "rankingSeasonReward") {
+      window.clearTimeout(copyToastTimer);
+      document.getElementById("modal-root").innerHTML = renderRankingSeasonRewardModal();
       return;
     }
 

@@ -1,7 +1,7 @@
 (function () {
   const D = window.StoritData;
   const C = window.StoritComponents;
-  const quizCssHref = "./css/quiz.css?v=quiz-flow-20260616y";
+  const quizCssHref = "./css/quiz.css?v=goal-fidelity-20260617a";
   const namedAssetBase = "./assets/figma-exported/named/";
 
   const quizQuestion = {
@@ -218,7 +218,7 @@
     const metrics = [
       ["resultCorrect", "맞춘 문제", good ? "5개" : "3개", "전체 5문항"],
       ["resultTime", "걸린 시간", "18.58초", "빠른 풀이"],
-      ["resultScore", "경험치", good ? "60 EXP" : "95점", "획득 완료"],
+      ["resultScore", "경험치", good ? "60 EXP" : "35 EXP", "획득 완료"],
     ];
 
     return `
@@ -235,6 +235,28 @@
             `,
           )
           .join("")}
+      </div>
+    `;
+  }
+
+  function quizExpModal(amount) {
+    return `
+      <div class="hm-mission-exp-modal" data-exp-modal data-mission-exp-modal data-exp-auto-close-ms="1000">
+        <div class="hm-mission-exp-modal__dim" data-action="close-mission-exp"></div>
+        <section class="hm-mission-exp-modal__sheet" role="dialog" aria-modal="true" aria-label="경험치 획득">
+          <div class="hm-mission-exp-modal__scallop" aria-hidden="true">
+            ${namedAsset("mission-purple-scallop.svg", "hm-mission-exp-modal__scallop-image")}
+          </div>
+          <button class="hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">
+            <img src="${namedAssetBase}icon-exp-modal-close.svg" alt="" loading="lazy" />
+          </button>
+          <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
+          <img class="hm-mission-exp-modal__cookie" src="${namedAssetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
+          <div class="hm-mission-exp-modal__message">
+            <h2>경험치를 획득하셨습니다!!!</h2>
+            <p data-exp-amount>+ ${amount} EXP</p>
+          </div>
+        </section>
       </div>
     `;
   }
@@ -313,6 +335,7 @@
           ${C.button("랭킹 보러가기", { route: "rankingDaily", variant: "outline" })}
           ${C.button("다른 문제 풀러가기", { route: "quiz" })}
         </div>
+        ${quizExpModal(good ? 60 : 35)}
       `,
     });
   }

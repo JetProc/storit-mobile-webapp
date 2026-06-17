@@ -21,7 +21,17 @@
     const previous = current;
     current = next;
     app.innerHTML = Screens.render(next);
-    app.classList.toggle("has-scallop-frame", app.firstElementChild?.classList.contains("has-scallop") === true);
+    const renderedScreen = app.firstElementChild;
+    const suppressFrameScallop =
+      renderedScreen?.classList.contains("ranking-daily-screen") ||
+      renderedScreen?.classList.contains("ranking-season-screen") ||
+      renderedScreen?.classList.contains("rs-yesterday-screen") ||
+      renderedScreen?.classList.contains("quiz-result-screen");
+    app.classList.toggle(
+      "has-scallop-frame",
+      renderedScreen?.classList.contains("has-scallop") === true && !suppressFrameScallop,
+    );
+    app.classList.toggle("no-scallop-frame", suppressFrameScallop);
     app.scrollTop = 0;
     setHash(next);
     document.dispatchEvent(new CustomEvent("storit:render", { detail: { route: next } }));

@@ -2,6 +2,7 @@
   const D = window.StoritData;
   const C = window.StoritComponents;
   const assetBase = "./assets/figma-exported/named/";
+  const rankingAssetBase = "./assets/figma-exported/ranking-page/";
 
   function ensureStyles() {
     if (typeof document === "undefined") return;
@@ -11,7 +12,7 @@
 
     const link = doc.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./css/ranking-shop.css?v=scallop-layout-20260616a";
+    link.href = "./css/ranking-shop.css?v=ranking-precision-20260617p";
     if (link.setAttribute) {
       link.setAttribute("data-storit-css", "ranking-shop");
     }
@@ -26,6 +27,10 @@
 
   function namedAsset(file, alt, className = "") {
     return `<img class="${escape(className)}" src="${assetBase}${escape(file)}" alt="${escape(alt)}" loading="lazy" />`;
+  }
+
+  function rankingAsset(file, alt = "", className = "") {
+    return `<img class="${escape(className)}" src="${rankingAssetBase}${escape(file)}" alt="${escape(alt)}" loading="lazy" />`;
   }
 
   function initials(name) {
@@ -46,7 +51,7 @@
 
   function rankingTabs(active) {
     return `
-      <div class="rs-tabs" aria-label="랭킹 전환">
+      <div class="rs-tabs rs-ranking-tabs" aria-label="랭킹 전환">
         <button class="rs-tab ${active === "daily" ? "is-active" : ""}" data-route="rankingDaily">일간 랭킹</button>
         <button class="rs-tab ${active === "season" ? "is-active" : ""}" data-route="rankingSeason">시즌 랭킹</button>
       </div>
@@ -87,6 +92,39 @@
         <span class="rs-ranking-compact-row__name">${escape(name)}</span>
         <strong class="rs-ranking-compact-row__score">${scoreText(score)}</strong>
         <span class="rs-ranking-compact-row__trend ${trendClass(trend)}">${escape(trend)}</span>
+      </article>
+    `;
+  }
+
+  function rankingProfile(className = "") {
+    return rankingAsset("랭킹 프로필.svg", "프로필", `rs-ranking-profile ${className}`);
+  }
+
+  function rankingCookieCount(amount, className = "") {
+    return `<span class="rs-ranking-cookie-count ${escape(className)}">${rankingAsset("쿠키_일반.svg", "쿠키")}<b>${escape(amount)}</b></span>`;
+  }
+
+  function dailyRankRow({ rank, name, score, medal = "", isMe = false }) {
+    const rankContent = medal
+      ? rankingAsset(medal, `${rank}등`, "rs-daily-rank-row__medal")
+      : `<b>${escape(rank)}</b>`;
+    return `
+      <article class="rs-daily-rank-row ${isMe ? "is-me" : ""}">
+        <span class="rs-daily-rank-row__rank">${rankContent}</span>
+        ${rankingProfile()}
+        <strong class="rs-daily-rank-row__name">${escape(name)}</strong>
+        <span class="rs-daily-rank-row__score">${escape(score)}</span>
+      </article>
+    `;
+  }
+
+  function seasonRankRow({ rank, name, score, isMe = false }) {
+    return `
+      <article class="rs-season-rank-row ${isMe ? "is-me" : ""}">
+        <strong>${escape(rank)}</strong>
+        ${rankingProfile()}
+        <span>${escape(name)}</span>
+        <b>${rankingAsset("별.svg", "별")}${escape(score)}</b>
       </article>
     `;
   }
@@ -263,13 +301,16 @@
   }
 
   function rankingDaily() {
-    const leaders = D.ranking.slice(0, 3);
-    const tableRows = [
-      ...leaders.map((row, index) => ({ rank: index + 1, name: row[0], score: row[1], trend: row[2], medal: true })),
-      { rank: "···", name: "", score: "", trend: "", separator: true },
-      { rank: 7, name: D.user.name, score: "790점", trend: "-", isMe: true },
-      { rank: 8, name: "올라타도999", score: "810점", trend: "-" },
-      { rank: 9, name: "은빛웨999", score: "810점", trend: "-" },
+    const topRows = [
+      { rank: 1, name: "무게대마왕", score: "850점", medal: "1등 메달.svg" },
+      { rank: 2, name: "웰툰도하", score: "850점", medal: "2등메달.svg" },
+      { rank: 3, name: "격살추가족", score: "850점", medal: "3등 메달.svg" },
+    ];
+    const nearbyRows = [
+      { rank: 4, name: "무게대마왕", score: "850점" },
+      { rank: 5, name: "바람의검신", score: "830점" },
+      { rank: 6, name: "은하철도999", score: "810점" },
+      { rank: 7, name: D.user.name, score: "790점", isMe: true },
     ];
 
     return C.shell({
@@ -280,151 +321,130 @@
       content: `
         ${rankingTabs("daily")}
 
-        <section class="rs-ranking-summary">
-          <div class="rs-ranking-summary__top">
-            <div>
-              <span class="rs-ranking-avatar">${C.asset("character", "avatar")}</span>
+        <section class="rs-ranking-daily-card">
+          <div class="rs-ranking-daily-card__top">
+            <div class="rs-ranking-me-block">
+              ${rankingAsset("쿠키.svg", "쿠키", "rs-ranking-me-block__cookie")}
               <span>
-                <strong>${escape(D.user.name)}</strong>
-                <small>내 점수 ${escape(D.user.score)}점</small>
+                <b>${escape(D.user.name)}</b>
+                <small>32위 822점</small>
               </span>
             </div>
-            <button type="button" data-route="quiz">점수 올리기</button>
-          </div>
-
-          <p class="rs-ranking-live"><b>LIVE</b> 일간 랭킹은 오늘 본 웹툰 퀴즈의 총점의 합으로 경쟁합니다.</p>
-
-          <div class="rs-ranking-benefit-card">
-            <div class="rs-ranking-benefits">
-              <article><span class="rs-ranking-benefit-icon">${C.icon("trophy")}</span><strong>1등</strong><small>쿠키 50</small></article>
-              <article><span class="rs-ranking-benefit-icon is-lucky">${C.icon("cookieWings")}</span><strong>행운의 당첨</strong><small>쿠키 20</small></article>
-              <article><span class="rs-ranking-benefit-icon is-top">${C.icon("ranking")}</span><strong>TOP 30</strong><small>쿠키 1</small></article>
+            <div class="rs-ranking-goal-block">
+              ${rankingAsset("트로피.svg", "트로피")}
+              <span><b>1등까지</b><small>+ 256점</small></span>
             </div>
-            <div class="rs-ranking-benefit-card__art">${namedAsset("character-ranking.png", "랭킹 캐릭터")}</div>
+            <button type="button" data-route="quiz">점수 올리러 가기</button>
           </div>
 
-          <div class="rs-ranking-timer">자정까지 남은 시간 <strong>03:41:29</strong></div>
+          <p class="rs-ranking-live"><span>${rankingAsset("live.svg", "LIVE")}</span> 일간 랭킹은 오늘 본 웹툰 퀴즈의 총점의 합으로 경쟁합니다.</p>
+
+          <div class="rs-ranking-benefit-card rs-ranking-benefit-card--daily">
+            <div class="rs-ranking-benefits">
+              <article>${rankingAsset("왕관.svg", "왕관")}<strong>1등</strong>${rankingCookieCount("50")}</article>
+              <article>${rankingAsset("클로버.svg", "클로버")}<strong>행운의 특송</strong>${rankingCookieCount("20")}</article>
+              <article>${rankingAsset("불.svg", "불")}<strong>TOP 30</strong>${rankingCookieCount("1")}</article>
+            </div>
+            <div class="rs-ranking-benefit-card__bg">${rankingAsset("배경.svg", "오븐 배경")}</div>
+            <div class="rs-ranking-benefit-card__art">${rankingAsset("고민하는쿠키.svg", "고민하는 쿠키")}</div>
+          </div>
+
+          <div class="rs-ranking-timer">${rankingAsset("시계.svg", "시계")} 자정까지 남은 시간 <strong>03:41:29</strong></div>
         </section>
 
-        <section class="rs-ranking-my-strip">
-          <span>${C.asset("character", "avatar")}</span>
-          <div>
-            <strong>내 순위 7위</strong>
-            <small>내 점수 ${escape(D.user.score)}점</small>
+        <section class="rs-daily-rank-table">
+          <div class="rs-daily-rank-table__head">
+            <span>순위</span><span>닉네임</span><span>점수</span>
           </div>
-          <div>
-            <strong>TOP 30 진입까지</strong>
-            <small>+42점 필요</small>
-          </div>
-          <button type="button" data-route="quiz">퀴즈<br />풀기</button>
-        </section>
-
-        <section class="rs-ranking-table-card">
-          <header>
-            <strong>일간 랭킹</strong>
-            <button type="button" data-route="rankingSeason">시즌 랭킹</button>
-          </header>
-          <div class="rs-ranking-table-head">
-            <span>순위</span><span>닉네임</span><span>오늘 점수</span><span>순위변동</span>
-          </div>
-          <div class="rs-ranking-compact-list">
-            ${tableRows
-              .map((row) =>
-                row.separator
-                  ? `<div class="rs-ranking-separator">···</div>`
-                  : rankingCompactRow(row),
-              )
-              .join("")}
+          <div class="rs-daily-rank-table__body">
+            ${topRows.map(dailyRankRow).join("")}
+            ${nearbyRows.map(dailyRankRow).join("")}
           </div>
         </section>
 
         <section class="rs-lucky-card">
-          <span class="rs-lucky-card__icon" aria-hidden="true">${C.icon("cookieWings")}</span>
+          <span class="rs-lucky-card__icon" aria-hidden="true">${rankingAsset("행운쿠키.svg", "행운 쿠키")}</span>
           <div>
-            <strong>오늘의 행운 구간은 10위~30위</strong>
-            <p>순위가 높지 않아도 추첨 보상이 열려 있어요.</p>
+            <strong>오늘의 행운 구간</strong>
+            <b>10위~30위 사이</b>
+            <p>시간이 지날수록 올라가요!</p>
           </div>
+          <span class="rs-lucky-card__range">${rankingAsset("행운구간.svg", "행운 구간")}</span>
         </section>
+
       `,
     });
   }
 
   function rankingSeason() {
-    const podium = D.ranking.slice(0, 3);
-    const seasonRows = D.ranking.slice(3, 10);
+    const seasonRows = [
+      { rank: 4, name: "무게대마왕", score: "22,110" },
+      { rank: 5, name: D.user.name, score: "22,110" },
+      { rank: 6, name: "은빛여우", score: "18,672" },
+      { rank: 30, name: "불꽃기사", score: "17,954", isMe: true },
+      { rank: 31, name: "어둠의주술사", score: "16,738" },
+      { rank: 32, name: "빛의수호자", score: "15,623" },
+    ];
 
     return C.shell({
       title: "시즌 랭킹",
       back: "rankingDaily",
+      activeNav: "rankingDaily",
       className: "ranking-shop-screen ranking-season-screen",
       content: `
-        <section class="rs-hero rs-hero--season">
-          <div class="rs-hero__copy">
-            <span class="rs-kicker">SEASON 04</span>
-            <h2>이번 달 누적 점수로<br />시즌 TOP에<br />도전하세요</h2>
-            <p>시즌 종료까지 <strong>5일 03:41:29</strong> 남았어요.</p>
-          </div>
-          <div class="rs-hero__art">${namedAsset("character-ranking.png", "시즌 랭킹 캐릭터")}</div>
-        </section>
-
-        <div class="rs-stat-grid rs-stat-grid--season">
-          ${statCard({ icon: "trophy", label: "내 시즌 순위", value: "12위", note: "상위 18%", tone: "is-gold" })}
-          ${statCard({ icon: "ranking", label: "누적 점수", value: "22,680점", note: "이번 달", tone: "is-blue" })}
-          ${statCard({ icon: "gift", label: "예상 보상", value: "쿠키 120개", note: "시즌 마감 후", tone: "is-green" })}
-        </div>
-
         ${rankingTabs("season")}
 
-        <section class="rs-panel rs-podium-panel">
-          <div class="rs-panel__header">
-            <div>
-              <span class="rs-kicker">PODIUM</span>
-              <h3>시즌 TOP 3</h3>
+        <section class="rs-season-reward-card">
+          <header>
+            <b>SEASON 05</b>
+            <span>시즌 랭킹은 상위 20%까지 쿠키 보상 지급!</span>
+            <button type="button" data-modal="rankingSeasonReward" aria-label="시즌 보상 세부안">i</button>
+          </header>
+          <div class="rs-season-reward-card__body">
+            <div class="rs-season-rewards">
+              <article>${rankingAsset("1등 메달.svg", "1등")} ${rankingCookieCount("50")}</article>
+              <article>${rankingAsset("2등메달.svg", "2등")} ${rankingCookieCount("30")}</article>
+              <article>${rankingAsset("3등 메달.svg", "3등")} ${rankingCookieCount("20")}</article>
             </div>
-            <span class="rs-chip is-soft">월간 누적</span>
+            <div class="rs-season-reward-card__cookie">${rankingAsset("금메달 단상대 쿠키.svg", "금메달 단상대 쿠키")}</div>
           </div>
-          <div class="rs-podium">
-            <article class="rs-podium__slot is-second">
-              <span class="rs-medal">2</span>
-              <span class="rs-avatar">${initials(podium[1]?.[0])}</span>
-              <strong>${escape(podium[1]?.[0] || "프로페서")}</strong>
-              <small>★ ${escape(podium[1]?.[1] || "0")}</small>
-            </article>
-            <article class="rs-podium__slot is-first">
-              <span class="rs-medal">1</span>
-              <span class="rs-avatar">${initials(podium[0]?.[0])}</span>
-              <strong>${escape(podium[0]?.[0] || "프로페서")}</strong>
-              <small>★ ${escape(podium[0]?.[1] || "0")}</small>
-            </article>
-            <article class="rs-podium__slot is-third">
-              <span class="rs-medal">3</span>
-              <span class="rs-avatar">${initials(podium[2]?.[0])}</span>
-              <strong>${escape(podium[2]?.[0] || "프로페서")}</strong>
-              <small>★ ${escape(podium[2]?.[1] || "0")}</small>
-            </article>
-          </div>
+          <footer>
+            ${rankingAsset("시계.svg", "시계")}
+            <div>
+              <span>이번 시즌 남은 시간</span>
+              <strong>25일 03:41:29</strong>
+              <small>시즌에 3일 이상 참여하면 랭킹 보상에 도전할 수 있어요!</small>
+            </div>
+          </footer>
         </section>
 
-        <section class="rs-panel">
-          <div class="rs-panel__header">
-            <div>
-              <span class="rs-kicker">SEASON TABLE</span>
-              <h3>4위부터 보기</h3>
-            </div>
-            <button class="rs-text-button" data-route="rankingDaily">일간 보기</button>
-          </div>
-          <div class="rs-rank-list">
-            ${seasonRows
-              .map((row, index) =>
-                rankRow({
-                  rank: index + 4,
-                  name: index === 1 ? D.user.name : row[0],
-                  score: `★ ${escape(row[1]).replace("점", "")}`,
-                  trend: row[2],
-                  isMe: index === 1,
-                }),
-              )
-              .join("")}
+        <section class="rs-season-podium">
+          <article class="is-second">
+            <strong>2위</strong>
+            ${rankingAsset("시즌랭킹 프로필.svg", "프로필")}
+            <span>내가그린기린그림</span>
+            <b>${rankingAsset("별.svg", "별")}22,680</b>
+          </article>
+          <article class="is-first">
+            ${rankingAsset("왕관.svg", "왕관", "rs-season-crown")}
+            <strong>1위</strong>
+            ${rankingAsset("시즌랭킹 프로필.svg", "프로필")}
+            <span>격살추가족</span>
+            <b>${rankingAsset("별.svg", "별")}22,680</b>
+          </article>
+          <article class="is-third">
+            <strong>3위</strong>
+            ${rankingAsset("시즌랭킹 프로필.svg", "프로필")}
+            <span>무게대마왕</span>
+            <b>${rankingAsset("별.svg", "별")}22,680</b>
+          </article>
+        </section>
+
+        <section class="rs-season-table">
+          <div class="rs-season-table__body">
+            ${seasonRows.slice(0, 3).map(seasonRankRow).join("")}
+            <div class="rs-ranking-separator">${rankingAsset("점점점.svg", "생략")}</div>
+            ${seasonRows.slice(3).map(seasonRankRow).join("")}
           </div>
         </section>
       `,
@@ -433,15 +453,29 @@
 
   function rankingYesterday() {
     return `
-      <section class="screen success-scene">
-        <div class="screen-content" style="text-align:center;padding-top:96px">
-          <h1 style="font-size:30px;line-height:1.25;font-weight:1000">어제의 일간순위를<br />발표합니다!</h1>
-          <div class="grid-2" style="margin:46px 38px 28px">
-            <div class="card pad" style="background:var(--color-primary)">1위<br />프로페서제진<br />★ 9,990<br />쿠키 50</div>
-            <div class="card pad" style="background:var(--color-green-soft)">27위<br />프로페서제진<br />★ 5,680<br />쿠키 20</div>
+      <section class="screen rs-yesterday-screen" data-route="rankingDaily">
+        <div class="rs-yesterday-bg" aria-hidden="true"></div>
+        <div class="rs-yesterday-content">
+          <h1>어제의 일간순위를<br />발표합니다!</h1>
+          <div class="rs-yesterday-cards">
+            <article class="is-first">
+              ${rankingAsset("왕관.svg", "왕관")}
+              <strong>1위</strong>
+              ${rankingAsset("랭킹 프로필.svg", "프로필")}
+              <span>무게대마왕</span>
+              <b>${rankingAsset("별.svg", "별")} 9,990</b>
+              ${rankingCookieCount("50")}
+            </article>
+            <article class="is-lucky">
+              ${rankingAsset("클로버.svg", "클로버")}
+              <strong>27위</strong>
+              ${rankingAsset("랭킹 프로필.svg", "프로필")}
+              <span>웰튼도하</span>
+              <b>${rankingAsset("별.svg", "별")} 5,680</b>
+              ${rankingCookieCount("20")}
+            </article>
           </div>
-          ${C.asset("character", "ranking")}
-          <div style="margin-top:60px">${C.button("일간 랭킹 보기", { route: "rankingDaily" })}</div>
+          ${rankingAsset("금메달 단상대 쿠키.svg", "금메달 쿠키", "rs-yesterday-cookie")}
         </div>
       </section>
     `;

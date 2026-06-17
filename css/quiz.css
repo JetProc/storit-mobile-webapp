@@ -1633,6 +1633,19 @@
   font-weight: 900;
 }
 
+.phone-frame.has-scallop-frame:has(.quiz-result-screen)::after {
+  display: none;
+  content: none;
+}
+
+.quiz-result-screen {
+  padding-bottom: 0;
+}
+
+.quiz-result-screen .screen-content {
+  padding-bottom: 20px;
+}
+
 .my-quiz-screen .screen-content {
   gap: 14px;
   padding: 0 16px 96px;
@@ -2153,8 +2166,8 @@
 }
 
 .quiz-play-screen .app-header {
-  height: 76px;
-  padding: 16px 14px 10px;
+  height: 60px;
+  padding: 0 14px;
   background: #fffaf2;
 }
 

@@ -2744,3 +2744,1040 @@
   color: #5d4a85;
   font-size: 9px;
 }
+
+/* Ranking page final Figma pass */
+.ranking-daily-screen,
+.ranking-season-screen {
+  background: linear-gradient(180deg, #ffd95e 0 16px, var(--color-bg) 16px);
+}
+
+.ranking-daily-screen .screen-content,
+.ranking-season-screen .screen-content {
+  gap: 8px;
+  padding: 0 20px 104px;
+}
+
+.ranking-daily-screen .app-header,
+.ranking-season-screen .app-header {
+  height: 60px;
+  padding: 12px 14px 4px;
+  background: var(--color-bg);
+}
+
+.rs-ranking-tabs {
+  width: 100%;
+  height: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 0;
+  border-radius: 9px 9px 0 0;
+  background: #fff;
+  box-shadow: none;
+}
+
+.rs-ranking-tabs .rs-tab {
+  min-height: 36px;
+  border: 0;
+  border-radius: 9px 9px 0 0;
+  background: #fff;
+  color: #9d8e7a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rs-ranking-tabs .rs-tab.is-active {
+  background: #ffd95e;
+  color: #3d2000;
+}
+
+.ranking-daily-screen .rs-ranking-tabs,
+.ranking-season-screen .rs-ranking-tabs {
+  height: 36px;
+  gap: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ranking-daily-screen .rs-ranking-tabs .rs-tab,
+.ranking-season-screen .rs-ranking-tabs .rs-tab {
+  min-height: 36px;
+  font-weight: 700;
+}
+
+.rs-ranking-daily-card {
+  margin-top: -8px;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+  background: #fff7d2;
+}
+
+.rs-ranking-daily-card__top {
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 97px;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: #ffd95e;
+}
+
+.rs-ranking-me-block,
+.rs-ranking-goal-block {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.rs-ranking-me-block__cookie {
+  width: 38px;
+  height: 38px;
+}
+
+.rs-ranking-goal-block img {
+  width: 35px;
+  height: 32px;
+}
+
+.rs-ranking-me-block b,
+.rs-ranking-goal-block b {
+  display: block;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.rs-ranking-me-block small,
+.rs-ranking-goal-block small {
+  display: block;
+  margin-top: 2px;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.rs-ranking-daily-card__top > button {
+  height: 42px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff7d2;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.rs-ranking-live {
+  min-height: 27px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  background: #fffaf0;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rs-ranking-live span,
+.rs-ranking-live img {
+  width: 38px;
+  height: 19px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.rs-ranking-benefit-card--daily {
+  min-height: 100px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 213px 1fr;
+  overflow: visible;
+  background: #fff7d2;
+}
+
+.rs-ranking-benefit-card--daily .rs-ranking-benefits {
+  width: 199px;
+  height: 88px;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 14px;
+  padding: 10px 6px 8px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.rs-ranking-benefit-card--daily .rs-ranking-benefits article {
+  min-height: 68px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 3px;
+  border-right: 1px solid #eee2d0;
+  text-align: center;
+}
+
+.rs-ranking-benefit-card--daily .rs-ranking-benefits article:last-child {
+  border-right: 0;
+}
+
+.rs-ranking-benefit-card--daily .rs-ranking-benefits article > img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.rs-ranking-benefit-card--daily .rs-ranking-benefits strong {
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rs-ranking-cookie-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #3d2000;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rs-ranking-cookie-count img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.rs-ranking-benefit-card__bg {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  width: 134px;
+  height: 96px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.rs-ranking-benefit-card__bg img {
+  width: 234px;
+  height: 95px;
+  max-width: none;
+  transform: translateX(-112px);
+}
+
+.rs-ranking-benefit-card__art {
+  position: absolute;
+  right: 54px;
+  bottom: 0;
+  width: 68px;
+  height: 83px;
+  z-index: 1;
+}
+
+.rs-ranking-benefit-card__art img {
+  width: 68px;
+  height: 83px;
+  object-fit: contain;
+}
+
+.rs-ranking-timer {
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 14px;
+  background: #fff7d2;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.rs-ranking-timer img {
+  width: 13px;
+  height: 13px;
+}
+
+.rs-ranking-timer strong {
+  color: #ff3b30;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-daily-rank-table {
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+}
+
+.rs-daily-rank-table__head {
+  height: 32px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 80px;
+  align-items: center;
+  padding: 0 12px;
+  background: #ffd95e;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-daily-rank-table__body {
+  display: grid;
+}
+
+.rs-daily-rank-row {
+  height: 40px;
+  display: grid;
+  grid-template-columns: 54px 31px minmax(0, 1fr) 80px;
+  align-items: center;
+  column-gap: 6px;
+  padding: 0 12px 0 10px;
+  border-top: 1px solid #eee8dd;
+  background: #fff;
+  color: #3d2000;
+}
+
+.rs-daily-rank-row.is-me {
+  background: #ffd95e;
+}
+
+.rs-daily-rank-row__rank {
+  display: grid;
+  place-items: center;
+  color: #3d2000;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rs-daily-rank-row__medal {
+  width: 27px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.rs-ranking-profile {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+}
+
+.rs-daily-rank-row__name {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rs-daily-rank-row__score {
+  justify-self: end;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.rs-ranking-separator {
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-top: 1px solid #eee8dd;
+  background: #fff;
+  letter-spacing: 0;
+}
+
+.rs-ranking-separator img {
+  width: 18px;
+  height: 4px;
+}
+
+.ranking-daily-screen .rs-lucky-card {
+  min-height: 76px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 5px;
+  align-items: center;
+  padding: 10px 14px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #d9c4ff;
+}
+
+.ranking-daily-screen .rs-daily-rank-table + .rs-lucky-card {
+  margin-top: -2px;
+}
+
+.ranking-daily-screen .rs-lucky-card__icon,
+.ranking-daily-screen .rs-lucky-card__icon img {
+  width: 38px;
+  height: 59px;
+}
+
+.ranking-daily-screen .rs-lucky-card strong {
+  display: block;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ranking-daily-screen .rs-lucky-card b {
+  display: block;
+  margin-top: 6px;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ranking-daily-screen .rs-lucky-card p {
+  margin-top: 3px;
+  color: #6e5b9e;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.rs-lucky-card__range {
+  position: absolute;
+  right: 18px;
+  bottom: 6px;
+  width: 141px;
+  height: 49px;
+}
+
+.rs-lucky-card__range img {
+  width: 141px;
+  height: 49px;
+}
+
+.rs-daily-rank-table--tail {
+  margin-top: -8px;
+  border-radius: 0;
+}
+
+.ranking-season-screen .screen-content {
+  gap: 0;
+}
+
+.rs-season-reward-card {
+  min-height: 174px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+  background: #fff5c8;
+}
+
+.rs-season-reward-card header {
+  height: 34px;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  background: #fff5c8;
+  color: #3d2000;
+}
+
+.rs-season-reward-card header b {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ffd95e;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-season-reward-card header span {
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.rs-season-reward-card header button {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  border: 0;
+  border-radius: 50%;
+  background: #3d2000;
+  color: #fff5c8;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rs-season-reward-card__body {
+  min-height: 100px;
+  position: relative;
+  padding: 8px 0 0 16px;
+}
+
+.rs-season-rewards {
+  width: 205px;
+  height: 92px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.rs-season-rewards article {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  border-right: 1px solid #eee2d0;
+  color: #3d2000;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rs-season-rewards article:last-child {
+  border-right: 0;
+}
+
+.rs-season-rewards article > img {
+  width: 27px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.rs-season-reward-card__cookie {
+  position: absolute;
+  right: 9px;
+  top: 17px;
+  width: 121px;
+  height: 120px;
+}
+
+.rs-season-reward-card__cookie img {
+  width: 121px;
+  height: 120px;
+}
+
+.rs-season-reward-card footer {
+  height: 40px;
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  align-items: center;
+  gap: 5px;
+  padding: 0 118px 0 14px;
+  color: #3d2000;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-season-reward-card footer img {
+  width: 13px;
+  height: 13px;
+}
+
+.rs-season-reward-card footer div {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 7px;
+  row-gap: 0;
+}
+
+.rs-season-reward-card footer span,
+.rs-season-reward-card footer strong {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.rs-season-reward-card footer strong {
+  color: #ff3b30;
+}
+
+.rs-season-reward-card footer small {
+  flex: 0 0 100%;
+  color: #3d2000;
+  font-size: 7.5px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.rs-season-podium {
+  height: 178px;
+  display: grid;
+  grid-template-columns: 1fr 1.04fr 1fr;
+  align-items: end;
+  gap: 4px;
+  padding: 20px 0 0;
+}
+
+.rs-season-podium article {
+  min-height: 128px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  border-radius: 8px;
+  background: #fff6d5;
+  color: #3d2000;
+  text-align: center;
+}
+
+.rs-season-podium article.is-first {
+  min-height: 154px;
+  background: #ffd95e;
+}
+
+.rs-season-podium article > strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rs-season-podium article > span {
+  max-width: 92px;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rs-season-podium article > b {
+  min-width: 76px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-season-podium article > b img {
+  width: 10px;
+  height: 10px;
+}
+
+.rs-season-crown {
+  width: 27px;
+  height: 22px;
+  margin-bottom: -4px;
+}
+
+.rs-season-podium .rs-ranking-profile {
+  width: 42px;
+  height: 42px;
+}
+
+.rs-season-table {
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+}
+
+.rs-season-table__body {
+  display: grid;
+}
+
+.rs-season-rank-row {
+  height: 40px;
+  display: grid;
+  grid-template-columns: 45px 27px minmax(0, 1fr) 85px;
+  align-items: center;
+  column-gap: 7px;
+  padding: 0 14px;
+  border-top: 1px solid #eee8dd;
+  color: #3d2000;
+  background: #fff;
+}
+
+.rs-season-rank-row.is-me {
+  background: #ffd95e;
+}
+
+.rs-season-rank-row > strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.rs-season-rank-row > span {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rs-season-rank-row > b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.rs-season-rank-row > b img {
+  width: 10px;
+  height: 10px;
+}
+
+.rs-yesterday-screen {
+  position: relative;
+  overflow: hidden;
+  background: #f6d08d;
+  cursor: pointer;
+}
+
+.rs-yesterday-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 245, 216, 0.22), rgba(120, 60, 8, 0.18)),
+    url("../assets/figma-exported/named/bg-ranking-podium.png") center / cover no-repeat;
+}
+
+.rs-yesterday-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding-top: 135px;
+  text-align: center;
+}
+
+.rs-yesterday-content h1 {
+  margin: 0;
+  color: #3d2000;
+  font-family: var(--font-display);
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.22;
+}
+
+.rs-yesterday-cards {
+  width: 244px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.rs-yesterday-cards article {
+  position: relative;
+  height: 146px;
+  min-height: 146px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  border-radius: 8px;
+  color: #3d2000;
+  overflow: visible;
+}
+
+.rs-yesterday-cards .is-first {
+  background: #ffd95e;
+}
+
+.rs-yesterday-cards .is-lucky {
+  background: #c9ffc0;
+}
+
+.rs-yesterday-cards article > img:first-child {
+  width: 27px;
+  height: 22px;
+}
+
+.rs-yesterday-cards strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rs-yesterday-cards article > img:nth-of-type(2) {
+  width: 42px;
+  height: 42px;
+}
+
+.rs-yesterday-cards span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rs-yesterday-cards article > b {
+  min-width: 78px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rs-yesterday-cards b img {
+  width: 10px;
+  height: 10px;
+}
+
+.rs-yesterday-cards .rs-ranking-cookie-count {
+  position: absolute;
+  left: 50%;
+  top: 160px;
+  transform: translateX(-50%);
+  margin-top: 0;
+  gap: 8px;
+  font-size: 21px;
+}
+
+.rs-yesterday-cards .rs-ranking-cookie-count b {
+  min-width: 0;
+  height: auto;
+  display: inline;
+  border-radius: 0;
+  background: transparent;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.rs-yesterday-cards .rs-ranking-cookie-count img {
+  width: 26px;
+  height: 26px;
+}
+
+.rs-yesterday-cookie {
+  width: 206px;
+  height: 204px;
+  margin-top: 56px;
+  object-fit: contain;
+}
+
+.ranking-season-reward-layer {
+  background: rgba(29, 24, 13, 0.58);
+}
+
+.modal.ranking-season-reward-modal {
+  width: 330px;
+  height: 381px;
+  min-height: 0;
+  display: block;
+  box-sizing: border-box;
+  padding: 38px 44px 14px;
+  border-radius: 22px;
+  background: #fff5cd;
+  color: #3d2000;
+  box-shadow: none;
+}
+
+.modal.ranking-season-reward-modal .ranking-season-reward-modal__close {
+  top: 18px;
+  right: 22px;
+  width: 22px;
+  height: 22px;
+  color: #3d2000;
+  font-size: 36px;
+  line-height: 20px;
+  transform: scale(0.74);
+}
+
+.modal.ranking-season-reward-modal h2 {
+  margin: 0 0 20px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.ranking-season-reward-modal__table {
+  overflow: hidden;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.ranking-season-reward-modal__row {
+  height: 38px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #e9dfcc;
+}
+
+.ranking-season-reward-modal__row:last-child {
+  border-bottom: 0;
+}
+
+.ranking-season-reward-modal__row span,
+.ranking-season-reward-modal__row strong {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  border-right: 1px solid #e9dfcc;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ranking-season-reward-modal__row span:last-child,
+.ranking-season-reward-modal__row strong:last-child {
+  border-right: 0;
+}
+
+.ranking-season-reward-modal__row.is-head {
+  height: 38px;
+  background: #f6bf4d;
+}
+
+.modal.ranking-season-reward-modal p {
+  margin: 8px 0 0;
+  color: #9d8e7a;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Ranking precision pass: no bottom scallop, tighter Figma spacing. */
+.phone-frame.has-scallop-frame:has(.ranking-daily-screen)::after,
+.phone-frame.has-scallop-frame:has(.ranking-season-screen)::after,
+.phone-frame.has-scallop-frame:has(.rs-yesterday-screen)::after {
+  display: none !important;
+  content: none !important;
+}
+
+.phone-frame.no-scallop-frame::after {
+  display: none !important;
+  content: none !important;
+}
+
+.ranking-daily-screen.has-scallop::after,
+.ranking-season-screen.has-scallop::after,
+.rs-yesterday-screen.has-scallop::after,
+.rs-yesterday-screen::after,
+.ranking-daily-screen::after,
+.ranking-season-screen::after {
+  display: none !important;
+  content: none !important;
+}
+
+.ranking-daily-screen .bottom-nav {
+  height: 76px;
+  padding: 8px 18px 11px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  background: #ffd95e;
+}
+
+.ranking-season-screen .bottom-nav {
+  height: 76px;
+  padding: 8px 18px 11px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  background: #ffd95e;
+}
+
+.ranking-daily-screen .bottom-nav::after,
+.ranking-season-screen .bottom-nav::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #111;
+}
+
+.ranking-daily-screen .nav-item,
+.ranking-season-screen .nav-item {
+  gap: 1px;
+  color: rgba(93, 51, 0, 0.4);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.ranking-daily-screen .nav-item.is-active,
+.ranking-season-screen .nav-item.is-active {
+  color: #3d2000;
+}
+
+.ranking-daily-screen .nav-item__icon,
+.ranking-season-screen .nav-item__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.ranking-daily-screen .screen-content {
+  padding-bottom: 96px;
+}
+
+.ranking-season-screen .screen-content {
+  padding-bottom: 96px;
+}
+
+.ranking-daily-screen .app-title,
+.ranking-season-screen .app-title {
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rs-ranking-daily-card__top {
+  min-height: 56px;
+  padding: 6px 12px;
+}
+
+.rs-ranking-live {
+  min-height: 40px;
+  align-items: start;
+  padding-top: 9px;
+  font-weight: 700;
+}
+
+.rs-ranking-me-block b,
+.rs-ranking-goal-block b,
+.rs-ranking-daily-card__top > button,
+.rs-ranking-benefit-card--daily .rs-ranking-benefits strong,
+.rs-ranking-cookie-count,
+.rs-ranking-timer,
+.rs-ranking-timer strong,
+.rs-daily-rank-table__head,
+.rs-daily-rank-row__rank,
+.rs-daily-rank-row__name,
+.rs-daily-rank-row__score,
+.ranking-daily-screen .rs-lucky-card strong,
+.ranking-daily-screen .rs-lucky-card p,
+.rs-season-reward-card header b,
+.rs-season-reward-card header span,
+.rs-season-reward-card header button,
+.rs-season-rewards article,
+.rs-season-reward-card footer,
+.rs-season-reward-card footer span,
+.rs-season-reward-card footer strong,
+.rs-season-reward-card footer small,
+.rs-season-podium article > strong,
+.rs-season-podium article > span,
+.rs-season-podium article > b,
+.rs-season-rank-row > strong,
+.rs-season-rank-row > span,
+.rs-season-rank-row > b {
+  font-weight: 700;
+}

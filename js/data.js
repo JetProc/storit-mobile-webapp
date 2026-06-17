@@ -202,7 +202,7 @@
     user: {
       name: "감자도리",
       level: 8,
-      progress: 67,
+      progress: 42,
       cookie: 80,
       score: 822,
       rank: 33,

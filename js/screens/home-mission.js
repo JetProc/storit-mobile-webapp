@@ -4,7 +4,7 @@
   const assetBase = "./assets/figma-exported/named/";
 
   function loadHomeMissionStyles() {
-    const href = "./css/home-mission.css?v=oven-font-20260616a";
+    const href = "./css/home-mission.css?v=goal-fidelity-20260617b";
     if (!document.querySelector || !document.createElement || !document.head) return;
     if (document.querySelector('link[href^="./css/home-mission.css"]')) return;
 
@@ -254,7 +254,7 @@
           <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
           <img class="hm-mission-exp-modal__cookie" src="${assetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
           <div class="hm-mission-exp-modal__message">
-            <h2>경험치를 획득하셨습니다!</h2>
+            <h2>경험치를 획득하셨습니다!!!</h2>
             <p data-exp-amount>+ 30 EXP</p>
           </div>
         </section>
@@ -449,11 +449,11 @@
 
   function mission(state = "progress") {
     const allDone = state === "allDone";
-    const complete = state === "complete";
+    const complete = state === "complete" || allDone;
     const content = `
       ${recipeHero()}
       ${missionTimer()}
-      ${ingredientTrack(allDone || complete)}
+      ${ingredientTrack(complete)}
       ${complete ? missionCompleteCard() : missionList(allDone)}
     `;
 
@@ -599,8 +599,10 @@
       className: "hm-screen hm-attendance-screen",
       content: `
         ${missionTimer("오늘의 출석체크 종료까지")}
-        ${attendanceHero()}
-        ${attendanceCalendar(extra)}
+        <section class="hm-attendance-panel" aria-label="출석 현황">
+          ${attendanceHero()}
+          ${attendanceCalendar(extra)}
+        </section>
         <div class="fixed-bottom-action hm-attendance-action">
           ${C.button("출석하기", { action: "complete-attendance", variant: extra ? "outline" : "", disabled: extra })}
         </div>
