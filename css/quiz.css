@@ -4200,6 +4200,73 @@
   padding: 8px 10px;
 }
 
+/* My quiz/create final pass: keep floating CTA inside the 375px app frame and align create form to Figma top offsets. */
+.my-quiz-screen {
+  position: relative;
+}
+
+.quiz-create-screen,
+.quiz-status-screen,
+.quiz-submit-screen {
+  position: relative;
+}
+
+.my-quiz-screen .quiz-floating-add {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  left: auto;
+}
+
+.quiz-create-screen .app-header {
+  margin-top: 0;
+}
+
+.quiz-create-screen .screen-content {
+  gap: 14px;
+  min-height: calc(100dvh - 71px);
+  padding: 1px 20px 28px;
+}
+
+.quiz-create-screen .quiz-review-note {
+  margin-top: -6px;
+  transform: none;
+}
+
+.quiz-create-screen .quiz-register-button {
+  margin-top: -2px;
+  transform: none;
+}
+
+.quiz-create-screen .quiz-search-overlay {
+  position: absolute;
+  top: -71px;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+}
+
+.quiz-create-screen .quiz-search-sheet {
+  position: absolute;
+  right: auto;
+  bottom: -19px;
+  left: 0;
+  width: 100%;
+  transform: none;
+}
+
+.quiz-status-screen .app-header,
+.quiz-submit-screen .app-header {
+  margin-top: 0;
+}
+
+.quiz-status-screen .fixed-bottom-action {
+  position: absolute;
+  bottom: 24px;
+}
+
 /* Quiz result good/low final sync: header, speech, support cards, CTA. */
 .quiz-result-screen .app-header {
   height: 58px;
