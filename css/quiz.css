@@ -4462,6 +4462,237 @@
   color: #322814;
 }
 
+/* Quiz result component card sync. */
+.quiz-result-screen .quiz-speech-bubble {
+  left: 22px;
+  top: 36px;
+  width: 139px;
+  height: 112px;
+  z-index: 5;
+}
+
+.quiz-result-screen .quiz-speech-bubble p {
+  padding: 22px 15px 0 18px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+}
+
+.quiz-result-screen .quiz-speech-bubble strong,
+.quiz-result-screen .quiz-speech-bubble span,
+.quiz-result-screen .quiz-speech-bubble em {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+}
+
+.quiz-result-screen .quiz-speech-bubble em {
+  color: #ef9f27;
+}
+
+.quiz-result-screen.is-good .quiz-result-character__image {
+  width: 154px;
+  max-height: 154px;
+}
+
+.quiz-result-screen .quiz-result-card {
+  width: 340px;
+  min-height: 107px;
+  box-sizing: border-box;
+  padding: 15px 24px;
+  border-radius: 6px;
+  background: #fef4d2;
+}
+
+.quiz-result-screen .quiz-card-label,
+.quiz-result-screen .quiz-cheer-card .quiz-card-label,
+.quiz-result-screen .quiz-result-card:not(.quiz-cheer-card):not(.quiz-mission-card) .quiz-card-label,
+.quiz-result-screen .quiz-mission-card .quiz-card-label {
+  color: #8b7757;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: -0.1px;
+}
+
+.quiz-result-screen .quiz-cheer-card .quiz-card-label {
+  color: #322814;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.quiz-result-screen .quiz-cheer-card > div:first-child strong,
+.quiz-result-screen .quiz-result-card:not(.quiz-cheer-card):not(.quiz-mission-card) p,
+.quiz-result-screen .quiz-mission-card strong {
+  color: #322814;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: -0.12px;
+}
+
+.quiz-result-screen .quiz-cheer-card > div:first-child strong {
+  color: #8b7757;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.quiz-result-screen .quiz-cheer-card {
+  height: 115px;
+  min-height: 115px;
+  position: relative;
+  padding: 18px 24px 13px;
+}
+
+.quiz-result-screen .quiz-cheer-card__body {
+  display: block;
+  margin-top: 8px;
+}
+
+.quiz-result-screen .quiz-cheer-card__asset {
+  position: absolute;
+  right: 18px;
+  bottom: 6px;
+  width: 94px;
+  height: 99px;
+  object-fit: contain;
+  transform: none;
+}
+
+.quiz-result-screen .quiz-write-field {
+  width: 206px;
+  height: 37px;
+  grid-template-columns: minmax(0, 1fr) 43px;
+}
+
+.quiz-result-screen .quiz-write-field::before {
+  inset: 0;
+}
+
+.quiz-result-screen .quiz-write-field input {
+  padding: 0 8px 0 14px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.quiz-result-screen .quiz-write-field button {
+  width: 42px;
+  height: 25px;
+  margin: 0 4px 0 0;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.quiz-result-screen .quiz-rating-card {
+  height: 107px;
+  min-height: 107px;
+  padding: 18px 24px 16px;
+}
+
+.quiz-result-screen .quiz-rating-card p {
+  margin-top: 1px;
+}
+
+.quiz-result-screen .quiz-rating-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quiz-result-screen .quiz-rating-row button {
+  height: 37px;
+  min-height: 37px;
+  border-radius: 4px;
+  background: #fff;
+  color: #3d2000;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+}
+
+.quiz-result-screen .quiz-rating-row button.is-selected {
+  background: #ffd95e;
+}
+
+.quiz-result-screen .quiz-rating-row button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: none;
+}
+
+.quiz-result-screen .quiz-mission-card {
+  height: 107px;
+  min-height: 107px;
+  grid-template-columns: minmax(0, 1fr) 116px;
+  align-items: center;
+  padding: 15px 24px;
+}
+
+.quiz-result-screen .quiz-mission-card__button {
+  width: 112px;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 9px;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients {
+  width: 116px;
+  height: 82px;
+  min-height: 82px;
+  position: relative;
+  display: block;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  object-fit: contain;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img:nth-child(1) {
+  left: 30px;
+  top: 0;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img:nth-child(2) {
+  right: 8px;
+  top: 0;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img:nth-child(3) {
+  left: 4px;
+  top: 35px;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img:nth-child(4) {
+  left: 45px;
+  top: 43px;
+}
+
+.quiz-result-screen .quiz-mission-card__ingredients img:nth-child(5) {
+  right: 1px;
+  top: 38px;
+}
+
 /* Figma MCP sync: my quiz flow (1473:56176). */
 .my-quiz-screen .screen-content {
   gap: 14px;
@@ -4803,7 +5034,7 @@
   padding: 25px 24px 15px 30px;
   border: 0;
   border-radius: 8px;
-  background: url("../assets/figma-exported/named/bg-myquiz-hero-final.svg") center / 100% 100% no-repeat;
+  background: url("../assets/figma-exported/named/bg-myquiz-hero-image-582.svg") center / 100% 100% no-repeat;
   color: #fff;
 }
 
@@ -5058,11 +5289,76 @@
 }
 
 .quiz-create-screen .quiz-search-result {
+  box-sizing: border-box;
+  width: calc(100% - 42px);
+  height: 78px;
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin: 0 21px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 10px;
   background: transparent;
+  appearance: none;
+  font: inherit;
+  text-align: left;
 }
 
 .quiz-create-screen .quiz-search-result.is-selected {
   background: #fff4cf;
+}
+
+.quiz-create-screen .quiz-search-result__thumb,
+.quiz-create-screen .quiz-search-result__thumb img {
+  width: 62px;
+  min-width: 62px;
+  height: 59px;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.quiz-create-screen .quiz-search-result > span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.quiz-create-screen .quiz-search-result strong {
+  display: block;
+  color: #191f28;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.quiz-create-screen .quiz-search-result em {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+  color: #3d2000;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+}
+
+.quiz-create-screen .quiz-search-result i {
+  width: 42px;
+  min-width: 42px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #fff8dd;
+  font-style: normal;
 }
 
 /* My quiz hero SVG already contains title/cookie artwork; keep only click hit area. */

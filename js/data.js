@@ -55,6 +55,7 @@
       question: assetPath + "icon-quiz-question.svg",
       quizQuestion: assetPath + "icon-quiz-question.svg",
       settingsCookie: assetPath + "icon-settings-gear-cookie.png",
+      logoutFigma: assetPath + "icon-logout-figma.svg",
       cookieExp: assetPath + "icon-cookie-exp.png",
       resultCorrect: assetPath + "icon-quiz-result-correct.svg",
       resultTime: assetPath + "icon-quiz-result-time.svg",

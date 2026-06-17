@@ -592,8 +592,8 @@
   overflow: hidden;
   padding: 0;
   background:
-    linear-gradient(90deg, rgba(255, 243, 202, 0.96), rgba(255, 236, 171, 0.78)),
-    url("../assets/figma-exported/named/shop-hero-bg-figma.png") center right / cover no-repeat;
+    linear-gradient(90deg, rgba(255, 244, 210, 0.76), rgba(255, 244, 210, 0.58)),
+    url("../assets/figma-exported/named/shop-hero-bg-figma.png") center / cover no-repeat;
   border-color: #f3dcae;
   border-radius: 10px;
   box-shadow: none;
@@ -606,15 +606,15 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  padding: 14px 13px 11px 22px;
+  padding: 13px 11px 8px 23px;
 }
 
 .rs-shop-hero__main > div:first-child {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 4px;
-  align-content: center;
+  gap: 2px;
+  align-content: start;
   max-width: 205px;
   min-width: 0;
 }
@@ -624,42 +624,48 @@
   min-height: 20px;
   padding: 0 10px;
   border: 0;
+  border-radius: 10px;
   background: #ffd95e;
   color: #3d2000;
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 .shop-screen .rs-shop-hero h2 {
   color: var(--rs-ink);
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 20px;
   letter-spacing: -0.01em;
+  margin-top: 6px;
 }
 
 .shop-screen .rs-shop-hero p {
   color: var(--rs-ink);
   font-size: 10px;
   font-weight: 700;
-  line-height: 1.32;
+  line-height: 14px;
+  margin-top: 5px;
+  white-space: nowrap;
 }
 
 .rs-shop-hero__art {
   position: absolute;
-  right: 14px;
-  bottom: 10px;
+  right: -6px;
+  bottom: -13px;
   z-index: 1;
-  width: 96px;
-  height: 86px;
+  width: 142px;
+  height: 118px;
   display: grid;
-  place-items: end center;
+  place-items: center;
 }
 
 .rs-shop-hero__art img {
-  width: 102px;
+  width: 100%;
   max-width: none;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   transform: none;
 }
 
@@ -4803,8 +4809,51 @@
 
 .shop-screen .rs-category-tabs {
   width: 335px;
+  height: 55px;
   grid-template-columns: repeat(6, 55px);
   gap: 0;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.shop-screen .rs-category-tab {
+  min-height: 55px;
+  padding: 5px 0 4px;
+  gap: 2px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.shop-screen .rs-category-tab.is-active {
+  background: #fef4d2;
+}
+
+.shop-screen .rs-category-tab span {
+  width: 26px;
+  height: 26px;
+}
+
+.shop-screen .rs-category-tab span .icon-symbol,
+.shop-screen .rs-category-tab span img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.shop-screen .rs-category-tab:not(.is-active) span img {
+  opacity: 0.82;
+}
+
+.shop-screen .rs-category-tab strong {
+  color: #3d2000;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  line-height: 10px;
+  letter-spacing: -0.07px;
 }
 
 .shop-screen .rs-shop-recommend-section,
@@ -4874,11 +4923,19 @@
   box-shadow: none;
 }
 
+.shop-screen .rs-shop-recommend-card.is-google-play {
+  padding: 15px 6px 8px;
+}
+
 .shop-screen .rs-shop-recommend-card__image {
   width: 46px;
   height: 47px;
-  margin: 0 auto 2px;
+  margin: 0 auto 3px;
   object-fit: contain;
+}
+
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__image {
+  margin-bottom: 4px;
 }
 
 .shop-screen .rs-shop-recommend-card small {
@@ -4899,6 +4956,30 @@
   text-align: center;
 }
 
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__title {
+  min-height: 20px;
+  display: block;
+  color: #1c1c1c;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 10px;
+  letter-spacing: -0.08px;
+  text-align: center;
+}
+
+.shop-screen .rs-shop-recommend-card.is-google-play .rs-shop-recommend-card__value {
+  display: block;
+  margin-top: 1px;
+  color: #1c1c1c;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: -0.15px;
+  text-align: center;
+}
+
 .shop-screen .rs-shop-recommend-card > span,
 .shop-screen .rs-shop-grid-card > span {
   width: 49px;
@@ -4913,6 +4994,31 @@
   font-size: 10px;
   font-weight: 700;
   line-height: 14px;
+}
+
+.shop-screen .rs-shop-recommend-card.is-google-play > span {
+  margin-top: 2px;
+}
+
+.shop-screen .rs-shop-next-button {
+  top: 53px;
+  right: -8px;
+  width: 18px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.shop-screen .rs-shop-next-button__icon {
+  width: 18px;
+  height: 25px;
+  display: block;
+  object-fit: contain;
 }
 
 .shop-screen .rs-shop-recommend-card__cookie,

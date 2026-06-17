@@ -1,5 +1,6 @@
 (function () {
   const termStorageKey = "storit.acceptedTerms";
+  const assetBase = "./assets/figma-exported/named/";
 
   function readAcceptedTerms() {
     try {
@@ -252,6 +253,100 @@
     const image = screen.querySelector(".auth-userinfo-cookie");
     if (image) image.src = `./assets/figma-exported/named/${selected}`;
     modal.hidden = true;
+  }
+
+  function updateAccountProfileFeedback(sheet, showEmpty = false) {
+    const input = sheet?.querySelector("[data-account-profile-name]");
+    const feedback = sheet?.querySelector("[data-account-profile-feedback]");
+    if (!input || !feedback) return false;
+    const value = input.value.trim();
+    feedback.textContent = "";
+    feedback.classList.remove("is-error", "is-success");
+    input.classList.remove("is-error", "is-success");
+
+    if (!value) {
+      if (showEmpty) {
+        feedback.textContent = "닉네임을 입력해주세요.";
+        feedback.classList.add("is-error");
+        input.classList.add("is-error");
+      }
+      return false;
+    }
+
+    if (value.length < 2 || value.length > 10) {
+      feedback.textContent = "2-10자만 가능해요";
+      feedback.classList.add("is-error");
+      input.classList.add("is-error");
+      return false;
+    }
+
+    if (value === "닉네임") {
+      feedback.textContent = "이미 사용 중인 닉네임이에요.";
+      feedback.classList.add("is-error");
+      input.classList.add("is-error");
+      return false;
+    }
+
+    feedback.textContent = "사용 가능한 닉네임이에요";
+    feedback.classList.add("is-success");
+    input.classList.add("is-success");
+    return true;
+  }
+
+  function selectAccountProfileCookie(target) {
+    const sheet = target.closest(".account-profile-edit-sheet");
+    if (!sheet) return;
+    sheet.querySelectorAll(".account-profile-cookie-option").forEach((option) => option.classList.remove("is-selected"));
+    target.classList.add("is-selected");
+    const preview = sheet.querySelector(".account-profile-edit-preview img");
+    if (preview && target.dataset.profileCookie) {
+      preview.src = `${assetBase}${target.dataset.profileCookie}`;
+    }
+  }
+
+  function confirmAccountProfile(target) {
+    const sheet = target.closest(".account-profile-edit-sheet");
+    if (!sheet || !updateAccountProfileFeedback(sheet, true)) return;
+    const selected = sheet.querySelector(".account-profile-cookie-option.is-selected")?.dataset.profileCookie || "profile-cookie-01.svg";
+    const name = sheet.querySelector("[data-account-profile-name]")?.value.trim() || "감자도리";
+    const app = document.getElementById("app");
+    const avatar = app?.querySelector(".account-final-profile__avatar img");
+    const title = app?.querySelector(".account-final-profile__name h2");
+    if (avatar) avatar.src = `${assetBase}${selected}`;
+    if (title) title.textContent = name;
+    try {
+      window.sessionStorage.setItem("storit.mypageProfileCookie", selected);
+      window.sessionStorage.setItem("storit.mypageNickname", name);
+    } catch (error) {
+      // Static publishing demo state only.
+    }
+    window.StoritModals?.close();
+  }
+
+  function selectAccountGenre(target) {
+    const sheet = target.closest(".account-genre-edit-sheet");
+    if (!sheet) return;
+    const selected = Array.from(sheet.querySelectorAll(".account-genre-chip.is-selected"));
+    if (!target.classList.contains("is-selected") && selected.length >= 3) return;
+    target.classList.toggle("is-selected");
+  }
+
+  function confirmAccountGenre(target) {
+    const sheet = target.closest(".account-genre-edit-sheet");
+    const selected = Array.from(sheet?.querySelectorAll(".account-genre-chip.is-selected") || []).map((chip) => chip.dataset.genre);
+    const value = selected.length ? selected.join(", ") : "공포, 스릴러";
+    const label = document.querySelector(".account-final-pref-grid section:nth-child(2) strong");
+    if (label) label.textContent = value;
+    window.StoritModals?.close();
+  }
+
+  function confirmAccountLife(target) {
+    const sheet = target.closest(".account-life-edit-sheet");
+    const input = sheet?.querySelector("[data-account-life-input]");
+    const value = input?.value.trim() || "기자매";
+    const label = document.querySelector(".account-final-pref-grid section:first-child strong");
+    if (label) label.textContent = value;
+    window.StoritModals?.close();
   }
 
   function openNotificationPermission(form) {
@@ -579,6 +674,11 @@
     if (action === "close-profile-picker") closeProfilePicker(actionTarget);
     if (action === "select-profile-cookie") selectProfileCookie(actionTarget);
     if (action === "confirm-profile-cookie") confirmProfileCookie(actionTarget);
+    if (action === "select-account-profile-cookie") selectAccountProfileCookie(actionTarget);
+    if (action === "confirm-account-profile") confirmAccountProfile(actionTarget);
+    if (action === "select-account-genre") selectAccountGenre(actionTarget);
+    if (action === "confirm-account-genre") confirmAccountGenre(actionTarget);
+    if (action === "confirm-account-life") confirmAccountLife(actionTarget);
     if (action === "close-notification-permission") closeNotificationPermission(actionTarget);
     if (action === "complete-notification-permission") completeNotificationPermission();
     if (action === "open-heart-charge") openHeartCharge(actionTarget);
@@ -595,6 +695,8 @@
   document.addEventListener("input", (event) => {
     const form = event.target.closest("[data-auth-userinfo-form]");
     if (form) updateUserInfoState(form);
+    const accountSheet = event.target.closest(".account-profile-edit-sheet");
+    if (accountSheet && event.target.matches("[data-account-profile-name]")) updateAccountProfileFeedback(accountSheet, false);
   });
 
   document.addEventListener("change", (event) => {

@@ -1,7 +1,7 @@
 (function () {
   const D = window.StoritData;
   const C = window.StoritComponents;
-  const quizCssHref = "./css/quiz.css?v=quiz-create-search-20260617a";
+  const quizCssHref = "./css/quiz.css?v=quiz-result-cards-20260617a";
   const namedAssetBase = "./assets/figma-exported/named/";
 
   const quizQuestion = {
@@ -288,7 +288,7 @@
         </div>
       </section>
 
-      <section class="quiz-result-card">
+      <section class="quiz-result-card quiz-rating-card">
         <span class="quiz-card-label">무게대왕님의 퀴즈를 평가해주세요</span>
         <p>Q. ${C.escape(quizQuestion.title)}</p>
         <div class="quiz-rating-row">

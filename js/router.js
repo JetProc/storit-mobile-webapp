@@ -30,7 +30,8 @@
       renderedScreen?.classList.contains("my-quiz-screen") ||
       renderedScreen?.classList.contains("quiz-create-screen") ||
       renderedScreen?.classList.contains("quiz-status-screen") ||
-      renderedScreen?.classList.contains("quiz-submit-screen");
+      renderedScreen?.classList.contains("quiz-submit-screen") ||
+      renderedScreen?.classList.contains("account-withdraw-screen");
     app.classList.toggle(
       "has-scallop-frame",
       renderedScreen?.classList.contains("has-scallop") === true && !suppressFrameScallop,

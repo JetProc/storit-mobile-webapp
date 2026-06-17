@@ -34,7 +34,7 @@
 ) {
   box-sizing: border-box;
   position: relative;
-  padding-top: var(--storit-frame-top-band);
+  padding-top: 0;
   background: var(--storit-frame-bg) !important;
 }
 
@@ -51,17 +51,7 @@
   .ranking-shop-screen,
   .account-screen
 )::before {
-  content: "";
-  width: 100%;
-  height: var(--storit-frame-top-curve-height);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  pointer-events: none;
-  border-bottom-left-radius: var(--storit-frame-radius);
-  border-bottom-right-radius: var(--storit-frame-radius);
-  background: var(--color-primary);
+  content: none;
 }
 
 :is(
@@ -77,13 +67,105 @@
   .ranking-shop-screen,
   .account-screen
 ) > .app-header {
-  height: var(--storit-frame-header-height);
+  height: calc(var(--storit-frame-top-band) + var(--storit-frame-header-height));
   position: sticky;
+  top: 0;
   z-index: var(--z-header);
+  isolation: isolate;
+  grid-template-rows: var(--storit-frame-top-band) var(--storit-frame-header-height);
+  align-items: center;
   padding: 0 14px;
+  border-radius: 0;
+  background: transparent;
+}
+
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+) > .app-header::before,
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+) > .app-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+) > .app-header::before {
+  top: 0;
+  bottom: 0;
+  z-index: -2;
+  background: var(--color-primary);
+}
+
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+) > .app-header::after {
+  top: var(--storit-frame-top-band);
+  bottom: 0;
+  z-index: -1;
   border-top-left-radius: var(--storit-frame-radius);
   border-top-right-radius: var(--storit-frame-radius);
   background: var(--storit-frame-bg);
+}
+
+:is(
+  .hm-mission-screen,
+  .hm-attendance-screen,
+  .hm-reward-screen,
+  .quiz-play-screen,
+  .quiz-result-screen,
+  .my-quiz-screen,
+  .quiz-create-screen,
+  .quiz-status-screen,
+  .quiz-submit-screen,
+  .ranking-shop-screen,
+  .account-screen
+) > .app-header > * {
+  grid-row: 2;
 }
 
 :is(
@@ -130,4 +212,12 @@
 .hm-attendance-screen.has-scallop::after {
   content: none;
   display: none;
+}
+
+.hm-attendance-screen .hm-mission-exp-modal {
+  z-index: calc(var(--z-modal) + 100);
+}
+
+.phone-frame.has-scallop-frame:has(.hm-attendance-screen .hm-mission-exp-modal:not([hidden]))::after {
+  filter: brightness(0.42);
 }

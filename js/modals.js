@@ -23,9 +23,9 @@
 
   const modalTemplates = {
     logout: {
-      icon: "logout",
+      icon: "logoutFigma",
       title: "정말 로그아웃 하시겠습니까?",
-      text: "쿠키 관련해서 중요한 정보를 알림으로 받지 못해요.",
+      text: "쿠키 관련해서 중요한 정보를 알림으로 \n받지 못해요 ㅜ.ㅜ",
       buttons: [
         ["머무르기", "orange", "close"],
         ["로그아웃", "soft", "signup"],
@@ -80,6 +80,133 @@
       ],
     },
   };
+
+  const accountProfileCookies = [
+    "profile-cookie-07.svg",
+    "profile-cookie-03.svg",
+    "profile-cookie-04.svg",
+    "profile-cookie-01.svg",
+    "profile-cookie-02.svg",
+    "profile-cookie-05.svg",
+    "profile-cookie-08.svg",
+    "profile-cookie-10.svg",
+    "profile-cookie-06.svg",
+    "profile-cookie-09.svg",
+  ];
+  const accountGenres = [
+    "판타지",
+    "로맨스",
+    "로맨스 판타지",
+    "음악",
+    "무협",
+    "드라마",
+    "학원물",
+    "스릴러",
+    "시대극",
+    "액션",
+    "모험",
+    "공포",
+    "일상물",
+    "스포츠",
+    "개그",
+    "미스터리",
+    "추리",
+    "SF",
+  ];
+
+  function renderAccountSheet(className, label, content) {
+    return `
+      <div class="modal-layer account-sheet-layer" role="presentation">
+        <button class="account-sheet-backdrop" type="button" data-close-modal aria-label="닫기"></button>
+        <section class="account-sheet ${className}" role="dialog" aria-modal="true" aria-label="${C.escape(label)}">
+          <span class="account-sheet__handle" aria-hidden="true"></span>
+          ${content}
+        </section>
+      </div>
+    `;
+  }
+
+  function renderAccountProfileSheet() {
+    const currentName = document.querySelector(".account-final-profile__name h2")?.textContent?.trim() || "감자도리";
+    const currentCookie = document.querySelector(".account-final-profile__avatar img")?.getAttribute("src")?.split("/").pop() || "user-profile-cookie.svg";
+    const normalizedCookie = accountProfileCookies.includes(currentCookie) ? currentCookie : "profile-cookie-01.svg";
+    return renderAccountSheet(
+      "account-profile-edit-sheet",
+      "프로필 수정",
+      `
+        <h2>프로필 수정</h2>
+        <div class="account-profile-edit-preview" aria-label="프로필 미리보기">
+          <img src="${assetBase}${C.escape(normalizedCookie)}" alt="" loading="lazy" />
+        </div>
+        <p class="account-profile-edit-feedback" data-account-profile-feedback></p>
+        <input class="account-profile-edit-input" type="text" value="${C.escape(currentName)}" maxlength="10" aria-label="닉네임" data-account-profile-name />
+        <div class="account-profile-edit-grid">
+          ${accountProfileCookies
+            .map(
+              (file, index) => `
+                <button class="account-profile-cookie-option ${file === normalizedCookie ? "is-selected" : ""}" type="button" data-action="select-account-profile-cookie" data-profile-cookie="${C.escape(file)}" aria-label="프로필 쿠키 ${index + 1}">
+                  <img src="${assetBase}${C.escape(file)}" alt="" loading="lazy" />
+                  <span aria-hidden="true"></span>
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+        <button class="account-sheet-album" type="button">앨범에서 사진 선택</button>
+        <div class="account-sheet-actions">
+          <button class="account-sheet-cancel" type="button" data-close-modal>취소</button>
+          <button class="account-sheet-submit" type="button" data-action="confirm-account-profile">수정하기</button>
+        </div>
+      `,
+    );
+  }
+
+  function renderAccountGenreSheet() {
+    const current = (document.querySelector(".account-final-pref-grid section:nth-child(2) strong")?.textContent || "공포, 스릴러")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean);
+    return renderAccountSheet(
+      "account-genre-edit-sheet",
+      "선호 웹툰 장르",
+      `
+        <div class="account-genre-edit-icon"><img src="${assetBase}icon-mypage-genre-heart.svg" alt="" loading="lazy" /></div>
+        <h2>선호 웹툰 장르 <small>(최대 3개)</small></h2>
+        <div class="account-genre-chip-grid">
+          ${accountGenres
+            .map(
+              (genre) => `
+                <button class="account-genre-chip ${current.includes(genre) ? "is-selected" : ""}" type="button" data-action="select-account-genre" data-genre="${C.escape(genre)}">
+                  ${C.escape(genre)}
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+        <div class="account-sheet-actions">
+          <button class="account-sheet-cancel" type="button" data-close-modal>취소</button>
+          <button class="account-sheet-submit" type="button" data-action="confirm-account-genre">수정하기</button>
+        </div>
+      `,
+    );
+  }
+
+  function renderAccountLifeSheet() {
+    const current = document.querySelector(".account-final-pref-grid section:first-child strong")?.textContent?.trim() || "기자매";
+    return renderAccountSheet(
+      "account-life-edit-sheet",
+      "나의 인생 웹툰",
+      `
+        <div class="account-life-edit-icon"><img src="${assetBase}icon-user-profile-edit.svg" alt="" loading="lazy" /></div>
+        <h2>나의 인생 웹툰</h2>
+        <input class="account-life-edit-input" type="text" value="${C.escape(current)}" aria-label="나의 인생 웹툰" data-account-life-input />
+        <div class="account-sheet-actions">
+          <button class="account-sheet-cancel" type="button" data-close-modal>취소</button>
+          <button class="account-sheet-submit" type="button" data-action="confirm-account-life">수정하기</button>
+        </div>
+      `,
+    );
+  }
 
   function renderButtons(buttons) {
     const rowClass = buttons.length > 1 ? "btn-row" : "";
@@ -260,6 +387,24 @@
       return;
     }
 
+    if (name === "accountProfileEdit") {
+      window.clearTimeout(copyToastTimer);
+      document.getElementById("modal-root").innerHTML = renderAccountProfileSheet();
+      return;
+    }
+
+    if (name === "accountGenreEdit") {
+      window.clearTimeout(copyToastTimer);
+      document.getElementById("modal-root").innerHTML = renderAccountGenreSheet();
+      return;
+    }
+
+    if (name === "accountLifeEdit") {
+      window.clearTimeout(copyToastTimer);
+      document.getElementById("modal-root").innerHTML = renderAccountLifeSheet();
+      return;
+    }
+
     const modal = modalTemplates[name];
     if (!modal) return;
     const table = modal.table
@@ -278,7 +423,7 @@
           <button class="modal-close" data-close-modal aria-label="닫기">×</button>
           <div class="modal-asset">${C.icon(modal.icon)}</div>
           <h2>${C.escape(modal.title)}</h2>
-          ${modal.text ? `<p>${C.escape(modal.text)}</p>` : ""}
+          ${modal.text ? `<p>${C.escape(modal.text).replace(/\n/g, "<br />")}</p>` : ""}
           ${table}
           ${renderButtons(modal.buttons)}
         </section>

@@ -12,7 +12,7 @@
 
     const link = doc.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./css/ranking-shop.css?v=shop-vault-mcp-20260617b";
+    link.href = "./css/ranking-shop.css?v=shop-hero-component-20260617a";
     if (link.setAttribute) {
       link.setAttribute("data-storit-css", "ranking-shop");
     }
@@ -174,18 +174,28 @@
   }
 
   function shopRecommendCard(product, index) {
+    const isGooglePlay = product.image === "googlePlay";
     const priceIcon =
-      product.image === "googlePlay"
+      isGooglePlay
         ? namedAsset("shop-price-cookie.svg", "쿠키", "rs-shop-recommend-card__cookie")
         : C.icon("cookie");
+    const arrowButton =
+      index === 2
+        ? `<button class="rs-shop-next-button" type="button" aria-label="다음 추천상품">${namedAsset("shop-recommend-arrow.svg", "", "rs-shop-next-button__icon")}</button>`
+        : "";
 
     return `
-      <article class="rs-shop-recommend-card" data-route="productDetail">
+      <article class="rs-shop-recommend-card ${isGooglePlay ? "is-google-play" : ""}">
         ${productImage(product, "rs-shop-recommend-card__image")}
-        <small>${escape(product.meta || product.brand)}</small>
-        <strong>${escape(product.name)}</strong>
+        ${
+          isGooglePlay
+            ? `<strong class="rs-shop-recommend-card__title">구글 플레이 기프트 카드</strong>
+               <b class="rs-shop-recommend-card__value">5000원</b>`
+            : `<small>${escape(product.meta || product.brand)}</small>
+               <strong>${escape(product.name)}</strong>`
+        }
         <span>${priceIcon} ${escape(product.price)}</span>
-        ${index === 2 ? `<button class="rs-shop-next-button" type="button" aria-label="다음 추천상품">›</button>` : ""}
+        ${arrowButton}
       </article>
     `;
   }
@@ -522,12 +532,12 @@
       content: `
         <section class="rs-shop-hero">
           <div class="rs-shop-hero__main">
-            <div>
+            <div class="rs-shop-hero__copy">
               <span class="rs-chip is-strong">쿠키 1개 = 100원</span>
               <h2>모은 쿠키로<br />원하는 기프티콘으로!</h2>
               <p>열심히 모은 쿠키로 다양한 상품권을 교환해 보세요!</p>
             </div>
-            <div class="rs-shop-hero__art">${namedAsset("shop-hero-character-figma.svg", "상점 캐릭터")}</div>
+            <div class="rs-shop-hero__art">${namedAsset("character-shop-transparent.png", "상점 캐릭터")}</div>
           </div>
         </section>
 

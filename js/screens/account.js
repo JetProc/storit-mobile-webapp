@@ -17,8 +17,8 @@
   ];
 
   const preferenceCards = [
-    { label: '인생 웹툰', value: '기자매', meta: '최근 수정 3일 전', modal: 'editLife' },
-    { label: '좋아하는 장르', value: '공포, 스릴러', meta: '추천 퀴즈 반영 중', modal: 'editGenre' },
+    { label: '인생 웹툰', value: '기자매', meta: '최근 수정 3일 전', modal: 'accountLifeEdit' },
+    { label: '좋아하는 장르', value: '공포, 스릴러', meta: '추천 퀴즈 반영 중', modal: 'accountGenreEdit' },
   ];
 
   const shortcutCards = [
@@ -109,11 +109,58 @@
       desc: '약관과 고객 지원을 확인해요.',
       rows: [
         { label: '문의하기', desc: '불편한 점을 남겨주세요.', route: 'inquiry' },
-        { label: '이용약관', desc: '서비스 이용 기준', route: 'termService' },
-        { label: '개인정보 처리방침', desc: '수집 및 이용 항목', route: 'termPrivacy' },
+        { label: '이용약관', desc: '서비스 이용 기준', route: 'settingsTermService' },
+        { label: '개인정보 처리방침', desc: '수집 및 이용 항목', route: 'settingsTermPrivacy' },
       ],
     },
   ];
+
+  const settingsLegalDocs = {
+    service: {
+      title: '이용약관',
+      heading: '스토릿(Storit)서비스 이용약관',
+      sections: [
+        [
+          '제1조 (목적)',
+          '본 약관은 프레시밀크(이하 "회사")가 제공하는 스토릿(Storit)(이하 "서비스")의 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.',
+        ],
+        [
+          '제2조 (회원가입 및 이용계약 체결)',
+          '① 이용계약은 가입신청자가 카카오, 네이버, 구글 등의 소셜 계정을 통해 약관에 동의하고 가입을 신청한 후, 회사가 이를 승낙함으로써 체결됩니다.\n② 가입신청자가 만 14세 미만의 아동인 경우, 관련 법령에 따라 법정대리인(부모 등)의 동의를 얻어야 회원가입 및 서비스 이용이 가능합니다. 회사는 법정대리인의 동의가 확인되지 않은 경우 이용계약을 취소하거나 서비스 이용을 제한할 수 있습니다.',
+        ],
+        [
+          '제3조 (리워드 및 포인트 정책)',
+          '① 회원은 서비스 내 웹툰 퀴즈 정답, 이벤트 참여 등의 활동을 통해 회사에서 정한 기준에 따라 포인트(또는 리워드)를 적립 받을 수 있습니다.\n② 적립된 포인트는 회사가 정한 방법 및 제휴처에서 사용할 수 있으며, 현금 환급 가능 여부 및 비율은 서비스 내 별도 고지한 바에 따릅니다.\n③ 회원은 매크로 프로그램 사용, 타인의 명의 도용, 시스템 오류 악용 등 부정한 방법으로 포인트를 적립할 수 없습니다. 회사는 부정 적립이 확인된 경우 포인트 회수, 회원 자격 정지 및 영구 탈퇴 조치를 취할 수 있습니다.',
+        ],
+        [
+          '제4조 (회원의 게시물 및 퀴즈 저작권)',
+          '회원이 서비스 내에서 직접 생성하고 출제한 웹툰 퀴즈 및 관련 콘텐츠에 대한 저작권과 지식재산권은 회사에 귀속됩니다. 회원의 게시물이나 퀴즈가 타인의 권리를 침해하거나 관련 법령을 위반하는 경우 회사는 이를 삭제하거나 노출을 제한할 수 있습니다.',
+        ],
+      ],
+    },
+    privacy: {
+      title: '개인정보 처리 방침',
+      heading: '스토릿(Storit) 개인정보 처리방침',
+      sections: [
+        [
+          '1. 수집하는 개인정보의 항목 및 수집 방법',
+          '회사는 소셜 로그인 및 서비스 제공을 위해 아래의 개인정보를 수집합니다.\n가입 시(소셜 연동): 이메일 주소, 닉네임, 프로필 사진\n리워드 사용 및 환급 시(필요 시): 본인인증 정보(CI/DI), 휴대전화 번호, 은행 계좌번호\n자동 수집 항목: 서비스 이용기록, 접속 로그, IP 주소, 불량 이용 기록',
+        ],
+        [
+          '2. 개인정보의 수집 및 이용 목적',
+          '회원 관리, 서비스 및 리워드 제공, 맞춤형 콘텐츠 제공, 신규 서비스 개발을 위한 통계 분석, 이벤트 및 광고성 정보 제공(동의한 경우에 한함)을 목적으로 개인정보를 이용합니다.',
+        ],
+        [
+          '3. 개인정보의 보유 및 이용 기간',
+          '원칙적으로 회원 탈퇴 시 또는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 부정이용 및 어뷰징 방지를 위해 탈퇴 후에도 6개월간 최소한의 식별 정보를 보관할 수 있습니다.',
+        ],
+        [
+          '4. 개인정보 보호책임자',
+          '회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 이용자의 불만 처리 및 피해 구제를 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.\n담당자: 김동신\n이메일: kdshin@freshmilk.kr',
+        ],
+      ],
+    },
+  };
 
   const cookieRows = [
     { dateLabel: '2024.05.17', title: '오늘의 미션 완료', subtitle: '쿠키 1개 적립', amount: '+1', time: '14:32', kind: 'earn' },
@@ -143,7 +190,7 @@
               <span class="account-eyebrow">프로필 요약</span>
               <h2>${C.escape(D.user.name)}</h2>
             </div>
-            <button class="account-text-button" data-modal="editLife">수정</button>
+            <button class="account-text-button" data-modal="accountProfileEdit">수정</button>
           </div>
           <div class="account-level-row">
             <strong>LV. ${C.escape(D.user.level)}</strong>
@@ -278,7 +325,7 @@
           <div class="account-final-profile__body">
             <div class="account-final-profile__name">
               <h2>${C.escape(D.user.name)}</h2>
-              <button type="button" data-modal="editLife">프로필 수정 ›</button>
+              <button type="button" data-modal="accountProfileEdit">프로필 수정 ›</button>
             </div>
             <div class="account-final-profile__level">
               <strong>LV. ${C.escape(D.user.level)}</strong>
@@ -292,22 +339,22 @@
           <h3>나의 업적</h3>
           <div class="account-final-achievements__grid">
             <article>
-              <span class="account-achievement-visual is-crown"></span>
+              <img class="account-achievement-visual" src="${assetBase}icon-mypage-achievement-crown.svg" alt="" loading="lazy" />
               <strong>최고 랭킹</strong>
               <em>10위</em>
             </article>
             <article>
-              <span class="account-achievement-visual is-clover"></span>
+              <img class="account-achievement-visual" src="${assetBase}icon-mypage-achievement-clover.svg" alt="" loading="lazy" />
               <strong>행운 횟수</strong>
               <em>7회</em>
             </article>
             <article>
-              <span class="account-achievement-visual is-score"></span>
+              <img class="account-achievement-visual" src="${assetBase}icon-mypage-achievement-score.svg" alt="" loading="lazy" />
               <strong>최고 점수</strong>
               <em>98.8점</em>
             </article>
             <article>
-              <span class="account-achievement-visual is-calendar"></span>
+              <img class="account-achievement-visual" src="${assetBase}icon-mypage-achievement-calendar.svg" alt="" loading="lazy" />
               <strong>연속 출석</strong>
               <em>15일</em>
             </article>
@@ -330,12 +377,12 @@
           <section>
             <span>인생 웹툰</span>
             <strong>기자매</strong>
-            <button type="button" data-modal="editLife">수정하기</button>
+            <button type="button" data-modal="accountLifeEdit">수정하기</button>
           </section>
           <section>
             <span>좋아하는 장르</span>
             <strong>공포, 스릴러</strong>
-            <button type="button" data-modal="editGenre">수정하기</button>
+            <button type="button" data-modal="accountGenreEdit">수정하기</button>
           </section>
         </div>
 
@@ -478,6 +525,31 @@
     });
   }
 
+  function settingsLegal(kind) {
+    const doc = settingsLegalDocs[kind];
+    return C.shell({
+      title: doc.title,
+      back: 'settings',
+      className: `account-screen account-legal-screen account-legal-screen--${kind}`,
+      content: `
+        <h2 class="account-legal-heading">${C.escape(doc.heading)}</h2>
+        <article class="account-legal-card">
+          ${doc.sections
+            .map(
+              ([heading, body]) => `
+                <section>
+                  <h3>${C.escape(heading)}</h3>
+                  <p>${C.escape(body).replace(/\n/g, '<br />')}</p>
+                </section>
+              `,
+            )
+            .join('')}
+        </article>
+        <div class="fixed-bottom-action">${C.button('돌아가기', { route: 'settings' })}</div>
+      `,
+    });
+  }
+
   function inquiryDone() {
     return `
       <section class="account-complete-state">
@@ -523,7 +595,7 @@
           <img class="account-withdraw-hero__asset" src="${assetBase}character-withdraw-sad.svg" alt="" loading="lazy" />
         </section>
         <section class="account-warning-card">
-          <strong>꼭 확인해주세요!</strong>
+          <strong><img src="${assetBase}icon-withdraw-warning.svg" alt="" loading="lazy" />꼭 확인해주세요!</strong>
           <ul>
             <li>지금 탈퇴하시면 지금까지 모은 쿠키와 상품권이 함께 사라져요. 추후에 동일 계정으로 재가입하셔도 쿠키와 상품권내역은 복구되지 않아요!</li>
             <li>탈퇴 후에는 작성하신 퀴즈를 수정 혹은 삭제하실 수 없습니다! 탈퇴 신청 전에 꼭 확인해 주세요! 관련한 댓글, 퀴즈 기록 모두 사라집니다!</li>
@@ -645,6 +717,8 @@
     noticeWelcome: () => noticeDetail('noticeWelcome'),
     noticeMaintenance: () => noticeDetail('noticeMaintenance'),
     settings,
+    settingsTermService: () => settingsLegal('service'),
+    settingsTermPrivacy: () => settingsLegal('privacy'),
     inquiry: () => inquiry(false),
     inquiryDone: () => inquiry(true),
     withdraw,
