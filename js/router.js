@@ -59,12 +59,12 @@
   }
 
   function back(fallback) {
-    if (fallback) {
-      navigate(fallback);
+    const previous = historyStack.pop();
+    if (previous) {
+      render(previous);
       return;
     }
-    const previous = historyStack.pop();
-    render(previous || "home");
+    render(fallback || "home");
   }
 
   function markTermConfirmed(route) {
