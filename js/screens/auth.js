@@ -305,7 +305,7 @@
         <div class="auth-profile-modal" data-profile-picker-modal hidden>
           <div class="auth-modal-dim" data-action="close-profile-picker"></div>
           <section class="auth-profile-sheet" role="dialog" aria-modal="true" aria-label="프로필 설정">
-            <button class="auth-profile-sheet__close" type="button" data-action="close-profile-picker" aria-label="닫기">×</button>
+            <button class="storit-modal-close auth-profile-sheet__close" type="button" data-action="close-profile-picker" aria-label="닫기">×</button>
             <h2>프로필 설정</h2>
             <div class="auth-profile-preview" aria-label="프로필 미리보기">
               ${image(profileCookie, "auth-profile-preview__image", "프로필 미리보기")}
@@ -330,7 +330,7 @@
           <div class="auth-modal-dim" data-action="close-calendar"></div>
           <section class="auth-calendar-sheet" role="dialog" aria-modal="true" aria-label="출생연도 선택">
             ${image("userinfo-calendar-panel.svg", "auth-calendar-sheet__art", "")}
-            <button class="auth-calendar-x" type="button" data-action="close-calendar" aria-label="닫기"></button>
+            <button class="storit-modal-close auth-calendar-x" type="button" data-action="close-calendar" aria-label="닫기">×</button>
             <strong class="auth-calendar-title" data-calendar-title>2026년 6월</strong>
             <div class="auth-calendar-week" aria-hidden="true">
               <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
@@ -343,7 +343,7 @@
           <div class="auth-modal-dim"></div>
           <section class="auth-notification-sheet" role="dialog" aria-modal="true" aria-label="알림 설정">
             ${image("notification-permission-modal.svg", "auth-notification-sheet__art", "")}
-            <button class="auth-notification-close" type="button" data-action="close-notification-permission" aria-label="닫기"></button>
+            <button class="storit-modal-close auth-notification-close" type="button" data-action="close-notification-permission" aria-label="닫기">×</button>
             <button class="auth-notification-button auth-notification-button--allow" type="button" data-action="complete-notification-permission" aria-label="알림받기"></button>
             <button class="auth-notification-button auth-notification-button--later" type="button" data-action="complete-notification-permission" aria-label="나중에하기"></button>
           </section>

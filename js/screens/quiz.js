@@ -1,7 +1,7 @@
 (function () {
   const D = window.StoritData;
   const C = window.StoritComponents;
-  const quizCssHref = "./css/quiz.css?v=quiz-result-cards-20260617a";
+  const quizCssHref = "./css/quiz.css?v=quiz-result-comment-20260618a";
   const namedAssetBase = "./assets/figma-exported/named/";
 
   const quizQuestion = {
@@ -258,9 +258,7 @@
           <div class="hm-mission-exp-modal__scallop" aria-hidden="true">
             ${namedAsset("mission-purple-scallop.svg", "hm-mission-exp-modal__scallop-image")}
           </div>
-          <button class="hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">
-            <img src="${namedAssetBase}icon-exp-modal-close.svg" alt="" loading="lazy" />
-          </button>
+          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">×</button>
           <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
           <img class="hm-mission-exp-modal__cookie" src="${namedAssetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
           <div class="hm-mission-exp-modal__message">

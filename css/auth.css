@@ -719,6 +719,7 @@
 }
 
 .auth-onboarding--cookie .auth-onboarding__copy p:not(.auth-kicker) {
+  margin-top: 6px;
   color: #3f2508;
   font-size: 13px;
   font-weight: 600;
@@ -799,7 +800,7 @@
 .auth-onboarding--ranking .auth-onboarding__character {
   left: 50%;
   right: auto;
-  bottom: 118px;
+  bottom: 134px;
   width: 196px;
   height: auto;
   max-height: none;
@@ -826,26 +827,6 @@
 
 .auth-onboarding--shop .auth-bg-layer::after {
   background: none;
-}
-
-.auth-onboarding--shop .auth-dots {
-  margin-top: 52px;
-}
-
-.auth-onboarding--ranking .auth-dots {
-  margin-top: 52px;
-}
-
-.auth-onboarding--cookie .auth-dots {
-  margin-top: 42px;
-}
-
-.auth-onboarding--cookie .auth-onboarding__bottom {
-  position: absolute;
-  left: 27px;
-  right: 28px;
-  bottom: 29px;
-  transform: none;
 }
 
 .auth-onboarding__visual .auth-speech {
@@ -917,8 +898,12 @@
 }
 
 .auth-onboarding__bottom {
-  position: relative;
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 29px;
   z-index: 2;
+  transform: none;
 }
 
 .auth-onboarding__bottom .auth-cta {
@@ -935,7 +920,7 @@
 }
 
 .auth-dots {
-  margin: 22px 0 0;
+  margin: 42px 0 0;
 }
 
 .auth-dots span {
@@ -1099,7 +1084,7 @@
 .auth-terms-agree-screen {
   font-family: var(--font-main);
   min-height: var(--app-min-height);
-  padding: 16px 0 3px;
+  padding: 16px 0 0;
   overflow: hidden;
   background: #ffd95e;
 }
@@ -1111,7 +1096,7 @@
 
 .auth-terms-agree-panel {
   position: relative;
-  min-height: calc(var(--app-min-height) - 19px);
+  min-height: calc(var(--app-min-height) - 16px);
   overflow: hidden;
   border-radius: 20px 20px 0 0;
   background: #fefaf4;
@@ -1196,13 +1181,13 @@
 
 .auth-terms-check {
   display: block;
-  width: 17px;
+  width: 18px;
   height: auto;
   object-fit: contain;
 }
 
 .auth-terms-check--all {
-  width: 17px;
+  width: 18px;
   height: auto;
   filter: brightness(0) invert(1);
   opacity: 0.86;
@@ -1211,7 +1196,7 @@
 .auth-terms-agree-list {
   position: absolute;
   top: 319px;
-  left: 36px;
+  left: 37px;
   right: 35px;
   display: grid;
   gap: 22px;
@@ -1219,18 +1204,18 @@
 
 .auth-terms-agree-row {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 18px 1fr auto;
   min-height: 23px;
   align-items: center;
-  column-gap: 12px;
+  column-gap: 20px;
   cursor: pointer;
 }
 
 .auth-terms-row-check {
   display: grid;
-  width: 28px;
+  width: 18px;
   height: 24px;
-  place-items: center;
+  place-items: center start;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1518,10 +1503,9 @@
   z-index: 4;
   width: 450px;
   max-width: 120vw;
-  height: 64px;
+  height: var(--storit-scallop-height);
   transform: translateX(-50%);
-  background:
-    url("data:image/svg+xml,%3Csvg width='75' height='64' viewBox='0 0 75 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 21C8 21 13 0 37.5 0C62 0 67 21 75 21V64H0V21Z' fill='%23FFD95E'/%3E%3C/svg%3E") 0 0 / 75px 64px repeat-x;
+  background: var(--storit-scallop-bg);
   pointer-events: none;
 }
 
@@ -1987,9 +1971,32 @@
 .auth-notification-modal {
   position: absolute;
   inset: 0;
-  z-index: 20;
+  z-index: calc(var(--z-modal) + 10);
   display: grid;
   place-items: center;
+}
+
+.phone-frame.has-scallop-frame:has(.auth-userinfo-screen .auth-profile-modal:not([hidden]))::after,
+.phone-frame.has-scallop-frame:has(.auth-userinfo-screen .auth-calendar-modal:not([hidden]))::after,
+.phone-frame.has-scallop-frame:has(.auth-userinfo-screen .auth-notification-modal:not([hidden]))::after {
+  display: none;
+}
+
+.auth-userinfo-screen.has-scallop:has(.auth-profile-modal:not([hidden]))::after,
+.auth-userinfo-screen.has-scallop:has(.auth-calendar-modal:not([hidden]))::after,
+.auth-userinfo-screen.has-scallop:has(.auth-notification-modal:not([hidden]))::after {
+  content: "";
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: calc(var(--z-modal) - 1);
+  display: block;
+  width: 450px;
+  max-width: 120vw;
+  height: var(--storit-scallop-height, 52px);
+  transform: translateX(-50%);
+  background: var(--storit-scallop-bg);
+  pointer-events: none;
 }
 
 .auth-modal-dim {

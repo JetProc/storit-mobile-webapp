@@ -1010,8 +1010,16 @@
 
 .hm-recipe-hero .hm-kicker {
   color: var(--hm-brown-dark);
-  font-size: 11px;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.hm-recipe-sparkle {
+  color: #ffcf73;
 }
 
 .hm-recipe-hero p:not(.hm-kicker),
@@ -1023,6 +1031,16 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 1.35;
+}
+
+.hm-recipe-hero h2 {
+  color: #3d2000;
+  font-weight: 700;
+}
+
+.hm-recipe-hero p:not(.hm-kicker) {
+  color: #3d2000;
+  font-weight: 700;
 }
 
 .hm-recipe-hero__chef {
@@ -1151,8 +1169,8 @@
 }
 
 .hm-ingredient .hm-icon-bubble .icon-symbol {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
 }
 
 .hm-ingredient .hm-icon-bubble .icon-symbol img {
@@ -1568,7 +1586,7 @@
 }
 
 .hm-flow-action {
-  margin-top: 4px;
+  margin-top: -2px;
 }
 
 .hm-reward-screen .hm-flow-action {
@@ -1631,30 +1649,35 @@
 
 .hm-complete-message {
   display: grid;
-  gap: 4px;
+  gap: 0;
   position: absolute;
-  left: 55px;
+  left: 45px;
   bottom: 126px;
   z-index: 4;
   width: 126px;
   min-height: 97px;
-  padding: 22px 12px 31px 17px;
+  align-content: center;
+  justify-items: center;
+  padding: 0 14px 10px;
   border-radius: 0;
   background: url("../assets/figma-exported/named/speech-onboarding-cookie.svg") center / contain no-repeat;
   box-shadow: none;
   font-family: var(--font-display);
+  text-align: center;
 }
 
 .hm-complete-message strong {
   color: var(--hm-orange);
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .hm-complete-message span {
   color: var(--hm-brown-dark);
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .hm-reward-hero {
@@ -1712,7 +1735,8 @@
 .hm-reward-hero .hm-kicker {
   display: inline-flex;
   min-width: 134px;
-  min-height: 35px;
+  height: 40px;
+  min-height: 0;
   align-items: center;
   justify-content: center;
   order: -1;
@@ -1731,7 +1755,7 @@
   overflow: hidden;
   width: 320px;
   margin: 0 auto;
-  border-radius: 10px 10px 0 0;
+  border-radius: 24px 24px 0 0;
   background: var(--hm-yellow);
   padding: 25px 18px 22px;
   text-align: center;
@@ -1739,15 +1763,15 @@
 
 .hm-reward-message h2 {
   color: var(--hm-brown-dark);
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .hm-reward-message p {
   color: var(--hm-brown-dark);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.35;
 }
 
@@ -1758,7 +1782,7 @@
   margin: -10px auto 0;
   padding: 23px 16px 24px;
   border: 1px solid var(--hm-line);
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 24px 24px;
   background: #fff;
   box-shadow: 0 7px 18px rgba(99, 62, 14, 0.07);
   text-align: center;
@@ -1767,25 +1791,34 @@
 .hm-cookie-balance h3 {
   margin: 0;
   color: var(--hm-brown-dark);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 900;
 }
 
 .hm-cookie-balance div {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 22px;
   align-items: center;
   color: var(--hm-brown-dark);
   font-size: 26px;
   font-weight: 900;
 }
 
+.hm-cookie-balance div > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 30px;
+}
+
 .hm-cookie-balance .icon-symbol {
   width: 30px;
   height: 30px;
   color: var(--hm-orange);
-  vertical-align: -6px;
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
 }
 
 .hm-cookie-balance .icon-symbol img {
@@ -1814,11 +1847,11 @@
 .hm-attendance-hero {
   min-height: 98px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 72px;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 91px;
+  gap: 4px;
   align-items: center;
   overflow: hidden;
-  padding: 18px 6px 13px 25px;
+  padding: 18px 8px 13px 25px;
   border: 0;
   border-radius: 0;
   background: #fff;
@@ -1871,11 +1904,11 @@
 }
 
 .hm-attendance-hero__character img {
-  width: 78px;
-  height: 68px;
+  width: 91px;
+  height: 69px;
   display: block;
   object-fit: contain;
-  transform: translate(1px, 2px);
+  transform: translate(-2px, 1px);
 }
 
 .hm-calendar {
@@ -1912,15 +1945,18 @@
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 4px;
-  padding: 9px 10px 13px;
+  padding: 0 10px 13px;
   color: var(--hm-muted);
   text-align: center;
 }
 
 .hm-calendar__grid > strong {
-  min-height: 20px;
+  min-height: 29px;
   display: grid;
   place-items: center;
+  margin: 2px 0 3px;
+  border-top: 1px solid #f3eadb;
+  border-bottom: 1px solid #f3eadb;
   color: var(--hm-brown-soft);
   font-size: 10px;
   font-weight: 900;
@@ -1949,6 +1985,18 @@
   color: var(--hm-muted);
   font-size: 10px;
   font-weight: 900;
+}
+
+.hm-calendar__day.is-today {
+  color: var(--hm-orange);
+}
+
+.hm-calendar__day.is-future {
+  color: rgba(136, 136, 128, 0.48);
+}
+
+.hm-calendar__day.is-future em {
+  opacity: 0.62;
 }
 
 .hm-calendar__day em {
@@ -1987,14 +2035,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   position: relative;
   bottom: auto;
   z-index: 4;
-  margin-top: 10px;
-  padding: 11px 12px;
+  margin-top: 4px;
+  min-height: 61px;
+  padding: 9px 10px 9px 16px;
   border: 1px solid #ef9f27;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #fff4d4;
   box-shadow: none;
   color: var(--hm-brown-dark);
@@ -2005,26 +2054,42 @@
 }
 
 .hm-attendance-notice__icon {
-  width: 43px;
-  height: 43px;
+  width: 49px;
+  height: 49px;
   flex: 0 0 auto;
   object-fit: contain;
 }
 
 .hm-attendance-notice span {
   display: grid;
-  gap: 3px;
+  gap: 4px;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .hm-attendance-notice strong {
+  color: #3d2000;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
+  line-height: 18px;
 }
 
 .hm-attendance-notice small {
+  color: #888880;
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.hm-attendance-notice .icon-button {
+  width: 32px;
+  height: 42px;
+  flex: 0 0 32px;
+  color: #3d2000;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 .hm-attendance-action .btn:disabled {
@@ -2041,14 +2106,13 @@
 .hm-attendance-screen.has-scallop::after {
   content: "";
   width: 100%;
-  height: 40px;
+  height: var(--storit-scallop-height);
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: var(--z-scallop);
   pointer-events: none;
-  background:
-    url("data:image/svg+xml,%3Csvg width='74' height='40' viewBox='0 0 74 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 16C8 16 13 0 37 0C61 0 66 16 74 16V40H0V16Z' fill='%23FFD761'/%3E%3C/svg%3E") 0 0 / 74px 40px repeat-x;
+  background: var(--storit-scallop-bg);
 }
 
 @media (max-width: 430px) {
@@ -2165,13 +2229,13 @@
 
 .hm-home-screen .hm-heart-set {
   width: 61px;
-  height: 39px;
+  height: 42px;
   align-self: center;
   justify-self: start;
   display: flex;
   align-items: flex-start;
   gap: 4px;
-  padding-top: 2px;
+  padding-top: 0;
   overflow: visible;
 }
 
@@ -2327,7 +2391,7 @@
   margin: 0 0 14px;
   color: #5d3300;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.18;
 }
@@ -2370,9 +2434,10 @@
 
 .hm-chance-banner {
   min-height: 60px;
-  grid-template-columns: 43px 104px minmax(0, 1fr);
+  grid-template-columns: 38px 101px minmax(0, 1fr);
   gap: 0;
   align-items: center;
+  margin-bottom: -3px;
   padding: 8px 12px 8px 17px;
   border-radius: 15px;
   background: #fff4cf;
@@ -2459,12 +2524,12 @@
 
 .hm-weekday-tabs {
   gap: 9px;
-  margin: 0;
+  margin: -3px 0 0;
   border-bottom: 0;
 }
 
 .hm-weekday-tabs button {
-  height: 29px;
+  height: 25px;
   color: #3d2000;
   font-size: 10px;
   font-weight: 700;
@@ -2536,7 +2601,7 @@
   width: 60px;
   min-height: 58px;
   padding: 0 8px;
-  border-radius: 18px;
+  border-radius: 14px;
   background: #fff2bd;
   color: #3d2000;
   font-size: 10px;
@@ -2589,7 +2654,7 @@
 }
 
 .hm-cheer-list article {
-  min-height: 27px;
+  min-height: 32px;
   padding: 4px 14px;
   border-radius: 6px;
   background: #fff;
@@ -2641,14 +2706,15 @@
 }
 
 .hm-heart-modal__close {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   position: absolute;
-  right: 17px;
+  right: 16px;
   top: 14px;
+  border: 0;
   background: transparent;
-  color: rgba(136, 136, 128, 0.8);
-  font-size: 34px;
+  color: rgba(48, 48, 48, 0.55);
+  font-size: 28px;
   font-weight: 400;
   line-height: 1;
 }
@@ -2744,6 +2810,7 @@
   width: 290px;
   margin: 0;
   color: #111;
+  font-family: var(--font-main);
   font-size: 12px;
   font-weight: 700;
   line-height: 1.35;
@@ -2847,22 +2914,19 @@
 }
 
 .hm-mission-exp-modal__close {
-  width: 36px;
-  height: 36px;
   position: absolute;
   top: 14px;
-  right: 13px;
+  right: 16px;
   z-index: 3;
-  display: grid;
-  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
   background: transparent;
+  color: rgba(48, 48, 48, 0.55);
+  font-size: 28px;
+  font-weight: 400;
   line-height: 1;
-}
-
-.hm-mission-exp-modal__close img {
-  width: 17px;
-  height: 17px;
-  display: block;
+  text-align: center;
 }
 
 .hm-mission-exp-modal__confetti {

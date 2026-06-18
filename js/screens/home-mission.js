@@ -190,7 +190,7 @@
       <div class="hm-heart-modal" data-heart-charge-modal hidden>
         <div class="hm-heart-modal__dim" data-action="close-heart-charge"></div>
         <section class="hm-heart-modal__sheet" role="dialog" aria-modal="true" aria-label="하트 충전">
-          <button class="hm-heart-modal__close" type="button" data-action="close-heart-charge" aria-label="닫기">×</button>
+          <button class="storit-modal-close hm-heart-modal__close" type="button" data-action="close-heart-charge" aria-label="닫기">×</button>
           <div class="hm-heart-modal__hero">
             ${namedAsset("heart-modal-cookie.svg", "hm-heart-modal__cookie")}
           </div>
@@ -248,9 +248,7 @@
           <div class="hm-mission-exp-modal__scallop" aria-hidden="true">
             ${namedAsset("mission-purple-scallop.svg", "hm-mission-exp-modal__scallop-image")}
           </div>
-          <button class="hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">
-            <img src="${assetBase}icon-exp-modal-close.svg" alt="" loading="lazy" />
-          </button>
+          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">×</button>
           <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
           <img class="hm-mission-exp-modal__cookie" src="${assetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
           <div class="hm-mission-exp-modal__message">
@@ -367,7 +365,11 @@
       <section class="hm-recipe-hero">
         <img class="hm-recipe-hero__bg" src="${assetBase}mission-recipe-hero-bg.png" alt="" loading="lazy" />
         <div class="hm-recipe-hero__copy">
-          <p class="hm-kicker">✦ 오늘의 쿠키 레시피 ✦</p>
+          <p class="hm-kicker">
+            <span class="hm-recipe-sparkle" aria-hidden="true">✦</span>
+            <span>오늘의 쿠키 레시피</span>
+            <span class="hm-recipe-sparkle" aria-hidden="true">✦</span>
+          </p>
           <h2>초코칩 쿠키 만들기</h2>
           <p>5가지 재료를 모두 모으면<br />쿠키 1개를 드려요! 🍪</p>
         </div>
@@ -565,8 +567,10 @@
             .map(
               (day) => {
                 const stamped = day <= 10 || (isComplete && day === 11);
+                const today = day === 11 && !isComplete;
+                const future = day > 11;
                 return `
-                <div class="hm-calendar__day ${stamped ? "is-stamped" : ""}" data-attendance-day="${day}">
+                <div class="hm-calendar__day ${stamped ? "is-stamped" : ""} ${today ? "is-today" : ""} ${future ? "is-future" : ""}" data-attendance-day="${day}">
                   <span>${day}</span>
                   <em aria-hidden="true">${stamped ? `<img class="hm-calendar-stamp" src="${assetBase}attendance-cookie-stamp.svg" alt="" loading="lazy" />` : ""}</em>
                 </div>
@@ -582,10 +586,10 @@
   function attendanceSuccessNotice(isComplete = false) {
     return `
       <aside class="hm-attendance-notice" aria-live="polite" data-attendance-notice ${isComplete ? "" : "hidden"}>
-        <img class="hm-attendance-notice__icon" src="${assetBase}ingredient-flour.svg" alt="" loading="lazy" />
+        <img class="hm-attendance-notice__icon" src="${assetBase}ingredient-butter.svg" alt="" loading="lazy" />
         <span>
           <strong>오늘의 미션 출석체크 달성!!</strong>
-          <small>쿠키의 재료 밀가루 획득</small>
+          <small>쿠키의 재료 &lt;버터 획득&gt;</small>
         </span>
         <button class="icon-button" type="button" data-route="mission" aria-label="미션으로 이동">›</button>
       </aside>

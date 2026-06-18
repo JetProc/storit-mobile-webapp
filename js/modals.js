@@ -244,7 +244,7 @@
     return `
       <section class="modal invite-modal ${isUnderlay ? "invite-modal--underlay" : ""}" ${dialogAttrs}>
         <img class="invite-modal__mascot" src="${assetBase}invite-envelope-cookie.svg" alt="" loading="lazy" />
-        <button class="modal-close invite-modal__close" ${isUnderlay ? 'tabindex="-1" aria-hidden="true"' : "data-close-modal"} aria-label="닫기">×</button>
+        <button class="storit-modal-close modal-close invite-modal__close" ${isUnderlay ? 'tabindex="-1" aria-hidden="true"' : "data-close-modal"} aria-label="닫기">×</button>
         <h2>${C.escape(invite.title)}</h2>
         <p>${C.escape(invite.description)}</p>
         <div class="invite-modal__code" aria-label="초대 코드">
@@ -285,7 +285,7 @@
       <div class="modal-layer invite-modal-layer invite-modal-layer--stacked invite-reward-layer" role="presentation">
         ${renderInviteSheet({ underlay: true })}
         <section class="modal invite-reward-modal" role="dialog" aria-modal="true" aria-label="친구 초대 별도 보상">
-          <button class="modal-close invite-reward-modal__close" data-action="close-invite-overlay" aria-label="닫기">×</button>
+          <button class="storit-modal-close modal-close invite-reward-modal__close" data-action="close-invite-overlay" aria-label="닫기">×</button>
           <h2>친구 초대 별도 보상</h2>
           <div class="invite-reward-modal__table">
             <div class="invite-reward-modal__row invite-reward-modal__row--head">
@@ -316,7 +316,7 @@
     return `
       <div class="modal-layer" role="presentation">
         <section class="modal compact modal-quitSolvingQuiz" role="dialog" aria-modal="true" aria-label="퀴즈를 푸는 중입니다. 정말 나가시겠습니까?">
-          <button class="modal-close" data-close-modal aria-label="닫기">×</button>
+          <button class="storit-modal-close modal-close" data-close-modal aria-label="닫기">×</button>
           <div class="modal-asset">
             <img src="${assetBase}quiz-quit-question.svg" alt="" loading="lazy" />
           </div>
@@ -343,7 +343,7 @@
     return `
       <div class="modal-layer ranking-season-reward-layer" role="presentation">
         <section class="modal ranking-season-reward-modal" role="dialog" aria-modal="true" aria-label="상위 20% 보상 세부안">
-          <button class="modal-close ranking-season-reward-modal__close" data-close-modal aria-label="닫기">×</button>
+          <button class="storit-modal-close modal-close ranking-season-reward-modal__close" data-close-modal aria-label="닫기">×</button>
           <h2>상위 20% 보상 세부안</h2>
           <div class="ranking-season-reward-modal__table">
             <div class="ranking-season-reward-modal__row is-head"><strong>구간</strong><strong>보상</strong></div>
@@ -430,7 +430,7 @@
     document.getElementById("modal-root").innerHTML = `
       <div class="modal-layer" role="presentation">
         <section class="modal compact modal-${C.escape(name)}" role="dialog" aria-modal="true" aria-label="${C.escape(modal.title)}">
-          <button class="modal-close" data-close-modal aria-label="닫기">×</button>
+          <button class="storit-modal-close modal-close" data-close-modal aria-label="닫기">×</button>
           <div class="modal-asset">${C.icon(modal.icon)}</div>
           <h2>${C.escape(modal.title)}</h2>
           ${modal.text ? `<p>${C.escape(modal.text).replace(/\n/g, "<br />")}</p>` : ""}

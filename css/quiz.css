@@ -5448,3 +5448,181 @@
   min-height: 56px;
   border-radius: 14px;
 }
+
+/* Quiz play comment pass */
+.quiz-play-progress-strip > span,
+.quiz-play-progress-strip > span strong,
+.quiz-play-screen .quiz-question-number,
+.quiz-play-screen .quiz-card h2,
+.quiz-play-screen .quiz-answer {
+  font-weight: 700;
+}
+
+.quiz-play-screen .quiz-card h2 {
+  font-size: 20px;
+}
+
+.quiz-play-screen .quiz-answer.is-selected {
+  border-color: #ef9f27;
+  background: #ffd15c;
+}
+
+/* Quiz result comment pass: tighten result hero and support cards. */
+.quiz-result-screen.is-good .screen-content {
+  gap: 11px;
+}
+
+.quiz-result-screen.is-good .quiz-result-hero,
+.quiz-result-screen.is-good .quiz-score-stage {
+  min-height: 267px;
+}
+
+.quiz-result-screen.is-good .quiz-score-ring-image {
+  top: 0;
+}
+
+.quiz-result-screen.is-good .quiz-result-metrics {
+  margin-top: 9px;
+}
+
+.quiz-result-screen.is-good .quiz-speech-bubble {
+  left: 8px;
+  top: 41px;
+  width: 132px;
+  height: 106px;
+  z-index: 6;
+}
+
+.quiz-result-screen.is-good .quiz-speech-bubble p {
+  padding: 20px 13px 0 15px;
+}
+
+.quiz-result-screen.is-good .quiz-result-character {
+  top: 61px;
+}
+
+.quiz-result-screen.is-good .quiz-result-character__image {
+  width: 148px;
+  max-height: 148px;
+}
+
+.quiz-result-screen .quiz-result-card {
+  row-gap: 4px;
+}
+
+.quiz-result-screen .quiz-cheer-card {
+  height: 112px;
+  min-height: 112px;
+  padding: 16px 18px 12px 20px;
+}
+
+.quiz-result-screen .quiz-cheer-card > div:first-child {
+  width: 208px;
+}
+
+.quiz-result-screen .quiz-cheer-card .quiz-card-label {
+  display: block;
+  line-height: 16px;
+}
+
+.quiz-result-screen .quiz-cheer-card > div:first-child strong {
+  display: block;
+  margin-top: 1px;
+  line-height: 13px;
+}
+
+.quiz-result-screen .quiz-cheer-card__body {
+  margin-top: 5px;
+}
+
+.quiz-result-screen .quiz-cheer-card__asset {
+  right: 13px;
+  bottom: 8px;
+  width: 84px;
+  height: 88px;
+  z-index: 1;
+}
+
+.quiz-result-screen .quiz-write-field {
+  width: 232px;
+  height: 37px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  z-index: 2;
+}
+
+.quiz-result-screen .quiz-write-field::before {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 232px;
+  height: 37px;
+  background: url("../assets/figma-exported/named/quiz-result-speech-bubble.svg") left center / 232px 37px no-repeat;
+  pointer-events: none;
+}
+
+.quiz-result-screen .quiz-write-field input {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  height: 100%;
+  padding: 0 50px 0 13px;
+  background: transparent;
+}
+
+.quiz-result-screen .quiz-write-field button {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  top: 6px;
+  flex: none;
+  margin: 0;
+}
+
+.quiz-result-screen .quiz-rating-card {
+  height: auto;
+  min-height: 114px;
+  padding: 15px 20px 14px 24px;
+  overflow: visible;
+}
+
+.quiz-result-screen .quiz-rating-card p {
+  margin-top: 2px;
+  line-height: 16px;
+}
+
+.quiz-result-screen .quiz-rating-row {
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.quiz-result-screen .quiz-rating-row button {
+  height: 37px;
+  min-height: 37px;
+  padding: 0 5px;
+  overflow: visible;
+}
+
+.quiz-result-screen .quiz-rating-row button img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(73%) saturate(1285%) hue-rotate(15deg) brightness(89%) contrast(109%);
+}
+
+.quiz-result-screen .quiz-mission-card {
+  min-height: 104px;
+  padding-top: 14px;
+  padding-bottom: 13px;
+}
+
+.quiz-result-screen .quiz-mission-card .quiz-card-label {
+  display: block;
+  line-height: 13px;
+}
+
+.quiz-result-screen .quiz-mission-card strong {
+  display: block;
+  margin-top: 4px;
+  line-height: 16px;
+}

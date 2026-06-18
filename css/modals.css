@@ -487,12 +487,12 @@
   color: #191f28;
   font-family: var(--font-base);
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.35;
 }
 
 .modal-quitSolvingQuiz p {
-  margin: 0 0 22px;
+  margin: 0 0 26px;
   color: #3d2000;
   font-family: var(--font-base);
   font-size: 12px;
@@ -503,7 +503,7 @@
 .modal-quitSolvingQuiz .btn-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 14px;
 }
 
 .modal-quitSolvingQuiz .btn {
@@ -511,7 +511,7 @@
   border-radius: 9px;
   font-family: var(--font-base);
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .modal-quitSolvingQuiz .btn.orange {
@@ -553,4 +553,30 @@
   font-size: 11px;
   font-weight: 700;
   line-height: 17px;
+}
+
+.storit-modal-close {
+  width: 28px !important;
+  height: 28px !important;
+  position: absolute !important;
+  top: 14px !important;
+  right: 16px !important;
+  z-index: 10 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(48, 48, 48, 0.55) !important;
+  font-family: var(--font-base);
+  font-size: 28px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  transform: none !important;
+  cursor: pointer;
+}
+
+.storit-modal-close:empty::before {
+  content: "×";
 }

@@ -162,11 +162,14 @@
         }
       }
       Modals.close();
-      navigate(routeTarget.dataset.route, { exp: shouldOpenMissionExp });
-      if (shouldOpenMissionExp) {
-        document.dispatchEvent(new CustomEvent("storit:mission-exp-request"));
-        openExpModalAfterRoute();
-      }
+      const routeDelay = routeTarget.dataset.action === "answer" ? 130 : 0;
+      window.setTimeout(() => {
+        navigate(routeTarget.dataset.route, { exp: shouldOpenMissionExp });
+        if (shouldOpenMissionExp) {
+          document.dispatchEvent(new CustomEvent("storit:mission-exp-request"));
+          openExpModalAfterRoute();
+        }
+      }, routeDelay);
       return;
     }
 
