@@ -21,11 +21,6 @@
   background: var(--color-bg);
 }
 
-.phone-frame.has-scallop-frame:has(.exchange-done-screen)::after,
-.exchange-done-screen.has-scallop::after {
-  display: none;
-}
-
 .product-detail-screen,
 .exchange-screen,
 .exchange-done-screen,
@@ -584,7 +579,7 @@
   overflow: hidden;
   padding: 0;
   background:
-    linear-gradient(90deg, rgba(255, 244, 210, 0.76), rgba(255, 244, 210, 0.58)),
+    linear-gradient(90deg, rgba(255, 244, 210, 0.56), rgba(255, 244, 210, 0.3)),
     url("../assets/figma-exported/named/shop-hero-bg-figma.png") center / cover no-repeat;
   border-color: #f3dcae;
   border-bottom: 0;
@@ -599,7 +594,7 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  padding: 14px 11px 8px 46px;
+  padding: 14px 11px 8px 21px;
 }
 
 .rs-shop-hero__main > div:first-child {
@@ -608,7 +603,7 @@
   display: grid;
   gap: 2px;
   align-content: start;
-  max-width: 230px;
+  max-width: 190px;
   min-width: 0;
 }
 
@@ -627,11 +622,11 @@
 
 .shop-screen .rs-shop-hero h2 {
   color: var(--rs-ink);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 22px;
+  line-height: 24px;
   letter-spacing: -0.01em;
-  margin-top: 8px;
+  margin-top: 7px;
 }
 
 .shop-screen .rs-shop-hero p {
@@ -639,7 +634,7 @@
   font-size: 10px;
   font-weight: 700;
   line-height: 14px;
-  margin-top: 5px;
+  margin-top: 4px;
   white-space: nowrap;
 }
 
@@ -2391,7 +2386,7 @@
 
 .vault-screen .rs-reward-card.is-used .rs-reward-card__media,
 .vault-screen .rs-reward-card.is-used .rs-reward-card__media img {
-  opacity: 0.58;
+  opacity: 1;
 }
 
 .vault-screen .rs-reward-card.is-used .rs-reward-card__button {
@@ -2484,6 +2479,10 @@
   padding: 0 26px 76px;
 }
 
+.reward-detail-screen .screen-content:has(.rs-reward-copy-toast) {
+  z-index: auto;
+}
+
 .reward-detail-screen .app-header {
   height: 60px;
   padding-top: 10px;
@@ -2492,7 +2491,7 @@
 
 .reward-detail-screen .rs-detail-hero {
   gap: 10px;
-  padding: 31px 0 0;
+  padding: 22px 0 0;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -2501,7 +2500,7 @@
 
 .reward-detail-screen .rs-detail-hero__image {
   width: 200px;
-  min-height: 125px;
+  min-height: 105px;
 }
 
 .reward-detail-screen .rs-detail-hero__image img {
@@ -2515,7 +2514,7 @@
 
 .reward-detail-screen .rs-barcode-card {
   gap: 10px;
-  padding: 17px 20px;
+  padding: 12px 20px;
   border-radius: 8px;
   box-shadow: none;
 }
@@ -2542,7 +2541,7 @@
 
 .reward-detail-screen .rs-copy-button {
   min-height: 42px;
-  margin-top: 30px;
+  margin-top: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2600,7 +2599,7 @@
 .reward-detail-screen .rs-sticky-action {
   position: relative;
   z-index: calc(var(--z-scallop) + 1);
-  margin-top: 54px;
+  margin-top: 97px;
   padding: 0;
 }
 
@@ -2651,15 +2650,15 @@
 .rs-reward-copy-dim {
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: var(--z-modal);
   background: rgba(0, 0, 0, 0.55);
 }
 
 .rs-reward-copy-toast {
   position: fixed;
   left: 50%;
-  bottom: 16px;
-  z-index: 71;
+  bottom: 65px;
+  z-index: calc(var(--z-modal) + 1);
   width: 330px;
   min-height: 139px;
   transform: translateX(-50%);
@@ -4334,12 +4333,14 @@
 
 /* Figma sync: exchange apply */
 .exchange-screen .screen-content {
-  gap: 15px;
+  gap: 10px;
   padding: 26px 26px 128px;
 }
 
 .exchange-screen .rs-exchange-summary {
+  height: 100px;
   min-height: 100px;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 80px 154px;
   justify-content: center;
@@ -4375,6 +4376,7 @@
   line-height: 20px;
   letter-spacing: -0.01em;
   text-align: left;
+  white-space: nowrap;
 }
 
 .exchange-screen .rs-exchange-summary strong {
@@ -4404,6 +4406,7 @@
 .exchange-screen .rs-exchange-balance {
   height: 70px;
   min-height: 70px;
+  margin-top: -12px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
@@ -4449,6 +4452,7 @@
 
 .exchange-screen .rs-exchange-guide {
   gap: 7px;
+  margin-top: -8px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -4464,10 +4468,12 @@
 }
 
 .exchange-screen .rs-exchange-guide__card {
+  height: 169px;
   min-height: 169px;
+  box-sizing: border-box;
   display: grid;
-  gap: 9px;
-  padding: 20px 42px;
+  gap: 8px;
+  padding: 18px 42px;
   border: 1px solid #faefdf;
   border-radius: 10px;
   background: #fff;
@@ -4498,6 +4504,7 @@
   line-height: 18px;
   letter-spacing: 0;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .exchange-screen .rs-exchange-guide-desc {
@@ -4508,12 +4515,16 @@
   font-weight: 500;
   line-height: 14px;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .exchange-screen .rs-exchange-warning {
   position: relative;
+  height: 119px;
   min-height: 119px;
-  padding: 18px 18px;
+  box-sizing: border-box;
+  margin-top: -23px;
+  padding: 16px 18px;
   border: 1px solid #faefdf;
   border-radius: 10px;
   background: #faefdf;
@@ -4538,7 +4549,7 @@
 
 .exchange-screen .rs-exchange-warning ul {
   gap: 5px;
-  max-width: 210px;
+  max-width: 230px;
 }
 
 .exchange-screen .rs-exchange-warning li {
@@ -4553,6 +4564,7 @@
   font-weight: 500;
   line-height: 14px;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .exchange-screen .rs-exchange-warning li::before {
@@ -4589,7 +4601,7 @@
   position: fixed;
   left: max(26px, calc((100vw - 375px) / 2 + 26px));
   right: max(26px, calc((100vw - 375px) / 2 + 26px));
-  bottom: 126px;
+  bottom: 116px;
   z-index: calc(var(--z-scallop) + 4);
 }
 
@@ -4601,14 +4613,14 @@
 }
 
 .exchange-screen .rs-sticky-action {
-  bottom: 64px;
+  bottom: 52px;
 }
 
 .exchange-screen .fixed-bottom-action.rs-sticky-action {
   position: fixed;
   left: max(26px, calc((100vw - 375px) / 2 + 26px));
   right: max(26px, calc((100vw - 375px) / 2 + 26px));
-  bottom: 64px;
+  bottom: 52px;
   z-index: calc(var(--z-scallop) + 4);
   margin-top: 0;
   padding: 0;
@@ -4621,11 +4633,19 @@
   font-size: 16px;
 }
 
+.exchange-screen .rs-sticky-action .btn:disabled {
+  background: #5d3300;
+  border-color: #5d3300;
+  color: rgba(255, 217, 94, 0.35);
+  opacity: 1;
+}
+
 /* Figma sync: exchange done */
 .exchange-done-screen .screen-content {
   position: relative;
   min-height: calc(812px - 60px);
   gap: 0;
+  align-content: start;
   padding: 0 0 58px;
 }
 
@@ -4684,6 +4704,7 @@
   font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.12px;
+  white-space: nowrap;
 }
 
 .rs-exchange-done-receipt {
@@ -4810,16 +4831,21 @@
 }
 
 .exchange-done-screen .rs-sticky-action {
-  position: static;
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
   width: 320px;
-  margin: 74px auto 0;
+  margin: 0;
   padding: 0;
   gap: 12px;
+  transform: translateX(-50%);
 }
 
 .exchange-done-screen .rs-sticky-action .btn {
+  height: 56px;
   min-height: 56px;
   width: 320px;
+  padding: 0;
   border-radius: 16px;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
@@ -4854,6 +4880,54 @@
   width: 330px;
   margin: 0 3px;
   border-color: #faefdf;
+}
+
+.shop-screen .rs-shop-hero h2 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+.shop-screen .rs-shop-hero p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0;
+}
+
+.shop-screen .rs-shop-balance-row button:first-child span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.shop-screen .rs-shop-balance-row strong {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.shop-screen .rs-shop-balance-row button:last-child {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.shop-screen .rs-shop-hero__art img {
+  transform: scale(0.8);
+  transform-origin: center bottom;
 }
 
 .shop-screen .rs-category-tabs {
@@ -4909,6 +4983,10 @@
 .shop-screen .rs-shop-all-section {
   width: 335px;
   gap: 5px;
+}
+
+.shop-screen .rs-shop-all-section {
+  background: transparent;
 }
 
 .shop-screen .rs-section__header,
@@ -5092,6 +5170,7 @@
   width: 335px;
   grid-template-columns: repeat(2, 165px);
   gap: 10px 5px;
+  background: transparent;
 }
 
 .shop-screen .rs-shop-grid-card {
@@ -5240,11 +5319,18 @@
 
 .vault-screen .rs-vault-count {
   margin: 44px 0 16px 12px;
+  height: 18px;
+  min-height: 0;
   color: #1c1000;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
+}
+
+.vault-screen--used .rs-vault-count {
+  margin-top: 37px;
+  margin-bottom: 10px;
 }
 
 .vault-screen .rs-reward-list {
@@ -5273,6 +5359,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .vault-screen .rs-reward-card__body {
@@ -5340,4 +5427,12 @@
 
 .vault-screen .rs-vault-empty {
   padding-bottom: 50px;
+}
+
+.vault-screen--used .rs-vault-empty {
+  margin-top: 174px;
+}
+
+.vault-screen--used .rs-reward-card.is-used .rs-reward-card__media img {
+  filter: brightness(0.56) saturate(1.18);
 }

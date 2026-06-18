@@ -12,7 +12,7 @@
 
     const link = doc.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./css/ranking-shop.css?v=shop-hero-component-20260617a";
+    link.href = "./css/ranking-shop.css?v=vault-used-align-20260618a";
     if (link.setAttribute) {
       link.setAttribute("data-storit-css", "ranking-shop");
     }
@@ -233,7 +233,7 @@
       <article class="rs-exchange-summary">
         <div class="rs-exchange-summary__image">${namedAsset("exchange-npay-square.svg", "네이버페이")}</div>
         <div>
-          <h2>네이버페이 포인트 5,000P</h2>
+          <h2>네이버페이 포인트 5000P</h2>
           <strong>${cookieIcon} 50 <span>쿠키</span></strong>
         </div>
       </article>
@@ -696,7 +696,7 @@
           <span>위 내용을 모두 확인했어요</span>
         </button>
 
-        <div class="fixed-bottom-action rs-sticky-action">${C.button("신청 확정하기", { route: "exchangeDone", variant: "dark" })}</div>
+        <div class="fixed-bottom-action rs-sticky-action">${C.button("신청 확정하기", { route: "exchangeDone", variant: "dark", disabled: !checked })}</div>
       `,
     });
   }
@@ -747,7 +747,7 @@
     return C.shell({
       title: "보관함",
       back: "shop",
-      className: "ranking-shop-screen vault-screen",
+      className: `ranking-shop-screen vault-screen ${used ? "vault-screen--used" : "vault-screen--available"}`,
       content: `
         <div class="rs-tabs" aria-label="보관함 탭">
           <button class="rs-tab ${used ? "" : "is-active"}" data-route="vault">사용 가능</button>
@@ -757,7 +757,7 @@
         <h2 class="rs-vault-count">${used ? "사용 완료 2" : "사용 가능 2"}</h2>
 
         <div class="rs-reward-list">
-          ${D.rewards.map((reward, index) => rewardCard(reward, used, index)).join("")}
+          ${(used ? D.rewards.slice(0, 1) : D.rewards).map((reward, index) => rewardCard(reward, used, index)).join("")}
         </div>
 
         ${used ? "" : `

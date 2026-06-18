@@ -650,7 +650,7 @@
           </ul>
         </section>
         <button class="account-check-row check-row" data-action="check">
-          <span><span class="check-mark">✓</span> 회원 탈퇴 유의사항을 확인했으며 동의합니다</span>
+          <span class="account-check-row__label"><span class="check-mark" aria-hidden="true"></span> 회원 탈퇴 유의사항을 확인했으며 동의합니다</span>
         </button>
         <section class="account-form-card account-withdraw-form">
           <label class="field-label" for="withdraw-reason">떠나시는 이유를 알려주세요</label>
@@ -768,6 +768,8 @@
     settings,
     settingsTermService: () => settingsLegal('service'),
     settingsTermPrivacy: () => settingsLegal('privacy'),
+    settingsTerms: () => settingsLegal('service'),
+    settingsPrivacy: () => settingsLegal('privacy'),
     inquiry: () => inquiry(false),
     inquiryDone: () => inquiry(true),
     withdraw,

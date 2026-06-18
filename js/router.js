@@ -20,6 +20,7 @@
     const next = Screens.has(screen) ? screen : "home";
     const previous = current;
     current = next;
+    Modals.close();
     app.innerHTML = Screens.render(next);
     const renderedScreen = app.firstElementChild;
     const suppressFrameScallop =

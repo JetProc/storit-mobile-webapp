@@ -1525,6 +1525,10 @@
   pointer-events: none;
 }
 
+.auth-userinfo-screen .auth-userinfo-panel::after {
+  display: none;
+}
+
 .auth-term-detail-panel::after {
   display: none;
 }

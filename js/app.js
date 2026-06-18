@@ -30,6 +30,11 @@
 
   function toggleCheck(target) {
     target.classList.toggle("is-checked");
+    const exchangeScreen = target.closest(".exchange-screen");
+    if (exchangeScreen) {
+      const confirmButton = exchangeScreen.querySelector(".rs-sticky-action .btn");
+      if (confirmButton) confirmButton.disabled = !target.classList.contains("is-checked");
+    }
   }
 
   function setCheckedClass(target, checked) {

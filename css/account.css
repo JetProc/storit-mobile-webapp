@@ -2892,18 +2892,46 @@
   box-shadow: none;
 }
 
-.account-check-row span {
+.account-check-row:focus,
+.account-check-row:focus-visible {
+  outline: none;
+}
+
+.account-check-row__label {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
   color: #4d2600;
   font-size: 11px;
   font-weight: 400;
+  line-height: 16px;
 }
 
 .account-check-row .check-mark {
   width: 16px;
   height: 16px;
+  flex: 0 0 16px;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
   border-radius: 2px;
-  font-size: 11px;
+  border: 1px solid #b9aa95;
+  background: transparent;
+  color: transparent !important;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.account-check-row .check-mark::before {
+  content: "✓";
+}
+
+.account-check-row.is-checked .check-mark {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #4d2600 !important;
 }
 
 .account-withdraw-form {
@@ -3026,7 +3054,7 @@ body:has(.account-settings-screen) .modal p {
 .account-my-page--final .account-final-profile__bar em {
   display: block;
   position: absolute;
-  left: 67%;
+  left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   color: #ffd95e;
@@ -3752,7 +3780,14 @@ body:has(.account-settings-screen) .modal p {
 /* Settings-specific legal pages must stay out of the signup agreement flow. */
 .account-legal-screen .screen-content {
   gap: 16px;
-  padding: 18px 24px 118px;
+  padding: 18px 24px 112px;
+}
+
+.phone-frame.has-scallop-frame:has(.account-legal-screen)::after,
+.account-legal-screen.has-scallop::after,
+.account-legal-screen .screen-scallop {
+  content: none !important;
+  display: none !important;
 }
 
 .account-legal-heading {
@@ -3800,7 +3835,7 @@ body:has(.account-settings-screen) .modal p {
   position: fixed;
   left: 50%;
   bottom: 32px;
-  z-index: 8;
+  z-index: 30;
   transform: translateX(-50%);
   margin: 0;
 }
@@ -3897,6 +3932,7 @@ body:has(.account-settings-screen) .modal p {
   height: 100%;
   padding: 0;
   background: rgba(0, 0, 0, 0.55);
+  z-index: calc(var(--z-modal) + 2);
 }
 
 .account-sheet-backdrop {
@@ -3911,6 +3947,7 @@ body:has(.account-settings-screen) .modal p {
 .account-sheet {
   position: relative;
   z-index: 1;
+  flex: 0 0 auto;
   width: min(100vw, var(--app-width));
   max-height: min(92vh, 760px);
   overflow-y: auto;
@@ -3981,7 +4018,7 @@ body:has(.account-settings-screen) .modal p {
 }
 
 .account-profile-edit-sheet {
-  min-height: 497px;
+  min-height: 520px;
   gap: 11px;
   padding: 15px 30px 40px;
 }
@@ -4188,4 +4225,38 @@ body:has(.account-settings-screen) .modal p {
   line-height: 20px;
   letter-spacing: 0;
   text-align: center;
+}
+
+/* Keep the first my-page viewport aligned with the Figma frame so the nav does not cover card buttons. */
+.account-my-page--final .screen-content {
+  gap: 12px;
+}
+
+.account-my-page--final .account-final-achievements {
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.account-my-page--final .account-final-achievements__grid {
+  padding-bottom: 0;
+}
+
+.account-my-page--final .account-final-pref-grid section {
+  min-height: 106px;
+}
+
+.account-my-page--final .account-final-pref-grid button {
+  margin-top: 9px;
+}
+
+.account-my-page--final .account-final-shortcut-grid section {
+  min-height: 154px;
+}
+
+.account-my-page--final .account-final-shortcut-grid strong {
+  margin-top: 18px;
+}
+
+.account-my-page--final .account-final-shortcut-grid button {
+  margin-top: 12px;
 }

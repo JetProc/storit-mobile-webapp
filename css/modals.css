@@ -8,6 +8,14 @@
   background: var(--color-overlay);
 }
 
+.modal-layer.account-sheet-layer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  place-items: initial;
+  padding: 0;
+}
+
 .modal {
   width: min(330px, calc(100vw - 40px));
   position: relative;

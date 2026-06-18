@@ -4239,22 +4239,19 @@
 }
 
 .quiz-create-screen .quiz-search-overlay {
-  position: absolute;
-  top: -71px;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  inset: 0;
+  width: auto;
   height: 100dvh;
 }
 
 .quiz-create-screen .quiz-search-sheet {
-  position: absolute;
+  position: fixed;
   right: auto;
-  bottom: -19px;
-  left: 0;
-  width: 100%;
-  transform: none;
+  bottom: 0;
+  left: 50%;
+  width: min(100vw, var(--app-width));
+  transform: translateX(-50%);
 }
 
 .quiz-status-screen .app-header,
@@ -4547,12 +4544,12 @@
   height: 115px;
   min-height: 115px;
   position: relative;
-  padding: 18px 24px 13px;
+  padding: 18px 20px 13px 24px;
 }
 
 .quiz-result-screen .quiz-cheer-card__body {
   display: block;
-  margin-top: 8px;
+  margin-top: 7px;
 }
 
 .quiz-result-screen .quiz-cheer-card__asset {
@@ -4566,16 +4563,28 @@
 }
 
 .quiz-result-screen .quiz-write-field {
-  width: 206px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 213px;
   height: 37px;
-  grid-template-columns: minmax(0, 1fr) 43px;
+  padding: 0 4px 0 0;
+  box-sizing: border-box;
+  border-radius: 19px;
+  background: #fff;
+  overflow: hidden;
 }
 
 .quiz-result-screen .quiz-write-field::before {
-  inset: 0;
+  display: none;
 }
 
 .quiz-result-screen .quiz-write-field input {
+  display: block;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  height: 100%;
   padding: 0 8px 0 14px;
   font-family: var(--font-sans);
   font-size: 10px;
@@ -4585,9 +4594,12 @@
 }
 
 .quiz-result-screen .quiz-write-field button {
+  position: static;
+  flex: 0 0 42px;
   width: 42px;
   height: 25px;
-  margin: 0 4px 0 0;
+  margin: 0;
+  border-radius: 13px;
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 700;
@@ -4596,23 +4608,29 @@
 .quiz-result-screen .quiz-rating-card {
   height: 107px;
   min-height: 107px;
-  padding: 18px 24px 16px;
+  padding: 18px 20px 16px 24px;
 }
 
 .quiz-result-screen .quiz-rating-card p {
-  margin-top: 1px;
+  margin-top: 4px;
 }
 
 .quiz-result-screen .quiz-rating-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
   margin-top: 10px;
+  width: 100%;
 }
 
 .quiz-result-screen .quiz-rating-row button {
   height: 37px;
   min-height: 37px;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   border-radius: 4px;
   background: #fff;
   color: #3d2000;
@@ -4638,7 +4656,7 @@
   min-height: 107px;
   grid-template-columns: minmax(0, 1fr) 116px;
   align-items: center;
-  padding: 15px 24px;
+  padding: 15px 20px 15px 24px;
 }
 
 .quiz-result-screen .quiz-mission-card__button {
@@ -5361,32 +5379,72 @@
   font-style: normal;
 }
 
-/* My quiz hero SVG already contains title/cookie artwork; keep only click hit area. */
+/* My quiz hero uses real HTML text/character over the exported background. */
 .my-quiz-screen .my-quiz-hero > div {
+  position: relative;
+  z-index: 2;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 206px;
+  height: auto;
 }
 
 .my-quiz-screen .my-quiz-hero h2,
-.my-quiz-screen .my-quiz-hero p,
-.my-quiz-screen .my-quiz-hero__chef {
-  display: none;
+.my-quiz-screen .my-quiz-hero p {
+  display: block;
 }
 
 .my-quiz-screen .my-quiz-hero button {
-  position: absolute;
-  left: 24px;
-  bottom: 15px;
+  position: relative;
+  left: auto;
+  bottom: auto;
   width: 135px;
   height: 38px;
   min-width: 135px;
   min-height: 38px;
-  margin: 0;
+  margin-top: 12px;
   padding: 0;
   border: 0;
-  background: transparent;
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
+  background: #fffaf0;
+  color: #3d2000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.my-quiz-screen .my-quiz-hero__chef {
+  display: block;
+}
+
+.quiz-create-screen .quiz-search-sheet {
+  min-height: 332px;
+  gap: 10px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.quiz-create-screen .quiz-search-sheet h2 {
+  margin-top: 3px;
+}
+
+.quiz-create-screen .quiz-search-actions {
+  margin-top: 0;
+}
+
+.quiz-create-screen .quiz-search-result {
+  height: 70px;
+  min-height: 70px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.quiz-create-screen .quiz-search-result__thumb,
+.quiz-create-screen .quiz-search-result__thumb img {
+  width: 56px;
+  min-width: 56px;
+  height: 54px;
+}
+
+.quiz-create-screen .quiz-search-actions button {
+  min-height: 56px;
+  border-radius: 14px;
 }
