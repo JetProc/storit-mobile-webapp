@@ -429,6 +429,7 @@
             <p>유저 참여 현황과 심사 결과를 확인할 수 있어요.</p>
             <button type="button">퀴즈 만들러 가기 〉</button>
           </div>
+          <img class="asset my-quiz-hero__sparkle" src="${namedAssetBase}myquiz-hero-sparkle.svg" alt="" loading="lazy" />
           ${namedAsset("character-myquiz-hero-cookie.svg", "my-quiz-hero__chef")}
         </section>
 

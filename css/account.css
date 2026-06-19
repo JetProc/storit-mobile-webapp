@@ -1800,7 +1800,21 @@
 
 .account-my-page--final .account-final-profile__body p strong {
   color: #ef9f27;
-  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.account-my-page--final .account-inline-chevron {
+  display: inline-block;
+  color: currentColor;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(-0.5px);
 }
 
 .account-my-page--final .account-final-card {
@@ -2716,6 +2730,11 @@
 .account-inquiry-screen .screen-content {
   gap: 0;
   padding: 26px 26px 156px;
+  background: #fff;
+}
+
+.account-inquiry-screen {
+  background: #fff;
 }
 
 .account-inquiry-screen .account-form-card {
@@ -2732,9 +2751,10 @@
 
 .account-inquiry-form .field-label {
   margin: 0 0 7px 5px;
-  color: #2f1a05;
-  font-size: 11px;
-  font-weight: 400;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
 }
 
 .account-inquiry-form .field-label[for="inquiry-message"] {
@@ -2765,7 +2785,7 @@
   padding: 14px 15px;
   border: 0;
   border-radius: 8px;
-  background: #fffbf6;
+  background: #fcf8f3;
   color: #2f1a05;
   font-size: 11px;
   font-weight: 400;
@@ -2827,6 +2847,50 @@
   color: #080604;
   font-size: 11px;
   font-weight: 400;
+}
+
+.account-inquiry-done-screen,
+.account-inquiry-done-screen .screen-content {
+  background: #fff;
+}
+
+.account-inquiry-done-screen .account-complete-state {
+  min-height: 505px;
+  gap: 18px;
+  padding-top: 80px;
+}
+
+.account-inquiry-done-screen .account-complete-state__mark {
+  width: 47px;
+  height: 47px;
+  border: 0;
+  background: transparent;
+  color: transparent;
+}
+
+.account-inquiry-done-screen .account-complete-state__mark svg {
+  display: block;
+  width: 47px;
+  height: 47px;
+}
+
+.account-inquiry-done-screen .account-complete-state h2 {
+  color: #080604;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.account-inquiry-done-screen .account-complete-state p {
+  color: #080604;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.account-inquiry-done-screen .fixed-bottom-action .btn {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .account-withdraw-screen .screen-content {
@@ -2981,6 +3045,12 @@
 
 .account-withdraw-screen .fixed-bottom-action .btn {
   color: rgba(77, 38, 0, 0.34);
+}
+
+.account-withdraw-screen .fixed-bottom-action .btn:disabled {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .account-withdraw-screen .account-check-row.is-checked ~ .fixed-bottom-action .btn {
@@ -3608,6 +3678,36 @@ body:has(.account-settings-screen) .modal p {
   line-height: 14px;
 }
 
+.account-my-page--final .account-header-gear img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.account-my-page--final .account-final-profile__name {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-my-page--final .account-final-profile__name button {
+  width: 72px;
+  min-width: 72px;
+  height: 24px;
+  min-height: 24px;
+  padding: 0 9px;
+  border: 1px solid rgba(93, 51, 0, 0.55);
+  border-radius: 999px;
+  background: #fef4d2;
+  color: #3d2000;
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 12px;
+  white-space: nowrap;
+}
+
 .account-my-page--final .account-final-card {
   border: 1px solid #f3f4f6;
   border-radius: 8px;
@@ -3702,15 +3802,31 @@ body:has(.account-settings-screen) .modal p {
   align-self: center;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 0;
   text-align: left;
 }
 
 .account-my-page--final .account-final-cookie__stats > span {
+  position: relative;
   display: grid;
   gap: 2px;
   min-width: 0;
+  padding: 0 12px;
   border: 0;
+}
+
+.account-my-page--final .account-final-cookie__stats > span:first-child {
+  padding-left: 0;
+}
+
+.account-my-page--final .account-final-cookie__stats > span + span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: #eee2d0;
 }
 
 .account-my-page--final .account-final-cookie__stats small {
@@ -3729,13 +3845,17 @@ body:has(.account-settings-screen) .modal p {
   line-height: 18px;
 }
 
-.account-my-page--final .account-final-cookie i {
+.account-my-page--final .account-final-cookie i,
+.account-my-page--final .account-card-chevron {
   grid-column: 3;
   grid-row: 1 / span 2;
   align-self: center;
   justify-self: end;
   color: #3d2000;
-  font-size: 24px;
+  font-family: var(--font-main);
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 500;
   line-height: 1;
 }
 
@@ -3855,7 +3975,7 @@ body:has(.account-settings-screen) .modal p {
   max-width: calc(var(--app-width) - 52px);
   position: fixed;
   left: 50%;
-  bottom: 32px;
+  bottom: 84px;
   z-index: 30;
   transform: translateX(-50%);
   margin: 0;
@@ -3941,6 +4061,104 @@ body:has(.account-settings-screen) .modal p {
   height: 18px;
   display: block;
   object-fit: contain;
+}
+
+/* Withdrawal QA alignment. */
+.account-withdraw-screen .screen-content {
+  gap: 14px;
+}
+
+.account-withdraw-hero {
+  min-height: 142px;
+  padding: 2px 0 0 25px;
+  overflow: visible;
+}
+
+.account-withdraw-hero h1 {
+  position: relative;
+  z-index: 1;
+  padding-top: 31px;
+  font-family: var(--font-display);
+}
+
+.account-withdraw-hero h1 strong,
+.account-withdraw-hero h1 span {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.account-withdraw-hero h1 span {
+  font-family: var(--font-main);
+  font-weight: 400;
+}
+
+.account-withdraw-hero__asset,
+.account-withdraw-hero .asset.character {
+  z-index: 0;
+  right: 4px;
+  bottom: -32px;
+  width: 130px;
+  height: 153px;
+}
+
+.account-warning-card {
+  position: relative;
+  z-index: 2;
+}
+
+.account-warning-card strong img {
+  width: 22px;
+  height: 22px;
+}
+
+.account-warning-card ul,
+.account-warning-card li {
+  font-weight: 700;
+}
+
+.account-withdraw-form .field-label {
+  color: #4d2600;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.account-withdraw-form .account-textarea {
+  border-radius: 8px;
+  background: #faefdf;
+}
+
+.account-withdraw-screen .fixed-bottom-action .btn {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.account-withdraw-screen .account-check-row .check-mark {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border: 1.8px solid #5d3300;
+  border-radius: 6px;
+  background: transparent;
+  color: transparent !important;
+}
+
+.account-withdraw-screen .account-check-row .check-mark::before {
+  content: "";
+  width: 10px;
+  height: 7px;
+  border: 0;
+  background: url("../assets/figma-exported/named/icon-check-withdraw.svg") center / contain no-repeat;
+  transform: none;
+}
+
+.account-withdraw-screen .account-check-row:not(.is-checked) .check-mark::before {
+  opacity: 0;
+}
+
+.account-withdraw-screen .account-check-row.is-checked .check-mark {
+  border-color: #5d3300;
+  background: transparent;
 }
 
 /* My page edit bottom sheets */
@@ -4149,7 +4367,7 @@ body:has(.account-settings-screen) .modal p {
 
 .account-genre-edit-sheet {
   min-height: 450px;
-  gap: 18px;
+  gap: 14px;
   padding: 16px 20px 20px;
 }
 
@@ -4164,9 +4382,15 @@ body:has(.account-settings-screen) .modal p {
 }
 
 .account-genre-edit-icon img {
-  width: 37px;
-  height: 37px;
+  width: 84px;
+  height: 84px;
   object-fit: contain;
+}
+
+.account-genre-edit-icon {
+  width: 84px;
+  height: 84px;
+  background: transparent;
 }
 
 .account-genre-edit-sheet h2 small {
@@ -4180,7 +4404,7 @@ body:has(.account-settings-screen) .modal p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 8px;
+  gap: 9px 8px;
   margin: 0 auto 20px;
 }
 
@@ -4190,17 +4414,17 @@ body:has(.account-settings-screen) .modal p {
   padding: 0 11px;
   border: 1px solid #ef9f27;
   border-radius: 9px;
-  background: #fff;
+  background: #fef4d2;
   color: #ef9f27;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
   letter-spacing: 0;
   text-align: center;
 }
 
 .account-genre-chip.is-selected {
-  background: #f5a11d;
+  background: #ef9f27;
   color: #fff;
 }
 
@@ -4231,9 +4455,9 @@ body:has(.account-settings-screen) .modal p {
   border-bottom: 2px solid #ffd95e;
   background: transparent;
   color: #303545;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 25px;
   letter-spacing: 0;
   text-align: center;
   outline: none;
@@ -4241,9 +4465,20 @@ body:has(.account-settings-screen) .modal p {
 
 .account-my-page--final .account-final-pref-grid strong {
   font-family: "Noto Sans KR", sans-serif;
+  color: #1f2937;
   font-size: 14px;
   font-weight: 700;
   line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.account-my-page--final .account-final-pref-grid span {
+  color: #6b7280;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
   letter-spacing: 0;
   text-align: center;
 }
@@ -4270,6 +4505,45 @@ body:has(.account-settings-screen) .modal p {
   margin-top: 9px;
 }
 
+.account-my-page--final .account-exp-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ef9f27;
+  font: inherit;
+  font-weight: 700;
+  line-height: 14px;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+.account-my-page--final .account-final-pref-grid button {
+  border: 0;
+  color: #5d3300;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.account-my-page--final .account-final-shortcut-grid button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.account-my-page--final .account-shortcut-chevron {
+  display: inline-block;
+  color: currentColor;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
 .account-my-page--final .account-final-shortcut-grid section {
   min-height: 154px;
 }
@@ -4280,6 +4554,77 @@ body:has(.account-settings-screen) .modal p {
 
 .account-my-page--final .account-final-shortcut-grid button {
   margin-top: 12px;
+}
+
+.account-profile-edit-sheet .account-sheet-album {
+  color: #5d3300;
+}
+
+.account-exp-info-modal {
+  width: 330px;
+  min-height: 356px;
+  gap: 22px;
+  padding: 44px 45px 42px;
+  border-radius: 24px;
+  background: #fef4d2;
+  box-shadow: none;
+  color: #3d2000;
+}
+
+.account-exp-info-modal h2 {
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0;
+}
+
+.account-exp-info-modal .account-exp-info-close {
+  top: 15px !important;
+  right: 18px !important;
+  color: #3d2000 !important;
+}
+
+.account-exp-table {
+  width: 240px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #fff;
+  text-align: left;
+}
+
+.account-exp-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 38px;
+}
+
+.account-exp-table__row + .account-exp-table__row {
+  border-top: 1px solid #eadfcd;
+}
+
+.account-exp-table__row--head {
+  min-height: 37px;
+  background: #f9c356;
+}
+
+.account-exp-table strong,
+.account-exp-table span {
+  display: flex;
+  align-items: center;
+  padding: 0 11px;
+  color: #3d2000;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+.account-exp-table strong + strong,
+.account-exp-table span + span {
+  border-left: 1px solid #eadfcd;
 }
 
 /* Comment pass: cookie history active tab radius */

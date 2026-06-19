@@ -35,6 +35,11 @@
       const confirmButton = exchangeScreen.querySelector(".rs-sticky-action .btn");
       if (confirmButton) confirmButton.disabled = !target.classList.contains("is-checked");
     }
+    const withdrawScreen = target.closest(".account-withdraw-screen");
+    if (withdrawScreen) {
+      const withdrawButton = withdrawScreen.querySelector(".fixed-bottom-action .btn");
+      if (withdrawButton) withdrawButton.disabled = !target.classList.contains("is-checked");
+    }
   }
 
   function setCheckedClass(target, checked) {

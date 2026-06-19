@@ -130,11 +130,15 @@
         ],
         [
           '제3조 (리워드 및 포인트 정책)',
-          '① 회원은 서비스 내 웹툰 퀴즈 정답, 이벤트 참여 등의 활동을 통해 회사에서 정한 기준에 따라 포인트(또는 리워드)를 적립 받을 수 있습니다.\n② 적립된 포인트는 회사가 정한 방법 및 제휴처에서 사용할 수 있으며, 현금 환급 가능 여부 및 비율은 서비스 내 별도 고지한 바에 따릅니다.\n③ 회원은 매크로 프로그램 사용, 타인의 명의 도용, 시스템 오류 악용 등 부정한 방법으로 포인트를 적립할 수 없습니다. 회사는 부정 적립이 확인된 경우 포인트 회수, 회원 자격 정지 및 영구 탈퇴 조치를 취할 수 있습니다.',
+          '① 회원은 서비스 내 웹툰 퀴즈 정답, 이벤트 참여 등의 활동을 통해 회사에서 정한 기준에 따라 포인트(또는 리워드)를 적립 받을 수 있습니다.\n② 적립된 포인트는 회사가 정한 방법 및 제휴처에서 사용할 수 있으며, 현금 환급 가능 여부 및 비율은 서비스 내 별도 고지한 바에 따릅니다.\n③ (부정 적립 금지) 회원은 매크로 프로그램 사용, 타인의 명의 도용, 시스템 오류 악용 등 부정한 방법으로 포인트를 적립할 수 없습니다. 회사는 부정 적립이 확인된 경우 포인트 회수, 회원 자격 정지 및 영구 탈퇴 조치를 취할 수 있으며 민·형사상의 책임을 물을 수 있습니다.\n④ 포인트의 유효기간은 적립일로부터 1년이며, 유효기간이 경과한 포인트는 순차적으로 자동 소멸됩니다. 회원 탈퇴 시 남아있는 포인트는 즉시 소멸되므로 재가입하더라도 복구되지 않습니다.',
         ],
         [
           '제4조 (회원의 게시물 및 퀴즈 저작권)',
-          '회원이 서비스 내에서 직접 생성하고 출제한 웹툰 퀴즈 및 관련 콘텐츠에 대한 저작권과 지식재산권은 회사에 귀속됩니다. 회원의 게시물이나 퀴즈가 타인의 권리를 침해하거나 관련 법령을 위반하는 경우 회사는 이를 삭제하거나 노출을 제한할 수 있습니다.',
+          '① 회원이 서비스 내에서 직접 생성하고 출제한 웹툰 퀴즈 및 관련 콘텐츠에 대한 저작권(2차적 저작물 작성권 포함) 및 모든 지식재산권은 회사(프레시밀크)에 귀속됩니다.\n② 회원이 서비스 내에 작성한 리뷰, 커뮤니티 게시글 등 일반 게시물의 저작권은 해당 회원에게 귀속됩니다. 다만, 회사는 이를 서비스의 프로모션, 운영, 서비스 개선 및 마케팅 목적으로 사용할 수 있는 무상의 비독점적 사용권을 가집니다.\n③ 회원의 게시물이나 퀴즈가 타인의 지식재산권을 침해하거나 관련 법령을 위반하는 경우, 회사는 사전 통보 없이 이를 삭제하거나 노출을 제한할 수 있으며, 이로 인해 발생하는 모든 법적 책임은 해당 회원이 부담합니다.',
+        ],
+        [
+          '제5조 (서비스의 변경 및 중지)',
+          '회사는 운영상, 기술상의 필요에 따라 제공하고 있는 서비스를 변경하거나 중단할 수 있으며, 이 경우 사전에 공지사항을 통해 안내합니다. 단, 리워드 정책 등 회원의 권리에 중대한 영향을 미치는 변경은 최소 30일 전에 통지합니다.',
         ],
       ],
     },
@@ -364,7 +368,7 @@
       back: 'home',
       activeNav: 'myPage',
       className: 'account-screen account-my-page account-my-page--final',
-      right: `<button class="icon-button account-header-action account-header-gear" data-route="settings" aria-label="설정"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 3.4 9.2 5.6a7.3 7.3 0 0 0-1.4.8L5.7 5.8 3.4 8.1l.7 2.1a7.6 7.6 0 0 0-.6 1.5l-2.1.6v3.3l2.1.6c.2.5.4 1 .7 1.5l-.8 2 2.3 2.4 2.1-.7c.4.3.9.6 1.4.8l.5 2.1h3.4l.5-2.1c.5-.2 1-.4 1.4-.8l2.1.7 2.3-2.4-.8-2c.3-.5.5-1 .7-1.5l2.1-.6v-3.3l-2.1-.6c-.1-.5-.4-1-.6-1.5l.7-2.1-2.3-2.3-2.1.6c-.4-.3-.9-.6-1.4-.8l-.5-2.2H9.7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="11.4" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>`,
+      right: `<button class="icon-button account-header-action account-header-gear" data-route="settings" aria-label="설정"><img src="${assetBase}icon-settings-gear.svg" alt="" loading="lazy" /></button>`,
       content: `
         <section class="account-final-profile" aria-label="프로필">
           <div class="account-final-profile__avatar">
@@ -379,7 +383,12 @@
               <strong>LV. ${C.escape(D.user.level)}</strong>
               <div class="account-final-profile__bar"><span></span><em>67%</em></div>
             </div>
-            <p>다음 레벨까지 <strong>120 EXP ›</strong></p>
+            <p>
+              다음 레벨까지
+              <button class="account-exp-trigger" type="button" data-modal="accountExpInfo">
+                120 EXP <span class="account-inline-chevron" aria-hidden="true">›</span>
+              </button>
+            </p>
           </div>
         </section>
 
@@ -418,7 +427,7 @@
             <span><small>누적 획득</small><strong>1,240</strong></span>
             <span><small>누적 사용</small><strong>1,160</strong></span>
           </div>
-          <i aria-hidden="true">›</i>
+          <i class="account-card-chevron" aria-hidden="true">›</i>
         </section>
 
         <div class="account-final-pref-grid">
@@ -438,12 +447,12 @@
           <section>
             <span><img src="${assetBase}icon-mypage-vault-present.svg" alt="" loading="lazy" /> 내 보관함</span>
             <strong>사용 가능한<br />상품권 2개</strong>
-            <button type="button" data-route="vault">보관함 가기 ›</button>
+            <button type="button" data-route="vault">보관함 가기 <span class="account-shortcut-chevron" aria-hidden="true">›</span></button>
           </section>
           <section>
             <span><img src="${assetBase}icon-mypage-myquiz-memo.svg" alt="" loading="lazy" /> 내 퀴즈</span>
             <strong>퀴즈 심사 결과<br />확인 1건</strong>
-            <button type="button" data-route="myQuiz">내 퀴즈 가기 ›</button>
+            <button type="button" data-route="myQuiz">내 퀴즈 가기 <span class="account-shortcut-chevron" aria-hidden="true">›</span></button>
           </section>
         </div>
       `,
@@ -602,7 +611,12 @@
   function inquiryDone() {
     return `
       <section class="account-complete-state">
-        <span class="account-complete-state__mark">✓</span>
+        <span class="account-complete-state__mark" aria-hidden="true">
+          <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.0833 45.1667C29.1814 45.1667 34.7023 42.6949 38.6986 38.6986C42.6949 34.7023 45.1667 29.1814 45.1667 23.0833C45.1667 16.9852 42.6949 11.4644 38.6986 7.46805C34.7023 3.47176 29.1814 1 23.0833 1C16.9852 1 11.4644 3.47176 7.46805 7.46805C3.47176 11.4644 1 16.9852 1 23.0833C1 29.1814 3.47176 34.7023 7.46805 38.6986C11.4644 42.6949 16.9852 45.1667 23.0833 45.1667Z" fill="#FEF4D2" stroke="#EF9F27" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14.25 23.0833L20.875 29.7083L34.125 16.4583" stroke="#EF9F27" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
         <h2>문의 등록이 완료되었습니다!</h2>
         <p>문의 확인 후 이메일로 답변드릴게요.</p>
       </section>
@@ -626,7 +640,7 @@
     return C.shell({
       title: '이용문의',
       back: 'settings',
-      className: `account-screen account-inquiry-screen ${done ? 'is-done' : ''}`,
+      className: `account-screen account-inquiry-screen ${done ? 'is-done account-inquiry-done-screen' : ''}`,
       content: done ? inquiryDone() : inquiryForm(),
     });
   }
@@ -657,7 +671,7 @@
           <label class="field-label" for="withdraw-reason">떠나시는 이유를 알려주세요</label>
           <textarea id="withdraw-reason" class="textarea account-textarea" placeholder="서비스 탈퇴 사유에 대해 알려주세요.&#10;고객님의 소중한 피드백을 담아&#10;더 좋은 서비스로 보답 드리도록 하겠습니다!"></textarea>
         </section>
-        <div class="fixed-bottom-action">${C.button('회원 탈퇴', { route: 'signup', variant: 'orange' })}</div>
+        <div class="fixed-bottom-action">${C.button('회원 탈퇴', { route: 'signup', variant: 'orange', disabled: true })}</div>
       `,
     });
   }

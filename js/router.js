@@ -123,6 +123,9 @@
     const routeTarget = clickTarget?.closest("[data-route]");
     if (routeTarget) {
       event.preventDefault();
+      if (routeTarget.disabled || routeTarget.getAttribute("aria-disabled") === "true") {
+        return;
+      }
       const shouldOpenMissionExp =
         routeTarget.hasAttribute("data-mission-exp") ||
         Boolean(clickTarget?.closest("[data-mission-exp]")) ||

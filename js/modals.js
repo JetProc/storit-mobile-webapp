@@ -148,7 +148,7 @@
         <div class="account-profile-edit-preview" aria-label="프로필 미리보기">
           <img src="${assetBase}${C.escape(normalizedCookie)}" alt="" loading="lazy" />
         </div>
-        <p class="account-profile-edit-feedback" data-account-profile-feedback></p>
+        <div class="account-profile-edit-feedback" data-account-profile-feedback></div>
         <input class="account-profile-edit-input" type="text" value="${C.escape(currentName)}" maxlength="10" aria-label="닉네임" data-account-profile-name />
         <div class="account-profile-edit-grid">
           ${accountProfileCookies
@@ -216,6 +216,40 @@
         </div>
       `,
     );
+  }
+
+  function renderAccountExpInfoSheet() {
+    const rows = [
+      ["퀴즈 완료", "구간별 15-70 EXP"],
+      ["출석체크", "매일 15 EXP"],
+      ["연속 출석", "일주일마다 추가"],
+      ["일일 미션 완료", "30 EXP"],
+      ["레벨 달성", "5 레벨당 쿠키 1"],
+    ];
+    return `
+      <div class="modal-layer account-exp-info-layer" role="presentation">
+        <section class="modal account-exp-info-modal" role="dialog" aria-modal="true" aria-label="시즌 레벨 / EXP 정리">
+          <button class="storit-modal-close modal-close account-exp-info-close" type="button" data-close-modal aria-label="닫기">×</button>
+          <h2>시즌 레벨 / EXP 정리</h2>
+          <div class="account-exp-table" role="table" aria-label="시즌 레벨 EXP 보상 표">
+            <div class="account-exp-table__row account-exp-table__row--head" role="row">
+              <strong role="columnheader">항목</strong>
+              <strong role="columnheader">보상</strong>
+            </div>
+            ${rows
+              .map(
+                ([label, reward]) => `
+                  <div class="account-exp-table__row" role="row">
+                    <span role="cell">${C.escape(label)}</span>
+                    <span role="cell">${C.escape(reward)}</span>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        </section>
+      </div>
+    `;
   }
 
   function renderButtons(buttons) {
@@ -412,6 +446,12 @@
     if (name === "accountLifeEdit") {
       window.clearTimeout(copyToastTimer);
       document.getElementById("modal-root").innerHTML = renderAccountLifeSheet();
+      return;
+    }
+
+    if (name === "accountExpInfo") {
+      window.clearTimeout(copyToastTimer);
+      document.getElementById("modal-root").innerHTML = renderAccountExpInfoSheet();
       return;
     }
 
