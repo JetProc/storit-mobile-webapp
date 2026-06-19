@@ -468,7 +468,7 @@
 
   function webtoonSelector() {
     const selected = arguments[0] === true;
-    const actionIcon = selected ? "icon-quiz-create-search.svg" : "icon-quiz-create-add.svg";
+    const actionIcon = "icon-quiz-create-add.svg";
     return `
       <div class="quiz-webtoon-strip">
         ${webtoonChoices

@@ -5961,3 +5961,16 @@
   font-size: 16px;
   font-weight: 700;
 }
+
+.quiz-create-screen .quiz-webtoon-strip {
+  overflow: hidden;
+  padding-right: 27px;
+}
+
+.quiz-create-screen .quiz-webtoon-add,
+.quiz-create-screen .quiz-webtoon-add.is-next {
+  right: 2px;
+  top: 43px;
+  width: 18px;
+  height: 25px;
+}
