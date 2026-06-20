@@ -509,6 +509,11 @@
   right: 28px;
   bottom: 83px;
   padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  visibility: hidden;
+  animation: auth-welcome-action-in 360ms ease 2320ms forwards;
 }
 
 .auth-post-signup__action .auth-cta {
@@ -580,6 +585,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes auth-welcome-action-in {
+  to {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
   }
 }
 
@@ -2030,7 +2044,7 @@
 .auth-profile-sheet h2 {
   color: #201306;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.2;
   text-align: center;
 }
@@ -2263,10 +2277,23 @@
   object-fit: contain;
 }
 
+.auth-notification-sheet::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 68px;
+  height: 58px;
+  border-radius: 0 24px 0 0;
+  background: #fff;
+  pointer-events: none;
+}
+
 .auth-notification-close,
 .auth-notification-button {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   padding: 0;
   border: 0;
   background: transparent;
@@ -2274,10 +2301,19 @@
 }
 
 .auth-notification-close {
-  top: 15px;
-  right: 14px;
-  width: 38px;
-  height: 38px;
+  top: 14px;
+  right: 16px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: transparent !important;
+  box-shadow: none;
+  color: rgba(48, 48, 48, 0.55);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .auth-notification-button {

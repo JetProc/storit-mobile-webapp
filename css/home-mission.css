@@ -1002,7 +1002,7 @@
   width: 25px;
   height: 24px;
   position: absolute;
-  right: 118px;
+  right: 100px;
   top: 66px;
   display: block;
   object-fit: contain;
@@ -1052,6 +1052,7 @@
 
 .hm-recipe-hero p:not(.hm-kicker) {
   color: #3d2000;
+  font-size: 10px;
   font-weight: 700;
 }
 
@@ -1086,7 +1087,8 @@
 }
 
 .hm-timer-card span {
-  color: var(--hm-brown-dark);
+  color: #000;
+  font-weight: 700;
 }
 
 .hm-timer-card strong {
@@ -1206,6 +1208,12 @@
   line-height: 1.1;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.hm-ingredient strong {
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .hm-ingredient small {
@@ -1488,16 +1496,22 @@
 .hm-oven-screen.success-scene {
   padding: 16px 0 0;
   background:
-    linear-gradient(var(--color-primary) 0 16px, transparent 16px),
+    linear-gradient(var(--color-primary) 0 50px, transparent 50px),
     url("../assets/figma-exported/named/bg-oven.png") center top / cover no-repeat;
 }
 
 .hm-oven-screen .app-header {
   height: 60px;
+  align-items: center;
+  padding: 0 14px;
   background: #fffaf2;
   backdrop-filter: none;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
+}
+
+.hm-oven-screen .app-header > * {
+  align-self: center;
 }
 
 .hm-oven-screen .app-title {
@@ -1684,10 +1698,14 @@
 }
 
 .hm-complete-message strong {
-  color: var(--hm-orange);
+  color: var(--hm-brown-dark);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.25;
+}
+
+.hm-complete-message .hm-complete-message__accent {
+  color: var(--hm-orange);
 }
 
 .hm-complete-message span {
@@ -1883,6 +1901,11 @@
   box-shadow: none;
 }
 
+.hm-attendance-screen .hm-timer-card span {
+  color: #000;
+  font-weight: 700;
+}
+
 .hm-attendance-hero .hm-kicker {
   margin: 0 0 8px;
   color: #000;
@@ -1897,7 +1920,7 @@
   margin: 0;
   color: #000;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0;
   white-space: nowrap;
@@ -1925,7 +1948,7 @@
   height: 69px;
   display: block;
   object-fit: contain;
-  transform: translate(-2px, 1px);
+  transform: translate(-10px, 1px);
 }
 
 .hm-calendar {
@@ -2041,6 +2064,24 @@
 
 .hm-calendar__day.is-stamped {
   color: var(--hm-orange);
+}
+
+.hm-calendar__grid > strong:first-child,
+.hm-calendar__day:nth-child(7n + 8) {
+  color: #ff3636;
+}
+
+.hm-calendar__grid > strong:nth-child(7),
+.hm-calendar__day:nth-child(7n + 7) {
+  color: #438cff;
+}
+
+.hm-calendar__day.is-future:nth-child(7n + 8) {
+  color: rgba(255, 54, 54, 0.48);
+}
+
+.hm-calendar__day.is-future:nth-child(7n + 7) {
+  color: rgba(67, 140, 255, 0.48);
 }
 
 .hm-attendance-action {
@@ -2759,8 +2800,8 @@
   width: 100%;
   margin: 0;
   color: #111;
-  font-size: 24px;
-  font-weight: 900;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -2786,7 +2827,7 @@
   background: #fef4d2;
   color: #5d3300;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1;
   white-space: nowrap;
 }
@@ -2829,7 +2870,7 @@
   color: #111;
   font-family: var(--font-main);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.35;
 }
 
@@ -2851,7 +2892,7 @@
 .hm-heart-modal__count strong {
   color: #f6a01a;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -2869,7 +2910,7 @@
   height: 56px;
   border-radius: 16px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .hm-heart-modal__button--wait {
@@ -2946,6 +2987,13 @@
   text-align: center;
 }
 
+.hm-mission-exp-modal__close img {
+  width: 17px;
+  height: 17px;
+  display: block;
+  pointer-events: none;
+}
+
 .hm-mission-exp-modal__confetti {
   position: absolute;
   inset: 69px 0 auto;
@@ -2976,7 +3024,7 @@
   margin: 0;
   color: #3d2000;
   font-size: 21px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.25;
 }
 

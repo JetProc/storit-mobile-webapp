@@ -5963,8 +5963,9 @@
 }
 
 .quiz-create-screen .quiz-webtoon-strip {
-  overflow: hidden;
-  padding-right: 27px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-right: 34px;
 }
 
 .quiz-create-screen .quiz-webtoon-add,
@@ -5973,4 +5974,65 @@
   top: 43px;
   width: 18px;
   height: 25px;
+}
+
+/* Final interaction sync: webtoon cards are directly selectable and the floating add button uses the Figma SVG shape. */
+.quiz-webtoon-choice[data-route] {
+  cursor: pointer;
+}
+
+.quiz-create-screen .quiz-webtoon-choice.is-selected {
+  border-color: #ef9f27;
+  box-shadow: 0 0 0 1px #ef9f27 inset;
+  opacity: 1;
+}
+
+.quiz-floating-add {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  overflow: visible;
+}
+
+.quiz-floating-add svg {
+  display: block;
+  width: 46px;
+  height: 46px;
+}
+
+.my-quiz-screen .quiz-floating-add {
+  width: 46px;
+  height: 46px;
+}
+
+/* Keep the My Quiz list title intact while allowing the filter pills to use the remaining width. */
+.my-quiz-screen .quiz-list-section .quiz-section__head {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.my-quiz-screen .quiz-list-section .quiz-section__head h2 {
+  min-width: max-content;
+  white-space: nowrap;
+}
+
+.my-quiz-screen .quiz-list-section .quiz-filter-row {
+  min-width: 0;
+  justify-content: flex-end;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.my-quiz-screen .quiz-list-section .quiz-filter-row::-webkit-scrollbar {
+  display: none;
 }

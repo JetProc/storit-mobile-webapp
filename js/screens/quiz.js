@@ -73,6 +73,51 @@
     ["aiDoctorDark", "AI. 닥터"],
   ];
 
+  function readSelectedWebtoonIndex() {
+    try {
+      const stored = Number(window.sessionStorage.getItem("storit.quizCreate.webtoonIndex"));
+      return Number.isFinite(stored) && stored >= 0 && stored < webtoonChoices.length ? stored : 0;
+    } catch (error) {
+      return 0;
+    }
+  }
+
+  function writeSelectedWebtoonIndex(index) {
+    try {
+      window.sessionStorage.setItem("storit.quizCreate.webtoonIndex", String(index));
+    } catch (error) {
+      // This is demo-only visual state; selection styling can still update in the current DOM.
+    }
+  }
+
+  function floatingAddIcon() {
+    return `
+      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g filter="url(#quiz-floating-add-shadow)">
+          <rect x="3" y="1.5" width="40" height="40" rx="20" fill="#3D2000" shape-rendering="crispEdges"/>
+          <g clip-path="url(#quiz-floating-add-clip)">
+            <path d="M30.5 19H25.5V14C25.5 13.337 25.2366 12.7011 24.7678 12.2322C24.2989 11.7634 23.663 11.5 23 11.5C22.337 11.5 21.7011 11.7634 21.2322 12.2322C20.7634 12.7011 20.5 13.337 20.5 14L20.5888 19H15.5C14.837 19 14.2011 19.2634 13.7322 19.7322C13.2634 20.2011 13 20.837 13 21.5C13 22.163 13.2634 22.7989 13.7322 23.2678C14.2011 23.7366 14.837 24 15.5 24L20.5888 23.9112L20.5 29C20.5 29.663 20.7634 30.2989 21.2322 30.7678C21.7011 31.2366 22.337 31.5 23 31.5C23.663 31.5 24.2989 31.2366 24.7678 30.7678C25.2366 30.2989 25.5 29.663 25.5 29V23.9112L30.5 24C31.163 24 31.7989 23.7366 32.2678 23.2678C32.7366 22.7989 33 22.163 33 21.5C33 20.837 32.7366 20.2011 32.2678 19.7322C31.7989 19.2634 31.163 19 30.5 19Z" fill="#FEFAF4"/>
+          </g>
+        </g>
+        <defs>
+          <filter id="quiz-floating-add-shadow" x="0" y="0" width="46" height="46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="1.5"/>
+            <feGaussianBlur stdDeviation="1.5"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1473_56251"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1473_56251" result="shape"/>
+          </filter>
+          <clipPath id="quiz-floating-add-clip">
+            <rect width="20" height="20" fill="white" transform="translate(13 11.5)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    `;
+  }
+
   const answerDrafts = [
     ["정답", "무게가 친구들을 지키기 위해 왕이 되겠다고 결심했다"],
     ["오답", "왕관이 예뻐서 갑자기 왕이 되고 싶어졌다"],
@@ -258,7 +303,9 @@
           <div class="hm-mission-exp-modal__scallop" aria-hidden="true">
             ${namedAsset("mission-purple-scallop.svg", "hm-mission-exp-modal__scallop-image")}
           </div>
-          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">×</button>
+          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">
+            <img src="${namedAssetBase}icon-exp-modal-close.svg" alt="" aria-hidden="true" />
+          </button>
           <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
           <img class="hm-mission-exp-modal__cookie" src="${namedAssetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
           <div class="hm-mission-exp-modal__message">
@@ -461,20 +508,20 @@
             ${myQuizItems.map(myQuizRow).join("")}
           </div>
         </section>
-        <button class="quiz-floating-add" type="button" data-route="quizCreate" aria-label="퀴즈 만들기">+</button>
+        <button class="quiz-floating-add" type="button" data-route="quizCreate" aria-label="퀴즈 만들기">${floatingAddIcon()}</button>
       `,
     });
   }
 
-  function webtoonSelector() {
-    const selected = arguments[0] === true;
+  function webtoonSelector(selected = false) {
+    const selectedIndex = selected ? readSelectedWebtoonIndex() : -1;
     const actionIcon = "icon-quiz-create-add.svg";
     return `
       <div class="quiz-webtoon-strip">
         ${webtoonChoices
           .map(
             ([thumb, title], index) => `
-              <button class="quiz-webtoon-choice ${selected && index === 0 ? "is-selected" : ""} ${selected && index > 0 ? "is-faded" : ""}" type="button">
+              <button class="quiz-webtoon-choice ${selectedIndex === index ? "is-selected" : ""} ${selected && selectedIndex !== index ? "is-faded" : ""}" type="button" data-route="quizCreateSelected" data-quiz-webtoon-index="${index}" aria-pressed="${selectedIndex === index}">
                 ${C.asset("poster", thumb)}
                 <span>${C.escape(title)}</span>
               </button>
@@ -746,7 +793,14 @@
       if (answer) markSelected(answer, ".quiz-answer");
 
       const webtoon = event.target.closest?.(".quiz-webtoon-choice");
-      if (webtoon) markSelected(webtoon, ".quiz-webtoon-choice");
+      if (webtoon) {
+        const selectedIndex = Number(webtoon.dataset.quizWebtoonIndex || 0);
+        if (Number.isFinite(selectedIndex)) writeSelectedWebtoonIndex(selectedIndex);
+        markSelected(webtoon, ".quiz-webtoon-choice");
+        webtoon.parentElement?.querySelectorAll(".quiz-webtoon-choice").forEach((item) => {
+          item.classList.toggle("is-faded", item !== webtoon);
+        });
+      }
 
       const episode = event.target.closest?.(".quiz-episode-grid button");
       if (episode) markSelected(episode, "button");

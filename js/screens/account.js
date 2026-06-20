@@ -423,7 +423,7 @@
           <strong class="account-final-cookie__title">쿠키 내역 관리</strong>
           <span class="account-final-cookie__caption">보유 쿠키</span>
           <div class="account-final-cookie__stats">
-            <span><small>보유</small><strong>80</strong></span>
+            <span><small>보유 쿠키</small><strong>80</strong></span>
             <span><small>누적 획득</small><strong>1,240</strong></span>
             <span><small>누적 사용</small><strong>1,160</strong></span>
           </div>

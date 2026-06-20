@@ -2570,7 +2570,17 @@
 
 .account-notification-screen .account-notice-row__body strong,
 .account-notification-screen .account-notice-row__body p {
-  font-weight: 900;
+  font-weight: 700;
+}
+
+.account-notification-screen .account-notice-row__body strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-notification-screen .account-notice-row__chip {
+  font-weight: 700;
 }
 
 .account-notice-cookie-solid {
@@ -4373,8 +4383,8 @@ body:has(.account-settings-screen) .modal p {
 
 .account-genre-edit-icon,
 .account-life-edit-icon {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -4382,15 +4392,15 @@ body:has(.account-settings-screen) .modal p {
 }
 
 .account-genre-edit-icon img {
-  width: 84px;
-  height: 84px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
 .account-genre-edit-icon {
-  width: 84px;
-  height: 84px;
-  background: transparent;
+  width: 60px;
+  height: 60px;
+  background: #fef4d2;
 }
 
 .account-genre-edit-sheet h2 small {
@@ -4563,10 +4573,11 @@ body:has(.account-settings-screen) .modal p {
 .account-exp-info-modal {
   width: 330px;
   min-height: 356px;
+  align-items: center;
   gap: 22px;
   padding: 44px 45px 42px;
   border-radius: 24px;
-  background: #fef4d2;
+  background: #FEF4D2;
   box-shadow: none;
   color: #3d2000;
 }
@@ -4588,6 +4599,7 @@ body:has(.account-settings-screen) .modal p {
 
 .account-exp-table {
   width: 240px;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 2px;
   background: #fff;
@@ -4617,7 +4629,7 @@ body:has(.account-settings-screen) .modal p {
   color: #3d2000;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 18px;
   letter-spacing: 0;
 }
@@ -4630,4 +4642,108 @@ body:has(.account-settings-screen) .modal p {
 /* Comment pass: cookie history active tab radius */
 .account-cookie-history-screen .account-cookie-tabs .tab.is-active {
   border-radius: 6px;
+}
+
+/* Comment pass: align My Page cookie history summary to the Figma card. */
+.account-my-page--final .account-final-cookie {
+  min-height: 112px;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 24px;
+  grid-template-rows: 30px 48px;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 16px 16px 16px 18px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.account-my-page--final .account-final-cookie__asset {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: center;
+  width: 68px;
+  height: 82px;
+  object-fit: contain;
+}
+
+.account-my-page--final .account-final-cookie__title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+.account-my-page--final .account-final-cookie__caption {
+  display: none;
+}
+
+.account-my-page--final .account-final-cookie__stats {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  color: inherit;
+  font-size: initial;
+  text-align: center;
+}
+
+.account-my-page--final .account-final-cookie__stats > span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 0 8px;
+  border: 0;
+}
+
+.account-my-page--final .account-final-cookie__stats > span:first-child {
+  padding-left: 0;
+}
+
+.account-my-page--final .account-final-cookie__stats > span + span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: #efe9e0;
+}
+
+.account-my-page--final .account-final-cookie__stats small {
+  display: block;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.account-my-page--final .account-final-cookie__stats strong {
+  display: block;
+  color: #e67b1f;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.account-my-page--final .account-final-cookie i,
+.account-my-page--final .account-final-cookie .account-card-chevron {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  color: #111827;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
 }

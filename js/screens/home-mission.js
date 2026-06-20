@@ -248,7 +248,9 @@
           <div class="hm-mission-exp-modal__scallop" aria-hidden="true">
             ${namedAsset("mission-purple-scallop.svg", "hm-mission-exp-modal__scallop-image")}
           </div>
-          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">×</button>
+          <button class="storit-modal-close hm-mission-exp-modal__close" type="button" data-action="close-mission-exp" aria-label="닫기">
+            <img src="${assetBase}icon-exp-modal-close.svg" alt="" aria-hidden="true" />
+          </button>
           <div class="hm-mission-exp-modal__confetti" aria-hidden="true"></div>
           <img class="hm-mission-exp-modal__cookie" src="${assetBase}mission-exp-cookie.svg" alt="" loading="lazy" />
           <div class="hm-mission-exp-modal__message">
@@ -495,7 +497,7 @@
               <img src="${assetBase}onboarding1-cookie.svg" alt="" loading="lazy" />
             </div>
             <article class="hm-complete-message">
-              <strong>오늘의 쿠키가</strong>
+              <strong><span class="hm-complete-message__accent">오늘의 쿠키</span>가</strong>
               <span>완성됐어요!</span>
             </article>
             <div class="hm-complete-chef"><img src="${assetBase}onboarding1-chef.svg" alt="" loading="lazy" /></div>

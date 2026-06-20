@@ -545,6 +545,7 @@
 
 .modal-logout h2 {
   margin-top: 1px;
+  color: #000;
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
@@ -552,9 +553,9 @@
 
 .modal-logout p {
   margin-top: -2px;
-  color: #2f1a05;
+  color: #000;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 17px;
 }
 
@@ -588,4 +589,8 @@
 
 .storit-modal-close:empty::before {
   content: "×";
+}
+
+#modal-root > .account-exp-info-layer > section.account-exp-info-modal {
+  background-color: #FEF4D2;
 }
